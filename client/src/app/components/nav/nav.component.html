@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-dark text-light mb-3">
+  <div class="container-fluid mx-5">
+    <a class="navbar-brand text-light" routerLink="/"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page">Cinemaster</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-3 me-auto mb-2 mb-lg-0">
+        <li><a routerLink="/movies"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page" class="nav-link ms-2 px-2 text-white">Movies</a></li>
+        <li>
+          <a routerLink="/"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page" class="nav-link px-2 ms-2 text-white">Your ratings</a>
+        </li>
+        <li><a routerLink="/"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"class="nav-link ms-2 px-2 text-white">Your comments</a></li>
+      </ul>
+      <button
+        type="button"
+        routerLink="/login"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="btn btn-outline-light mx-3 px-4"
+      >
+        Login
+      </button>
+      <button
+        type="button"
+        routerLink="/register"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="btn btn-outline-warning me-2 px-4"
+      >
+        Sign-up
+      </button>
+    </div>
+  </div>
+</nav>
