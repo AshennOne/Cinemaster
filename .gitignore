@@ -477,3 +477,5 @@ $RECYCLE.BIN/
 *.lnk
 API/appsettings.json
 client/src/environments/environment.ts
+client/ssl/privatekey.pem
+client/ssl/certificate.pem
