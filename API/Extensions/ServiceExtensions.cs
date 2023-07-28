@@ -1,5 +1,7 @@
 using API.Data;
+using API.Data.Repositories;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,8 +23,8 @@ public static class ServiceExtensions
          opt.Password.RequireNonAlphanumeric = false;
        })
          .AddEntityFrameworkStores<ApplicationDbContext>()
-         .AddDefaultTokenProviders(); ;
-
+         .AddDefaultTokenProviders();
+    services.AddScoped<IUserRepository,UserRepository>();
     return services;
   }
 }

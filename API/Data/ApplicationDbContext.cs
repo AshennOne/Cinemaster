@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-  public class ApplicationDbContext :  IdentityDbContext<User, IdentityRole<int>, int>
+  public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, int>
 
   {
 
@@ -19,8 +19,10 @@ namespace API.Data
     {
       base.OnModelCreating(modelBuilder);
 
+      modelBuilder.Entity<User>()
+              .Property(u => u.Id)
+              .ValueGeneratedOnAdd();
 
-      
     }
   }
 }

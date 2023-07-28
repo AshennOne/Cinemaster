@@ -17,6 +17,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAngularApp");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
