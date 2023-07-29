@@ -1,5 +1,7 @@
 using API.Entities;
 using API.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -12,11 +14,14 @@ namespace API.Controllers
       _userRepository = userRepository;
 
     }
-    
+    [Authorize]
     [HttpGet("{username}")]
-    public async Task<ActionResult<User>> GetUserById(string username)
+    public async Task<ActionResult<User>> GetUserByUsername(string username)
     {
-      return Ok(await _userRepository.FindUserByUsernameAsync(username));
+
+      var user = await _userRepository.FindUserByUsernameAsync(username);
+      if (user == null) return NotFound("User doesn't exist");
+      return Ok(user);
     }
   }
 }

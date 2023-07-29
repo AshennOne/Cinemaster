@@ -1,6 +1,8 @@
+using System.Security.Claims;
 using API.Dtos;
 using API.Entities;
 using API.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,15 +11,17 @@ namespace API.Controllers;
 public class AuthController : BaseApiController
 {
   private readonly UserManager<User> _userManager;
-  private readonly SignInManager<User> _signInManager;
   private readonly IUserRepository _userRepository;
-  public AuthController(SignInManager<User> signInManager, UserManager<User> userManager, IUserRepository userRepository)
+  private readonly ITokenService _tokenService;
+
+  public AuthController(UserManager<User> userManager, IUserRepository userRepository, ITokenService tokenService)
   {
+    _tokenService = tokenService;
     _userRepository = userRepository;
-    _signInManager = signInManager;
     _userManager = userManager;
 
   }
+  
   [HttpPost("register")]
   public async Task<ActionResult<AuthorizedUserDto>> Register([FromBody] RegisterDto registerDto)
   {
@@ -35,15 +39,15 @@ public class AuthController : BaseApiController
       var result = await _userManager.CreateAsync(newUser, registerDto.Password);
       if (result.Succeeded)
       {
+        var token = _tokenService.GenerateToken(newUser.UserName);
 
-        await _signInManager.SignInAsync(newUser, isPersistent: false);
         var UserToReturn = new AuthorizedUserDto
         {
           UserName = newUser.UserName,
           ImgUrl = "",
           Comments = new List<Comment>(),
           Ratings = new List<Rating>(),
-          UserToken = ""
+          Token = token
         };
         return Ok(UserToReturn);
       }
@@ -51,7 +55,7 @@ public class AuthController : BaseApiController
     }
     return BadRequest("Something went wrong");
   }
-
+  
   [HttpPost("login")]
   public async Task<ActionResult<AuthorizedUserDto>> LoginUser(LoginDto loginDto)
   {
@@ -60,14 +64,15 @@ public class AuthController : BaseApiController
     var isPasswordCorrect = await _userManager.CheckPasswordAsync(ExistingUser, loginDto.Password);
     if (isPasswordCorrect)
     {
-      return new AuthorizedUserDto
+      var token = _tokenService.GenerateToken(ExistingUser.UserName);
+      return Ok(new AuthorizedUserDto
       {
         UserName = ExistingUser.UserName,
         ImgUrl = ExistingUser.ImgUrl,
         Comments = ExistingUser.Comments,
         Ratings = ExistingUser.Ratings,
-        UserToken = ""
-      };
+        Token = token
+      });
     }
     else
     {
