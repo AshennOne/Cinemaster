@@ -33,7 +33,7 @@ public class AuthController : BaseApiController
     {
       var newUser = new User
       {
-        UserName = registerDto.Username,
+        UserName = registerDto.Username.ToLower(),
         Email = registerDto.Email
       };
       var result = await _userManager.CreateAsync(newUser, registerDto.Password);
@@ -59,7 +59,7 @@ public class AuthController : BaseApiController
   [HttpPost("login")]
   public async Task<ActionResult<AuthorizedUserDto>> LoginUser(LoginDto loginDto)
   {
-    var ExistingUser = await _userRepository.FindUserByUsernameAsync(loginDto.Username);
+    var ExistingUser = await _userRepository.FindUserByUsernameAsync(loginDto.Username.ToLower());
     if (ExistingUser == null) return NotFound("Username not found");
     var isPasswordCorrect = await _userManager.CheckPasswordAsync(ExistingUser, loginDto.Password);
     if (isPasswordCorrect)

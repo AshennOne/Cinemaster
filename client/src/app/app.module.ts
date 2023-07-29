@@ -14,6 +14,7 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { ManageMoviesComponent } from './admin/manage-movies/manage-movies.component';
 import { EditMovieComponent } from './admin/edit-movie/edit-movie.component';
 import { AddMovieComponent } from './admin/add-movie/add-movie.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddMovieComponent } from './admin/add-movie/add-movie.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

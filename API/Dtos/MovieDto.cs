@@ -1,8 +1,8 @@
-namespace API.Entities
+namespace API.Dtos
 {
-  public class Movie
+  public class MovieDto
   {
-    public int Id { get; set; }
+
 
     public string Title { get; set; }
     public string Genre { get; set; }
@@ -10,7 +10,5 @@ namespace API.Entities
     public string Description { get; set; }
     public string ImgUrl { get; set; }
     public int Duration { get; set; }
-    public List<Comment> Comments { get; set; } = new List<Comment>();
-    public List<Rating> Ratings { get; set; } = new List<Rating>();
   }
 }

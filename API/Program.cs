@@ -13,7 +13,7 @@ var app = builder.Build();
 
 
 app.UseHttpsRedirection();
-app.UseCors("AllowAngularApp");
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 

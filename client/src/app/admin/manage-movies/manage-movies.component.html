@@ -1,1 +1,32 @@
-<p>manage-movies works!</p>
+<div class="container">
+  <h1 class="text-center">Movies Management</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 5%;">Id</th>
+        <th style="width: 15%;">Title</th>
+        <th style="width: 15%;">Genre</th>
+        <th style="width: 15%;">Premiere</th>
+        <th style="width: 35%;">Description</th>
+        <th style="width: 5%;">Duration</th>
+        <th style="width: 10%;">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{movie.id}}</td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.genre}}</td>
+        <td>{{movie.premiere|date}}</td>
+        <td>{{shortenDescription(movie.description)}}</td>
+        <td>{{movie.duration}}</td>
+        <td>
+          <button class="btn btn-warning ms-2" (click)="redirect(movie.title)"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="btn btn-danger ms-2"><i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+      
+    </tbody>
+  
+  </table>
+</div>

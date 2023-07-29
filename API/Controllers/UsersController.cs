@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-  public class UserController : BaseApiController
+  public class UsersController : BaseApiController
   {
     private readonly IUserRepository _userRepository;
-    public UserController(IUserRepository userRepository)
+    public UsersController(IUserRepository userRepository)
     {
       _userRepository = userRepository;
 
