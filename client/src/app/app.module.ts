@@ -15,6 +15,7 @@ import { ManageMoviesComponent } from './admin/manage-movies/manage-movies.compo
 import { EditMovieComponent } from './admin/edit-movie/edit-movie.component';
 import { AddMovieComponent } from './admin/add-movie/add-movie.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { HttpClientModule } from '@angular/common/http';
     MoviesComponent,
     ManageMoviesComponent,
     EditMovieComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

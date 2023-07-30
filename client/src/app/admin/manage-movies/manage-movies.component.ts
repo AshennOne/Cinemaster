@@ -29,6 +29,6 @@ export class ManageMoviesComponent implements OnInit{
     return description.length > 50 ? description.slice(0, 50) + '...' : description;
   }
   redirect(title:string){
-    this.router.navigateByUrl('admin/edit/'+title);
+    this.router.navigateByUrl(title);
   }
 }

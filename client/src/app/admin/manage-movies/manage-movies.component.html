@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class="text-center">Movies Management</h1>
+  <button (click)="redirect('admin/add')" class="btn btn-success float-end"><i class="fa-solid fa-plus"></i> Add new movie</button>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -21,7 +22,7 @@
         <td>{{shortenDescription(movie.description)}}</td>
         <td>{{movie.duration}}</td>
         <td>
-          <button class="btn btn-warning ms-2" (click)="redirect(movie.title)"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="btn btn-warning ms-2" (click)="redirect('admin/edit/'+movie.title.toLowerCase())"><i class="fa-solid fa-pen-to-square"></i></button>
         <button class="btn btn-danger ms-2"><i class="fa-solid fa-trash"></i></button>
         </td>
       </tr>

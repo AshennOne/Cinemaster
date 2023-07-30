@@ -1,4 +1,6 @@
+using System.Text.Json;
 using API.Entities;
+using API.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +24,18 @@ namespace API.Data
       modelBuilder.Entity<User>()
               .Property(u => u.Id)
               .ValueGeneratedOnAdd();
+      var moviesJson = File.ReadAllText("data/movies.json");
+      var movies = JsonSerializer.Deserialize<List<Movie>>(moviesJson);
 
+
+      int seedId = 1;
+      foreach (var movie in movies)
+      {
+        movie.Id = seedId;
+        seedId++;
+      }
+
+      modelBuilder.Entity<Movie>().HasData(movies);
     }
   }
 }

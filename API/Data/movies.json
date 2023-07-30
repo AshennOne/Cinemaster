@@ -1,0 +1,82 @@
+[
+   {
+      "Title": "Shrek",
+      "Genre": "Family",
+      "Premiere": "2004-06-09",
+      "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et consectetur velit. Donec ut orci eget massa ullamcorper vestibulum. Etiam non interdum est, vel lobortis justo. Vivamus ligula libero, hendrerit aliquet justo vel, pharetra fermentum felis.",
+      "ImgUrl": "https://www.imdb.com/title/tt0126029/mediaviewer/rm955136512/?ref_=tt_ov_i",
+      "Duration": 90
+   },
+   {
+      "Title": "The Godfather",
+      "Genre": "Crime",
+      "Premiere": "1972-01-19",
+      "Description": "Mauris at tristique quam. Vestibulum at augue euismod, consectetur tortor in, ultrices mi. Nulla maximus aliquam orci quis commodo. Nam tristique neque a metus egestas mollis a placerat lectus. Morbi felis urna, fringilla ut ligula sed, sagittis semper leo.",
+      "ImgUrl": "https://www.imdb.com/title/tt0068646/mediaviewer/rm746868224/?ref_=tt_ov_i",
+      "Duration": 175
+   },
+   {
+      "Title": "Pulp fiction",
+      "Genre": "Crime",
+      "Premiere": "1994-02-13",
+      "Description": "onec nisl nunc, fringilla eu tincidunt in, lobortis id orci. Proin sem libero, condimentum id erat ut, fringilla hendrerit justo. Proin a imperdiet erat, sed convallis quam. Integer sed tellus purus. Ut tempor mauris eu odio lobortis, in maximus velit mattis. Nam vel mi id risus malesuada porta in id lacus.",
+      "ImgUrl": "https://www.imdb.com/title/tt0110912/mediaviewer/rm1959546112/?ref_=tt_ov_i",
+      "Duration": 187
+   },
+   {
+      "Title": "Inception",
+      "Genre": "Action",
+      "Premiere": "2010-02-13",
+      "Description": "Roin sit amet leo sed ante hendrerit fermentum sed et mi. Nulla facilisi. Morbi orci est, tristique non pharetra ac, tincidunt quis ligula. Vestibulum pretium sodales tempus. Sed sollicitudin pharetra ante, sit amet pharetra neque tristique tincidunt. ",
+      "ImgUrl": "https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/?ref_=tt_ov_i",
+      "Duration": 159
+   },
+   {
+      "Title": "Spider-man: Across the spider verse",
+      "Genre": "Action",
+      "Premiere": "2023-04-11",
+      "Description": "Aliquam consectetur vehicula velit eget interdum. Donec dui libero, malesuada nec efficitur in, convallis vitae lorem. Vivamus ac pulvinar enim, pharetra finibus massa.",
+      "ImgUrl": "https://www.imdb.com/title/tt9362722/mediaviewer/rm1009725185/?ref_=tt_ov_i",
+      "Duration": 149
+   },
+   {
+      "Title": "Oppenheimer",
+      "Genre": "History",
+      "Premiere": "2023-07-22",
+      "Description": "Aenean ornare tortor nec odio rhoncus dignissim. Aliquam orci magna, semper sed pulvinar non, dictum vitae turpis. Suspendisse bibendum magna ac ante vehicula lacinia. Nulla congue libero auctor tempus lobortis. ",
+      "ImgUrl": "https://www.imdb.com/title/tt15398776/mediaviewer/rm2670601217/?ref_=tt_ov_i",
+      "Duration": 180
+   },
+   {
+      "Title": "Avengers: infinity war",
+      "Genre": "Action",
+      "Premiere": "2018-11-03",
+      "Description": "Aliquam et ornare libero, sed fermentum turpis. Praesent fermentum felis vitae consectetur maximus. Maecenas eu eleifend neque. Sed lorem lorem, commodo quis scelerisque feugiat, faucibus quis justo.",
+      "ImgUrl": "https://www.imdb.com/title/tt4154756/mediaviewer/rm4044245504/?ref_=tt_ov_i",
+      "Duration": 150
+   },
+   {
+      "Title": "Your name",
+      "Genre": "Animation",
+      "Premiere": "2016-03-22",
+      "Description": "Curabitur luctus massa ligula, vitae vestibulum leo aliquam eu. Etiam a felis semper, mollis metus eget, sollicitudin ante. Cras ultricies arcu eu arcu scelerisque consectetur.",
+      "ImgUrl": "https://www.imdb.com/title/tt5311514/mediaviewer/rm3216783616/?ref_=tt_ov_i",
+      "Duration": 110
+   },
+   {
+      "Title": "Matrix",
+      "Genre": "Action",
+      "Premiere": "1999-01-02",
+      "Description": "Sed ligula mauris, congue ac ex in, sagittis ultrices ante. Proin sagittis, ante sed consequat ornare, urna neque porttitor magna, ut posuere ante ligula nec libero. Maecenas lacinia ornare massa, at luctus sapien imperdiet nec.",
+      "ImgUrl": "https://www.imdb.com/title/tt0133093/mediaviewer/rm525547776/?ref_=tt_ov_i",
+      "Duration": 160
+   },
+   {
+      "Title": "Fight club",
+      "Genre": "Drama",
+      "Premiere": "1999-05-23",
+      "Description": "Aliquam quis gravida ipsum, ac sollicitudin orci. Ut iaculis mattis tincidunt. Duis quam risus, dignissim et ex in, vestibulum blandit erat. Nam vulputate est et iaculis pretium. Cras vitae purus enim. Integer ac condimentum turpis.",
+      "ImgUrl": "https://www.imdb.com/title/tt0137523/mediaviewer/rm1412004864/?ref_=tt_ov_i",
+      "Duration": 150
+   }
+]
