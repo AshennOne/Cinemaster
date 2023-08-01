@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient ,HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Movie } from '../_models/Movie';
 
@@ -14,16 +14,23 @@ export class MovieService {
   getMovies() {
     return this.http.get<Movie[]>(this.baseUrl + 'movies');
   }
-  getMovie(title:string){
-    return this.http.get<Movie>(this.baseUrl + 'movies/'+title);
+  getMovie(title: string) {
+    return this.http.get<Movie>(this.baseUrl + 'movies/' + title);
   }
-  addMovie(movie:Movie){
-    console.log(movie)
-    var x= this.http.post(this.baseUrl+"movies",movie);
-    x.subscribe({
-      next: ()=>{
-        console.log("ok")
-      }
+  addMovie(movie: Movie) {
+    return this.http.post(this.baseUrl + 'movies', movie).subscribe({
+      
+    });
+    
+  }
+  editMovie(id:number,movie:Movie){
+    return this.http.put(this.baseUrl + 'movies/'+ id, movie).subscribe({
+
+    })
+  }
+  deleteMovie(title:string){
+    return this.http.delete(this.baseUrl + 'movies/'+ title).subscribe({
+
     })
   }
 }

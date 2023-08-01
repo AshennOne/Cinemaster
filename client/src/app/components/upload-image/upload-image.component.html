@@ -1,0 +1,31 @@
+<div class="card px-5 py-3 mt-4">
+  <div class="card-head text-center mt-3">
+    <h2>Upload movie photo</h2>
+  </div>
+  <div class="card-body">
+    <ngx-dropzone
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 26rem;
+        
+      "
+      [multiple]="false"
+      (change)="sendFilesToParent($event)"
+      accept="image/jpeg,image/jpg,image/png"
+    >
+    <img  *ngIf="imgUrl" src="{{imgUrl}}"/>
+      <ngx-dropzone-preview 
+        *ngIf="file && !imgUrl"
+        [removable]="false"
+        
+      >
+      
+        <ngx-dropzone-label>
+          {{ file.name }}
+        </ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+  </div>
+</div>

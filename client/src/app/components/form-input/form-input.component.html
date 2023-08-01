@@ -1,0 +1,22 @@
+<div class="form-group mt-3" *ngIf="!isDate">
+  <label [for]="fieldName">{{label}} :</label>
+  <input *ngIf="!isTextArea"  type="{{type}}" [formControl]="control" class="form-control" [id]="fieldName" />
+  <textarea *ngIf="isTextArea" style="resize: none;" [formControl]="control" class="form-control" rows="5"></textarea>
+  <div *ngIf="control.invalid && control.touched" class="text-danger">
+    <div *ngIf="control.errors?.['required']">This field is required.</div>
+    <div *ngIf="control.errors?.['minlength']">Minimum length should be at least {{ control.errors?.['minlength'].requiredLength }} characters.</div>
+    <div *ngIf="control.errors?.['maxlength']">Maximum length should be no more than {{ control.errors?.['maxlength'].requiredLength }} characters.</div>
+    <div *ngIf="control.errors?.['min']">Value must be greater than {{ control.errors?.['min'].min }}.</div>
+    <div *ngIf="control.errors?.['max']">Value must be less than {{ control.errors?.['max'].max }}.</div>
+
+  </div>
+</div>
+<div class="form-group mt-3" *ngIf="isDate">
+  <label [for]="fieldName">{{label}} :</label>
+  <input type="text" class="form-control" bsDatepicker [formControl]="control" [bsConfig]="bsConfig"  [id]="fieldName"/>
+  
+  <div *ngIf="control.invalid && control.touched" class="text-danger">
+    <div *ngIf="control.errors?.['required']">This field is required.</div>
+  
+  </div>
+</div>

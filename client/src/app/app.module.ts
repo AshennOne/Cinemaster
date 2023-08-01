@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ModalModule } from 'ngx-bootstrap/modal'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -16,7 +16,10 @@ import { EditMovieComponent } from './admin/edit-movie/edit-movie.component';
 import { AddMovieComponent } from './admin/add-movie/add-movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,15 +34,28 @@ import { ReactiveFormsModule } from '@angular/forms';
     ManageMoviesComponent,
     EditMovieComponent,
     AddMovieComponent,
-    
+    UploadImageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule,
+    ModalModule.forRoot(),
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: true,
+
+    }),
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}import { NgxDropzoneModule } from 'ngx-dropzone';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+

@@ -23,7 +23,9 @@
         <td>{{movie.duration}}</td>
         <td>
           <button class="btn btn-warning ms-2" (click)="redirect('admin/edit/'+movie.title.toLowerCase())"><i class="fa-solid fa-pen-to-square"></i></button>
-        <button class="btn btn-danger ms-2"><i class="fa-solid fa-trash"></i></button>
+          <button class="btn btn-danger ms-2" (click)="openModal(confirmDeleteModal, movie)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </td>
       </tr>
       
@@ -31,3 +33,19 @@
   
   </table>
 </div>
+
+<ng-template #confirmDeleteModal>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Delete</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to delete '{{ selectedMovie?.title }}'?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="confirmDelete(selectedMovie?.title)">Delete</button>
+  </div>
+</ng-template>
