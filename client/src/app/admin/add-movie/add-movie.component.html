@@ -1,23 +1,5 @@
-<div class="container">
-  <div class="row">
-    <div class="col-5 d-flex justify-content-center align-items-center mt-5">
-      <app-upload-image [file]="file" (filesEmitter)="receiveData($event)"></app-upload-image>
-    </div>
-    <div class="col-7">
-      <h1 class="text-center mt-4">Add a New Movie</h1>
-      <form [formGroup]="movieForm" (ngSubmit)="processForm(movieForm)">
-        <app-form-input [fieldName]="'title'" [control]="movieForm.controls.title" label="Title" ></app-form-input>
-        <app-form-input [fieldName]="'genre'" [control]="movieForm.controls.genre" label="Genre" ></app-form-input>
-        <app-form-input [isDate]="true" [fieldName]="'premiere'" [control]="movieForm.controls.premiere" label="Premiere"></app-form-input>
-       
-        <app-form-input [isTextArea]="true" [fieldName]="'description'" label="Description" [control]="movieForm.controls.description" label="Description"></app-form-input>
-        <app-form-input [fieldName]="'duration'" [type]="'number'" [control]="movieForm.controls.duration" label="Duration" ></app-form-input>
-
-        
-       
-        <button type="submit" class="px-4 btn btn-info mt-3" [disabled]="!movieForm.valid || !file">Submit</button>
-    
-      </form>
-    </div>
-  </div>
-</div>
+<app-form
+  formTitle="Add a New Movie"
+  (movieSubmitted)="addMovie($event)"
+  [isAddForm]="true"
+></app-form>

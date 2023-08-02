@@ -1,6 +1,6 @@
 <div class="form-group mt-3" *ngIf="!isDate">
   <label [for]="fieldName">{{label}} :</label>
-  <input *ngIf="!isTextArea"  type="{{type}}" [formControl]="control" class="form-control" [id]="fieldName" />
+  <input *ngIf="!isTextArea"  type="{{type}}" [formControl]="control" autocomplete="off" class="form-control" [id]="fieldName" placeholder="Enter your {{fieldName}} here" />
   <textarea *ngIf="isTextArea" style="resize: none;" [formControl]="control" class="form-control" rows="5"></textarea>
   <div *ngIf="control.invalid && control.touched" class="text-danger">
     <div *ngIf="control.errors?.['required']">This field is required.</div>
@@ -8,7 +8,8 @@
     <div *ngIf="control.errors?.['maxlength']">Maximum length should be no more than {{ control.errors?.['maxlength'].requiredLength }} characters.</div>
     <div *ngIf="control.errors?.['min']">Value must be greater than {{ control.errors?.['min'].min }}.</div>
     <div *ngIf="control.errors?.['max']">Value must be less than {{ control.errors?.['max'].max }}.</div>
-
+    <div *ngIf="control.errors?.['passwordMismatch']">Password and Password confirmation must be the same</div>
+    <div *ngIf="control.errors?.['email']">Please enter correct email</div>
   </div>
 </div>
 <div class="form-group mt-3" *ngIf="isDate">

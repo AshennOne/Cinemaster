@@ -35,6 +35,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     EditMovieComponent,
     AddMovieComponent,
     UploadImageComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,4 +59,5 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 })
 export class AppModule {}import { NgxDropzoneModule } from 'ngx-dropzone';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { FormComponent } from './components/form/form.component';
 
