@@ -11,12 +11,11 @@ public static class AuthServiceExtensions
 {
   public static IServiceCollection LoadAuthServices(this IServiceCollection services, ConfigurationManager configuration)
   {
-    services.AddIdentity<User, IdentityRole<int>>(opt =>
+    services.AddIdentityCore<User>(opt =>
       {
         opt.Password.RequireNonAlphanumeric = false;
-      })
-      .AddEntityFrameworkStores<ApplicationDbContext>()
-      .AddDefaultTokenProviders();
+        opt.Password.RequireDigit = false;
+      }).AddRoles<IdentityRole<int>>().AddRoleManager<RoleManager<IdentityRole<int>>>().AddEntityFrameworkStores<ApplicationDbContext>();
     services.AddAuthentication(options =>
     {
       options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -14,12 +14,13 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { ManageMoviesComponent } from './admin/manage-movies/manage-movies.component';
 import { EditMovieComponent } from './admin/edit-movie/edit-movie.component';
 import { AddMovieComponent } from './admin/add-movie/add-movie.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,12 +53,19 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     preventDuplicates: true,
 
     }),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    BsDropdownModule.forRoot()
+   
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}import { NgxDropzoneModule } from 'ngx-dropzone';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { FormComponent } from './components/form/form.component';
+import { TokenInterceptor } from './_interceptors/token.interceptor';
 

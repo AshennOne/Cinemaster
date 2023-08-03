@@ -1,7 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using API.Entities;
 using API.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 
 namespace API.Helpers
@@ -14,15 +16,16 @@ namespace API.Helpers
       _configuration = configuration;
 
     }
-    public string GenerateToken(string username)
+    public string GenerateToken(User user, string role)
     {
       var tokenHandler = new JwtSecurityTokenHandler();
       var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
       var tokenDescriptor = new SecurityTokenDescriptor
       {
-        Subject = new ClaimsIdentity(new[]
+        Subject = new ClaimsIdentity(new Claim[]
           {
-                new Claim(ClaimTypes.Name, username)
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Role,role)
             }),
         Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpiresInMinutes"])),
         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)

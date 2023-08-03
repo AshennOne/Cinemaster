@@ -1,40 +1,51 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/_models/User';
-import { UserService } from 'src/app/_services/user.service';
+import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   registerForm = this.CreateForm();
 
-  constructor(private userService:UserService, private toastr:ToastrService, private router:Router){
-
-  }
+  constructor(
+    private accountService: AccountService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   CreateForm() {
-    return new FormGroup({
-      userName: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(15),
-        Validators.minLength(4),
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(20),
-        Validators.minLength(6),
-      ]),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.email,
-        Validators.minLength(6),
-      ]),
-      confirmPassword: new FormControl('', [Validators.required]),
-    }, { validators: this.passwordMatchValidator });
+    return new FormGroup(
+      {
+        userName: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(18),
+          Validators.minLength(4),
+        ]),
+        password: new FormControl('', [
+          Validators.required,
+          Validators.maxLength(25),
+          Validators.minLength(6),
+          this.containsNumber,
+        ]),
+        email: new FormControl('', [
+          Validators.required,
+          Validators.email,
+          Validators.minLength(6),
+        ]),
+        confirmPassword: new FormControl('', [Validators.required]),
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
 
   passwordMatchValidator(control: AbstractControl) {
@@ -52,17 +63,31 @@ export class RegisterComponent {
   redirect() {
     this.router.navigateByUrl('/');
   }
-  onSubmit(){
-    this.userService.register(this.createRegisterObj()).subscribe({
-      next: () => this.userService.toggleLoggedIn(),
-      error: (err) => this.toastr.error(err.message)
-    })
+  onSubmit() {
+    var user = this.createRegisterObj();
+    this.accountService.register(user).subscribe({
+      next: (res) => {
+        if (res.token) {
+          this.accountService.setToken(res.token);
+          this.toastr.success('successfuly registered');
+          this.router.navigateByUrl('/movies');
+        }
+      },
+      error: (err) => this.toastr.error(err),
+    });
   }
   createRegisterObj(): User {
     return {
       userName: this.registerForm.get('userName')?.value,
       email: this.registerForm.get('email')?.value,
-      password: this.registerForm.get('password')?.value
+      password: this.registerForm.get('password')?.value,
     } as User;
+  }
+  containsNumber(control: AbstractControl) {
+    const password = control.value;
+    if (!/\d/.test(password)) {
+      return { noNumber: true };
+    }
+    return null;
   }
 }

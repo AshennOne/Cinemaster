@@ -15,7 +15,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-3 me-auto mb-2 mb-lg-0">
+      <ul *ngIf="isLoggedIn" class="navbar-nav ms-3 me-auto mb-2 mb-lg-0">
         <li><a routerLink="/movies"
           routerLinkActive="active"
           ariaCurrentWhenActive="page" class="nav-link ms-2 px-2 text-white">Movies</a></li>
@@ -27,30 +27,46 @@
         <li><a routerLink="/"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"class="nav-link ms-2 px-2 text-white">Your comments</a></li>
-          <li><a routerLink="/admin/dashboard"
+          <li *ngIf="role==='Admin'" ><a routerLink="/admin/dashboard"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"class="nav-link ms-2 px-2 text-white">Admin</a></li>
       </ul>
-      <button
+   
+   
+        <button
+        
         type="button"
         routerLink="/login"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
-        class="btn btn-outline-light mx-3 px-4"
-        *ngIf="!userService.isLoggedIn"
+        class="btn btn-outline-light ms-auto me-3 px-4"
+        *ngIf="!isLoggedIn"
       >
         Login
       </button>
+     
       <button
-        type="button"
-        routerLink="/register"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        class="btn btn-outline-warning me-2 px-4"
-        *ngIf="!userService.isLoggedIn"
-      >
-        Sign-up
-      </button>
+      type="button"
+      routerLink="/register"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      class="btn btn-outline-warning me-2 px-4"
+      *ngIf="!isLoggedIn"
+    >
+      Sign-up
+    </button>
+     
+      
+    
+
+      <span *ngIf="isLoggedIn" class=" dropdown" dropdown>
+        <a class="nav-link drop dropdown-toggle" id="navbardrop" data-toggle="dropdown" dropdownToggle>
+          Hello, {{username}}
+        </a>
+        <div class="dropdown-menu  dropdown-menu-left dropdownList" *dropdownMenu>
+          <a (click)="logout()" class="dropdown-item">Logout</a>
+        </div>
+      </span>
     </div>
   </div>
 </nav>

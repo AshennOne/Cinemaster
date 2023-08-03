@@ -10,6 +10,7 @@
     <div *ngIf="control.errors?.['max']">Value must be less than {{ control.errors?.['max'].max }}.</div>
     <div *ngIf="control.errors?.['passwordMismatch']">Password and Password confirmation must be the same</div>
     <div *ngIf="control.errors?.['email']">Please enter correct email</div>
+    <div *ngIf="control.errors?.['noNumber']">Your password must contain at least one number</div>
   </div>
 </div>
 <div class="form-group mt-3" *ngIf="isDate">

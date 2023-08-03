@@ -10,3 +10,9 @@
     outline: none;
     box-shadow: none;
 }
+.drop{
+  cursor: pointer;
+}
+.dropdownList {
+  transform: translateX(-20px)!important; 
+}

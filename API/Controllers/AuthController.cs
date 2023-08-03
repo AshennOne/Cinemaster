@@ -39,7 +39,8 @@ public class AuthController : BaseApiController
       var result = await _userManager.CreateAsync(newUser, registerDto.Password);
       if (result.Succeeded)
       {
-        var token = _tokenService.GenerateToken(newUser.UserName);
+        await _userManager.AddToRoleAsync(newUser, "User");
+        var token = _tokenService.GenerateToken(newUser,(await _userManager.GetRolesAsync(newUser))[0]);
 
         var UserToReturn = new AuthorizedUserDto
         {
@@ -47,11 +48,12 @@ public class AuthController : BaseApiController
           ImgUrl = "",
           Comments = new List<Comment>(),
           Ratings = new List<Rating>(),
-          Token = token
+          Token = token,
+          Role = "User"
         };
         return Ok(UserToReturn);
       }
-      return BadRequest(result.Errors);
+      return BadRequest("Registration error, try again");
     }
     return BadRequest("Something went wrong");
   }
@@ -64,14 +66,15 @@ public class AuthController : BaseApiController
     var isPasswordCorrect = await _userManager.CheckPasswordAsync(ExistingUser, loginDto.Password);
     if (isPasswordCorrect)
     {
-      var token = _tokenService.GenerateToken(ExistingUser.UserName);
+      var token = _tokenService.GenerateToken(ExistingUser, (await _userManager.GetRolesAsync(ExistingUser))[0]);
       return Ok(new AuthorizedUserDto
       {
         UserName = ExistingUser.UserName,
         ImgUrl = ExistingUser.ImgUrl,
         Comments = ExistingUser.Comments,
         Ratings = ExistingUser.Ratings,
-        Token = token
+        Token = token,
+        Role = (await _userManager.GetRolesAsync(ExistingUser))[0]
       });
     }
     else

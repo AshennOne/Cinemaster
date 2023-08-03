@@ -9,5 +9,6 @@ namespace API.Dtos
     public List<Comment> Comments { get; set; }
     public List<Rating> Ratings { get; set; }
     public string Token { get; set; }
+    public string Role{get;set;}
   }
 }

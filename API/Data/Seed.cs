@@ -17,9 +17,16 @@ namespace API.Data
 
         foreach (var user in usersToSeed)
         {
-          await userManager.CreateAsync(user, "Pa$$w0rd"); // Change the password as needed
+          await userManager.CreateAsync(user, "Pa$$w0rd");
+          if(user.UserName.ToLower()=="david")
+          await userManager.AddToRoleAsync(user,"Admin"); 
+          else {await userManager.AddToRoleAsync(user,"User"); }
+          
         }
+
       }
+
+      
     }
   }
 }
