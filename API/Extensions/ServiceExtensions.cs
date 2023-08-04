@@ -19,7 +19,7 @@ public static class ServiceExtensions
         .AllowAnyMethod();
       });
     });
-
+    services.AddHttpClient();
     services.AddScoped<ITokenService, TokenService>();
     services.AddSingleton<IConfiguration>(configuration);
     services.AddScoped<IUserRepository, UserRepository>();

@@ -1,0 +1,63 @@
+p{
+  margin-top: -1rem !important;
+}
+.card{
+  cursor: pointer;
+  border: 1px solid dimgrey;
+  box-shadow: 7px 5px rgba(149, 119, 0, 0.319);
+}
+.card-img-top{
+  border-bottom: 1.5px solid dimgrey ;
+ 
+}
+h5:hover{
+  text-decoration: underline;
+}
+.card-img-container {
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.card-img-top {
+  transition: transform 0.3s ease-out;
+}
+
+.card-img-container:hover .card-img-top {
+  transform: scale(1.1); /* Increase image size on hover */
+}
+
+.card-img-container:hover {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Add shadow effect on hover */
+}
+.btn{
+  border-radius: 0 0 50px 50px;
+  border-width: 1px;
+  border-color: rgb(192, 192, 192)
+
+}
+.btn-light{
+  background-color: rgb(255, 255, 255)
+}
+.btn-light:hover{
+  background-color: rgb(188, 188, 188)
+}
+.btn-group{
+  width: 100%;
+}
+@media (max-width: 576px) {
+  .card {
+    height: auto;
+    width: 80%;
+    margin-left: 3rem;
+  }
+}
+/*.bodyCard{
+  background-color: rgb(255, 208, 113);
+}
+.btn-light{
+  background-color: rgb(255, 214, 101)
+}
+.btn-light:hover{
+  background-color: rgb(255, 204, 62)
+}*/

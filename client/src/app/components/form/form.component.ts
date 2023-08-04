@@ -24,7 +24,7 @@ export class FormComponent implements OnChanges {
 
   movieForm = this.createForm();
   imageUrl?: string;
-  file?: File 
+  file?: File;
   @Input() isAddForm = false;
   constructor(private cloudinaryService: CloudinaryService) {}
   ngOnChanges(changes: SimpleChanges) {
@@ -34,7 +34,6 @@ export class FormComponent implements OnChanges {
       if (this.movie) this.fillForm(this.movie);
     }
   }
-
 
   fillForm(movie: Movie) {
     this.movieForm.patchValue({
@@ -50,39 +49,34 @@ export class FormComponent implements OnChanges {
   onSubmit() {
     if (this.file) {
       if (this.imageUrl === undefined) {
-        const data = new FormData();
-        data.append('file', this.file);
-        data.append('upload_preset', 'vkecuura');
-        data.append('cloud_name', environment.cloud_name);
-        this.cloudinaryService.uploadImage(data).subscribe({
+        this.cloudinaryService.uploadImage(this.file).subscribe({
           next: (res) => {
-            const img = res.secure_url;
-            this.imageUrl = img.replace('upload', 'upload/w_270,h_400');
+            this.imageUrl = res.imageUrl.replace(
+              'upload',
+              'upload/w_240,h_350'
+            );
             if (!this.imageUrl) return;
-            this.passMovieToParent()
+            this.passMovieToParent();
           },
-          
         });
       }
-    }else{
-      this.passMovieToParent()
+    } else {
+      this.passMovieToParent();
     }
   }
 
- passMovieToParent(){
-  const movie: Movie = this.createMovieObj();
-        this.movieSubmitted.emit(movie);
-        if(this.isAddForm){
-          this.movieForm.reset();
-          this.imageUrl = undefined
-        }else{
-          this.fillForm(movie)
-          
-        }
-        
-        
-        this.file = {} as File;
- }
+  passMovieToParent() {
+    const movie: Movie = this.createMovieObj();
+    this.movieSubmitted.emit(movie);
+    if (this.isAddForm) {
+      this.movieForm.reset();
+      this.imageUrl = undefined;
+    } else {
+      this.fillForm(movie);
+    }
+
+    this.file = {} as File;
+  }
 
   createMovieObj(): Movie {
     return {

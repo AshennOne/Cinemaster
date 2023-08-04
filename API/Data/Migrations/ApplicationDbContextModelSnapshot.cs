@@ -45,7 +45,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("API.Entities.Movie", b =>
@@ -76,7 +76,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies", (string)null);
+                    b.ToTable("Movies");
 
                     b.HasData(
                         new
@@ -85,7 +85,7 @@ namespace API.Data.Migrations
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et consectetur velit. Donec ut orci eget massa ullamcorper vestibulum. Etiam non interdum est, vel lobortis justo. Vivamus ligula libero, hendrerit aliquet justo vel, pharetra fermentum felis.",
                             Duration = 90,
                             Genre = "Family",
-                            ImgUrl = "https://www.imdb.com/title/tt0126029/mediaviewer/rm955136512/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691161775/shrek_q7kypt.jpg",
                             Premiere = new DateTime(2004, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Shrek"
                         },
@@ -95,7 +95,7 @@ namespace API.Data.Migrations
                             Description = "Mauris at tristique quam. Vestibulum at augue euismod, consectetur tortor in, ultrices mi. Nulla maximus aliquam orci quis commodo. Nam tristique neque a metus egestas mollis a placerat lectus. Morbi felis urna, fringilla ut ligula sed, sagittis semper leo.",
                             Duration = 175,
                             Genre = "Crime",
-                            ImgUrl = "https://www.imdb.com/title/tt0068646/mediaviewer/rm746868224/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691161764/theGodfather_isikq1.jpg",
                             Premiere = new DateTime(1972, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Godfather"
                         },
@@ -105,7 +105,7 @@ namespace API.Data.Migrations
                             Description = "onec nisl nunc, fringilla eu tincidunt in, lobortis id orci. Proin sem libero, condimentum id erat ut, fringilla hendrerit justo. Proin a imperdiet erat, sed convallis quam. Integer sed tellus purus. Ut tempor mauris eu odio lobortis, in maximus velit mattis. Nam vel mi id risus malesuada porta in id lacus.",
                             Duration = 187,
                             Genre = "Crime",
-                            ImgUrl = "https://www.imdb.com/title/tt0110912/mediaviewer/rm1959546112/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691159845/nsd52xvnbsukash5izgz.jpg",
                             Premiere = new DateTime(1994, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Pulp fiction"
                         },
@@ -115,7 +115,7 @@ namespace API.Data.Migrations
                             Description = "Roin sit amet leo sed ante hendrerit fermentum sed et mi. Nulla facilisi. Morbi orci est, tristique non pharetra ac, tincidunt quis ligula. Vestibulum pretium sodales tempus. Sed sollicitudin pharetra ante, sit amet pharetra neque tristique tincidunt. ",
                             Duration = 159,
                             Genre = "Action",
-                            ImgUrl = "https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691161775/shrek_q7kypt.jpg",
                             Premiere = new DateTime(2010, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Inception"
                         },
@@ -125,7 +125,7 @@ namespace API.Data.Migrations
                             Description = "Aliquam consectetur vehicula velit eget interdum. Donec dui libero, malesuada nec efficitur in, convallis vitae lorem. Vivamus ac pulvinar enim, pharetra finibus massa.",
                             Duration = 149,
                             Genre = "Action",
-                            ImgUrl = "https://www.imdb.com/title/tt9362722/mediaviewer/rm1009725185/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691161764/theGodfather_isikq1.jpg",
                             Premiere = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Spider-man: Across the spider verse"
                         },
@@ -135,7 +135,7 @@ namespace API.Data.Migrations
                             Description = "Aenean ornare tortor nec odio rhoncus dignissim. Aliquam orci magna, semper sed pulvinar non, dictum vitae turpis. Suspendisse bibendum magna ac ante vehicula lacinia. Nulla congue libero auctor tempus lobortis. ",
                             Duration = 180,
                             Genre = "History",
-                            ImgUrl = "https://www.imdb.com/title/tt15398776/mediaviewer/rm2670601217/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691159845/nsd52xvnbsukash5izgz.jpg",
                             Premiere = new DateTime(2023, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Oppenheimer"
                         },
@@ -145,7 +145,7 @@ namespace API.Data.Migrations
                             Description = "Aliquam et ornare libero, sed fermentum turpis. Praesent fermentum felis vitae consectetur maximus. Maecenas eu eleifend neque. Sed lorem lorem, commodo quis scelerisque feugiat, faucibus quis justo.",
                             Duration = 150,
                             Genre = "Action",
-                            ImgUrl = "https://www.imdb.com/title/tt4154756/mediaviewer/rm4044245504/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691161775/shrek_q7kypt.jpg",
                             Premiere = new DateTime(2018, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Avengers: infinity war"
                         },
@@ -155,7 +155,7 @@ namespace API.Data.Migrations
                             Description = "Curabitur luctus massa ligula, vitae vestibulum leo aliquam eu. Etiam a felis semper, mollis metus eget, sollicitudin ante. Cras ultricies arcu eu arcu scelerisque consectetur.",
                             Duration = 110,
                             Genre = "Animation",
-                            ImgUrl = "https://www.imdb.com/title/tt5311514/mediaviewer/rm3216783616/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691161764/theGodfather_isikq1.jpg",
                             Premiere = new DateTime(2016, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Your name"
                         },
@@ -165,7 +165,7 @@ namespace API.Data.Migrations
                             Description = "Sed ligula mauris, congue ac ex in, sagittis ultrices ante. Proin sagittis, ante sed consequat ornare, urna neque porttitor magna, ut posuere ante ligula nec libero. Maecenas lacinia ornare massa, at luctus sapien imperdiet nec.",
                             Duration = 160,
                             Genre = "Action",
-                            ImgUrl = "https://www.imdb.com/title/tt0133093/mediaviewer/rm525547776/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691159845/nsd52xvnbsukash5izgz.jpg",
                             Premiere = new DateTime(1999, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Matrix"
                         },
@@ -175,7 +175,7 @@ namespace API.Data.Migrations
                             Description = "Aliquam quis gravida ipsum, ac sollicitudin orci. Ut iaculis mattis tincidunt. Duis quam risus, dignissim et ex in, vestibulum blandit erat. Nam vulputate est et iaculis pretium. Cras vitae purus enim. Integer ac condimentum turpis.",
                             Duration = 150,
                             Genre = "Drama",
-                            ImgUrl = "https://www.imdb.com/title/tt0137523/mediaviewer/rm1412004864/?ref_=tt_ov_i",
+                            ImgUrl = "https://res.cloudinary.com/dwy4hhhjr/image/upload/w_270,h_400/v1691161775/shrek_q7kypt.jpg",
                             Premiere = new DateTime(1999, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Fight club"
                         });
@@ -204,7 +204,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Ratings", (string)null);
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("API.Entities.User", b =>

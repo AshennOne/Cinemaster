@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,8 +9,18 @@ import { environment } from 'src/environments/environment';
 export class CloudinaryService {
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
-  uploadImage(values:any):Observable<any>{
-    let data = values
-    return this.http.post('https://api.cloudinary.com/v1_1/dwy4hhhjr/image/upload',data);
-  }
+  uploadImage(imageFile: File) {
+    if(!imageFile) console.log("No photo found")
+    const formData = new FormData();
+    formData.append('file', imageFile);
+      return this.http.post<any>(this.baseUrl+'cloudinary',formData).pipe(
+        
+        catchError((err: any) => {
+          console.error('Interceptor Error:', err);
+          
+          return throwError(() => new Error('Undefined error occurred'));
+        })
+      );
+  
+}
 }

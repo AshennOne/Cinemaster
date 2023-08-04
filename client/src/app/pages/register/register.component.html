@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h1 class="text-center mt-4">Register</h1>
+      <h1 class="text-center mt-4"><strong>Register</strong></h1>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <app-form-input
           [fieldName]="'username'"
@@ -27,8 +27,8 @@
         ></app-form-input>
 
         <div class="text-center">
-          <button (click)="redirect()"  type="button" class="btn btn-dark mt-4">Cancel</button>
-          <button [disabled]="!registerForm.valid " type="submit" class="btn btn-success mt-4 ms-3">Register</button>
+          <button (click)="redirect()"  type="button" class="btn btn-secondary mt-4">Cancel</button>
+          <button [disabled]="!registerForm.valid " type="submit" class="btn btn-warning mt-4 ms-3">Register</button>
           
         </div>
       </form>

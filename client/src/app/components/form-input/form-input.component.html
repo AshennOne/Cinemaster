@@ -1,5 +1,5 @@
 <div class="form-group mt-3" *ngIf="!isDate">
-  <label [for]="fieldName">{{label}} :</label>
+  <label class="text-muted" [for]="fieldName"><strong>{{label}} :</strong></label>
   <input *ngIf="!isTextArea"  type="{{type}}" [formControl]="control" autocomplete="off" class="form-control" [id]="fieldName" placeholder="Enter your {{fieldName}} here" />
   <textarea *ngIf="isTextArea" style="resize: none;" [formControl]="control" class="form-control" rows="5"></textarea>
   <div *ngIf="control.invalid && control.touched" class="text-danger">

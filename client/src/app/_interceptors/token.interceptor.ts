@@ -38,7 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
             this.router.navigateByUrl('login');
           }
         }
-        return throwError(() => new Error('Undefined error occured'));
+       throw err
       })
     );
   }

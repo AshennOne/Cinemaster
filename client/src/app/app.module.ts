@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import{PopoverModule} from 'ngx-bootstrap/popover'
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
     }),
     BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    PopoverModule.forRoot()
+    
    
   ],
   providers: [{
@@ -68,4 +71,5 @@ export class AppModule {}import { NgxDropzoneModule } from 'ngx-dropzone';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { FormComponent } from './components/form/form.component';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
+import { environment } from 'src/environments/environment.prod';
 
