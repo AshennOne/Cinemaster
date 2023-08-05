@@ -1,27 +1,9 @@
-.image {
-  background-image: url("/assets/images/cinema.jpg");
-  width: 100%;
-  height: 92%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-top: -1rem;
-  z-index: -1;
-}
-.main{
-  margin-top: -6rem;
-  
-}
-h1{
-  text-align: center;
-}
-.circle{
 
-font-size: 1.3rem !important;
+.feature-icon-small{
+  width: 3rem;
+  height: 3rem;
+  color: dimgray;
 }
-.circletext{
-  font-size: large;
-}
-.step{
-  margin-left: 3rem;
-  margin-top: 2rem;
+.section{
+  margin-bottom: -4rem;
 }

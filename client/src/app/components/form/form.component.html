@@ -8,7 +8,7 @@
       ></app-upload-image>
     </div>
     <div class="col-7">
-      <h1 class="text-center mt-4">{{ formTitle }}</h1>
+      <h1 class="text-center text-light mt-4">{{ formTitle }}</h1>
       <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
         <app-form-input
           [fieldName]="'title'"

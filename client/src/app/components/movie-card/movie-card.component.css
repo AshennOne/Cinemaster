@@ -3,12 +3,8 @@ p{
 }
 .card{
   cursor: pointer;
-  border: 1px solid dimgrey;
-  box-shadow: 7px 5px rgba(149, 119, 0, 0.319);
-}
-.card-img-top{
-  border-bottom: 1.5px solid dimgrey ;
- 
+  
+  box-shadow: 7px 5px rgb(57, 57, 57);
 }
 h5:hover{
   text-decoration: underline;
@@ -36,8 +32,9 @@ h5:hover{
   border-color: rgb(192, 192, 192)
 
 }
-.btn-light{
-  background-color: rgb(255, 255, 255)
+.card{
+  border: 0.5px solid lightgrey;
+  border-radius: 2px;
 }
 .btn-light:hover{
   background-color: rgb(188, 188, 188)
@@ -52,12 +49,3 @@ h5:hover{
     margin-left: 3rem;
   }
 }
-/*.bodyCard{
-  background-color: rgb(255, 208, 113);
-}
-.btn-light{
-  background-color: rgb(255, 214, 101)
-}
-.btn-light:hover{
-  background-color: rgb(255, 204, 62)
-}*/
