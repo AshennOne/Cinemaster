@@ -15,13 +15,13 @@ import { ManageMoviesComponent } from './admin/manage-movies/manage-movies.compo
 import { EditMovieComponent } from './admin/edit-movie/edit-movie.component';
 import { AddMovieComponent } from './admin/add-movie/add-movie.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import{PopoverModule} from 'ngx-bootstrap/popover'
+import { RatingModule,RatingConfig } from 'ngx-bootstrap/rating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,15 +56,15 @@ import{PopoverModule} from 'ngx-bootstrap/popover'
     }),
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
-    PopoverModule.forRoot()
-    
+    FormsModule,
+    RatingModule.forRoot()
    
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptor,
     multi:true
-  }],
+  },RatingConfig],
   bootstrap: [AppComponent],
 })
 export class AppModule {}import { NgxDropzoneModule } from 'ngx-dropzone';

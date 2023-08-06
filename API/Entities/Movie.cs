@@ -12,5 +12,6 @@ namespace API.Entities
     public int Duration { get; set; }
     public List<Comment> Comments { get; set; } = new List<Comment>();
     public List<Rating> Ratings { get; set; } = new List<Rating>();
+    public List<UserMovies> LikedByUsers { get; set; } = new List<UserMovies>();
   }
 }

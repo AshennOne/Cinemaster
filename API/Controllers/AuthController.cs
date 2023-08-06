@@ -48,6 +48,7 @@ public class AuthController : BaseApiController
           ImgUrl = "",
           Comments = new List<Comment>(),
           Ratings = new List<Rating>(),
+          Movies = new List<UserMovies>(),
           Token = token,
           Role = "User"
         };
@@ -73,6 +74,7 @@ public class AuthController : BaseApiController
         ImgUrl = ExistingUser.ImgUrl,
         Comments = ExistingUser.Comments,
         Ratings = ExistingUser.Ratings,
+        Movies = ExistingUser.LikedMovies,
         Token = token,
         Role = (await _userManager.GetRolesAsync(ExistingUser))[0]
       });

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+  [Authorize]
   public class UsersController : BaseApiController
   {
     private readonly IUserRepository _userRepository;
@@ -14,7 +15,7 @@ namespace API.Controllers
       _userRepository = userRepository;
 
     }
-    [Authorize]
+   
     [HttpGet("{username}")]
     public async Task<ActionResult<User>> GetUserByUsername(string username)
     {

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Movie } from 'src/app/_models/Movie';
 import { MovieService } from 'src/app/_services/movie.service';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -12,6 +12,8 @@ import { MovieService } from 'src/app/_services/movie.service';
 export class DetailsComponent {
   movieTitle:string = ''
   movie:Movie = {} as Movie
+  rate = 0;
+  max = 5
   constructor(private route:ActivatedRoute, private movieService:MovieService, private router:Router, private toastr:ToastrService){
   }
   ngOnInit() {

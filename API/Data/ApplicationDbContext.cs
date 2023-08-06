@@ -14,7 +14,7 @@ namespace API.Data
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Rating> Ratings { get; set; }
-
+    public DbSet<UserMovies> UserMovies { get; set; }
     public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,8 +26,17 @@ namespace API.Data
               .ValueGeneratedOnAdd();
       var moviesJson = File.ReadAllText("data/movies.json");
       var movies = JsonSerializer.Deserialize<List<Movie>>(moviesJson);
+      modelBuilder.Entity<UserMovies>()
+               .HasKey(um => new { um.UserId, um.MovieId });
+      modelBuilder.Entity<UserMovies>()
+              .HasOne(um => um.User)
+              .WithMany(u => u.LikedMovies)
+              .HasForeignKey(um => um.UserId);
 
-
+      modelBuilder.Entity<UserMovies>()
+          .HasOne(um => um.Movie)
+          .WithMany(m => m.LikedByUsers)
+          .HasForeignKey(um => um.MovieId);
       int seedId = 1;
       foreach (var movie in movies)
       {

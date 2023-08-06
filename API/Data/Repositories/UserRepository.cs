@@ -16,7 +16,8 @@ namespace API.Data.Repositories
 
     public async Task<User> FindUserByUsernameAsync(string username)
     {
-      return await _context.Users.Include(u => u.Comments).Include(u => u.Ratings).FirstOrDefaultAsync(u => u.UserName == username);
+      var user= await _context.Users.Include(u => u.Comments).Include(u => u.Ratings).FirstOrDefaultAsync(u => u.UserName == username);
+      return user;
     }
 
     public async Task<User> FindUserByEmailAsync(string email)
@@ -24,7 +25,7 @@ namespace API.Data.Repositories
       return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
-
+    
 
 
 

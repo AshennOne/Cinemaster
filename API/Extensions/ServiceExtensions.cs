@@ -9,7 +9,10 @@ public static class ServiceExtensions
 {
   public static IServiceCollection LoadServices(this IServiceCollection services, ConfigurationManager configuration)
   {
-    services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(configuration.GetConnectionString("Default")));
+    services.AddDbContext<ApplicationDbContext>(o =>
+    {
+      o.UseSqlServer(configuration.GetConnectionString("Default"));
+    });
     services.AddCors(options =>
     {
       options.AddDefaultPolicy(builder =>
@@ -25,7 +28,11 @@ public static class ServiceExtensions
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<IMovieRepository, MovieRepository>();
     services.AddEndpointsApiExplorer();
+    services.AddScoped<IRatingRepository, RatingsRepository>();
+    services.AddScoped<ICommentRepository, CommentRepository>();
+    services.AddScoped<IMovieListRepository, MovieListRepository>();
     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    services.AddScoped<IUnitOfWork,UnitOfWork>();
 
     return services;
   }
