@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace API.Entities
 {
     public class UserMovies
@@ -5,9 +7,11 @@ namespace API.Entities
 
 
         public int UserId { get; set; }
+        [JsonIgnore]
         public User User { get; set; }
 
         public int MovieId { get; set; }
+        [JsonIgnore]
         public Movie Movie { get; set; }
     }
 

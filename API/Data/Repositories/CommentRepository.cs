@@ -33,6 +33,7 @@ namespace API.Data.Repositories
         public async Task<IEnumerable<Comment>> GetAllCommentsAsync(User user)
         {
             return await _dbContext.Comments.Where(c => c.UserId == user.Id).ToListAsync();
+            //return user.Comments;
         }
 
         public async Task<IEnumerable<Comment>> GetAllCommentsAsync(Movie movie)

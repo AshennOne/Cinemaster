@@ -11,13 +11,13 @@ namespace API.Controllers;
 public class AuthController : BaseApiController
 {
   private readonly UserManager<User> _userManager;
-  private readonly IUserRepository _userRepository;
   private readonly ITokenService _tokenService;
+    private readonly IUnitOfWork _unitOfWork;
 
-  public AuthController(UserManager<User> userManager, IUserRepository userRepository, ITokenService tokenService)
+  public AuthController(UserManager<User> userManager, IUnitOfWork unitOfWork, ITokenService tokenService)
   {
+      _unitOfWork = unitOfWork;
     _tokenService = tokenService;
-    _userRepository = userRepository;
     _userManager = userManager;
 
   }
@@ -25,9 +25,9 @@ public class AuthController : BaseApiController
   [HttpPost("register")]
   public async Task<ActionResult<AuthorizedUserDto>> Register([FromBody] RegisterDto registerDto)
   {
-    var ExistingUser = await _userRepository.FindUserByUsernameAsync(registerDto.Username);
+    var ExistingUser = await _unitOfWork.UserRepository.FindUserByUsernameAsync(registerDto.Username);
     if (ExistingUser != null) return BadRequest("Username already exists");
-    ExistingUser = await _userRepository.FindUserByEmailAsync(registerDto.Email);
+    ExistingUser = await _unitOfWork.UserRepository.FindUserByEmailAsync(registerDto.Email);
     if (ExistingUser != null) return BadRequest("Email already exists");
     if (ModelState.IsValid)
     {
@@ -62,7 +62,7 @@ public class AuthController : BaseApiController
   [HttpPost("login")]
   public async Task<ActionResult<AuthorizedUserDto>> LoginUser(LoginDto loginDto)
   {
-    var ExistingUser = await _userRepository.FindUserByUsernameAsync(loginDto.Username.ToLower());
+    var ExistingUser = await _unitOfWork.UserRepository.FindUserByUsernameAsync(loginDto.Username.ToLower());
     if (ExistingUser == null) return NotFound("Username not found");
     var isPasswordCorrect = await _userManager.CheckPasswordAsync(ExistingUser, loginDto.Password);
     if (isPasswordCorrect)

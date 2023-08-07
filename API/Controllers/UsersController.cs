@@ -9,10 +9,10 @@ namespace API.Controllers
   [Authorize]
   public class UsersController : BaseApiController
   {
-    private readonly IUserRepository _userRepository;
-    public UsersController(IUserRepository userRepository)
+    private readonly IUnitOfWork _unitOfWork;
+    public UsersController(IUnitOfWork unitOfWork)
     {
-      _userRepository = userRepository;
+      _unitOfWork = unitOfWork;
 
     }
    
@@ -20,7 +20,7 @@ namespace API.Controllers
     public async Task<ActionResult<User>> GetUserByUsername(string username)
     {
 
-      var user = await _userRepository.FindUserByUsernameAsync(username);
+      var user = await _unitOfWork.UserRepository.FindUserByUsernameAsync(username);
       if (user == null) return NotFound("User doesn't exist");
       return Ok(user);
     }

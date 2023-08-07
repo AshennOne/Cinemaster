@@ -30,6 +30,7 @@ namespace API.Controllers
         public async Task<ActionResult> AddLikedMovie(int movieId)
         {
             var user = await GetCurrentUser();
+            if (user.LikedMovies.FirstOrDefault(m => m.MovieId == movieId)!= null) return BadRequest("Movie already added");
             await _unitOfWork.MovieListRepository.AddMovieToListAsync(user.Id, movieId);
             if (await _unitOfWork.MovieRepository.SaveAllAsync())
             {

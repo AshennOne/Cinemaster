@@ -36,20 +36,17 @@ namespace API.Data.Repositories
 
         public async Task<IEnumerable<Rating>> GetAllRatingsAsync(User user)
         {
-            return await _dbContext.Ratings.Where(r => r.UserId == user.Id).ToListAsync();
+             return await _dbContext.Ratings.Where(c => c.UserId == user.Id).ToListAsync();
         }
 
         public async Task<IEnumerable<Rating>> GetAllRatingsAsync(Movie movie)
         {
-            return await _dbContext.Ratings.Where(r => r.MovieId == movie.Id).ToListAsync();
+             return await _dbContext.Ratings.Where(c => c.MovieId == movie.Id).ToListAsync();
         }
 
         public async Task<Rating> GetRatingAsync(int id)
         {
             return await  _dbContext.Ratings.FindAsync(id);
-        }
-        public async Task<bool> SaveAllAsync(){
-            return (await _dbContext.SaveChangesAsync())>0;
         }
     }
 }
