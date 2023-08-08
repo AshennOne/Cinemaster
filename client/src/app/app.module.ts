@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RatingModule,RatingConfig } from 'ngx-bootstrap/rating';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,8 @@ import { RatingModule,RatingConfig } from 'ngx-bootstrap/rating';
     AddMovieComponent,
     UploadImageComponent,
     FormComponent,
+    CommentComponent,
+    AllCommentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import { RatingModule,RatingConfig } from 'ngx-bootstrap/rating';
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
     FormsModule,
-    RatingModule.forRoot()
+    RatingModule.forRoot(),
+    ProgressbarModule.forRoot()
    
   ],
   providers: [{
@@ -72,4 +76,6 @@ import { UploadImageComponent } from './components/upload-image/upload-image.com
 import { FormComponent } from './components/form/form.component';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
 import { environment } from 'src/environments/environment.prod';
+import { CommentComponent } from './components/comment/comment.component';
+import { AllCommentsComponent } from './components/all-comments/all-comments.component';
 

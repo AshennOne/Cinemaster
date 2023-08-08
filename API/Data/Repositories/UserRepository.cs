@@ -25,10 +25,9 @@ namespace API.Data.Repositories
       return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
-
-
-
-
-
-  }
+        public async Task<User> FindUserByIdAsync(int id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        }
+    }
 }

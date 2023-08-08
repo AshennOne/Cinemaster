@@ -27,15 +27,16 @@ namespace API.Controllers
     public async Task<ActionResult<IEnumerable<Rating>>> GetRatingsForMovie([FromQuery] string title)
     {
       var movie = await _unitOfWork.MovieRepository.GetMovieByTitle(title);
-      if (movie == null) return NotFound();
+      if (movie == null) return NotFound("movie doesn't exists");
       var ratings = await _unitOfWork.RatingRepository.GetAllRatingsAsync(movie);
       return Ok(ratings);
     }
-    [HttpPost]
-    public async Task<ActionResult> CreateRating([FromQuery] string title, [FromQuery] int grade)
+    [HttpPost("id")]
+    public async Task<ActionResult> CreateRating(int id, [FromQuery] int grade)
     {
       var user = await GetUser();
-      var movie = await _unitOfWork.MovieRepository.GetMovieByTitle(title);
+      var movie = await _unitOfWork.MovieRepository.GetMovieById(id);
+      if(movie == null) return NotFound("movie doesn't exists");
       await _unitOfWork.RatingRepository.CreateRatingAsync(new Rating
       {
         User = user,
@@ -50,7 +51,7 @@ namespace API.Controllers
     {
       var user = await GetUser();
       var rating = user.Ratings.FirstOrDefault(c => c.Id == id);
-      if (rating == null) return NotFound();
+      if (rating == null) return NotFound("rating doesn't exists");
       await _unitOfWork.RatingRepository.EditRatingAsync(id, grade);
       if (await _unitOfWork.MovieRepository.SaveAllAsync()) return Ok();
       return BadRequest();
@@ -60,7 +61,7 @@ namespace API.Controllers
     {
       var user = await GetUser();
       var rating = user.Comments.FirstOrDefault(c => c.Id == id);
-      if (rating == null) return NotFound();
+      if (rating == null) return NotFound("rating doesn't exists");
       await _unitOfWork.RatingRepository.DeleteRatingAsync(id);
       if (await _unitOfWork.MovieRepository.SaveAllAsync()) return NoContent();
       return NoContent();

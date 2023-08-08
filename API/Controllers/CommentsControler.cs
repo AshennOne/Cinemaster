@@ -32,12 +32,14 @@ namespace API.Controllers
             var comments = await _unitOfWork.CommentRepository.GetAllCommentsAsync(movie);
             return Ok(comments);
         }
-        [HttpPost]
-        public async Task<ActionResult> CreateComment([FromQuery] string title, [FromBody] Comment comment)
+        [HttpPost("{id}")]
+        public async Task<ActionResult> CreateComment(int id, [FromBody] Comment comment)
         {
             var user = await GetUser();
-            var movie = await _unitOfWork.MovieRepository.GetMovieByTitle(title);
+            var movie = await _unitOfWork.MovieRepository.GetMovieById(id);
+            if (movie == null) return NotFound("Movie not found");
             string content = comment.Content;
+            if (content == null) return BadRequest("Comment cannot be empty");
             await _unitOfWork.CommentRepository.CreateCommentAsync(new Comment
             {
                 User = user,

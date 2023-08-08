@@ -1,0 +1,27 @@
+
+<div class="mt-4 row d-flex justify-content-center">
+  <div class="col-9">
+    <h2 class="d-flex justify-content-start ms-3">
+      <strong>Comments ({{comments.length}})</strong>
+    </h2>
+    <hr />
+   
+      <textarea
+      [(ngModel)]="content"
+        rows="3"
+        class="form-control"
+        placeholder="write your own comment"
+      ></textarea>
+      <button class="text-end btn btn-success mt-2" (click)="addComment()" >
+        Submit
+      </button>
+    
+    <div class="mt-3 " *ngIf="movie">
+      <div class="p-3" *ngFor="let comment of comments">
+        <hr>
+        <app-comment (commentToDelete)="deleteComment($event)" [comment]="comment"></app-comment>
+        
+      </div>
+    </div>
+  </div>
+</div>

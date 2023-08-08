@@ -15,12 +15,20 @@ namespace API.Controllers
       _unitOfWork = unitOfWork;
 
     }
-   
+
     [HttpGet("{username}")]
     public async Task<ActionResult<User>> GetUserByUsername(string username)
     {
 
       var user = await _unitOfWork.UserRepository.FindUserByUsernameAsync(username);
+      if (user == null) return NotFound("User doesn't exist");
+      return Ok(user);
+    }
+    [HttpGet]
+    public async Task<ActionResult<User>> GetUserById([FromQuery]int id)
+    {
+
+      var user = await _unitOfWork.UserRepository.FindUserByIdAsync(id);
       if (user == null) return NotFound("User doesn't exist");
       return Ok(user);
     }
