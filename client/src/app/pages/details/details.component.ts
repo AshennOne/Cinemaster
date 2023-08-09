@@ -3,9 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Movie } from 'src/app/_models/Movie';
 import { MovieService } from 'src/app/_services/movie.service';
-import { FormsModule } from '@angular/forms';
-import { Rating } from 'src/app/_models/Rating';
-import { CommentService } from 'src/app/_services/comment.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -14,9 +11,7 @@ import { CommentService } from 'src/app/_services/comment.service';
 export class DetailsComponent {
   movieTitle:string = ''
   movie:Movie = {} as Movie
-  rate = 0;
-  dynamic = 20
-  ratings: Rating[] = []
+  
   constructor(private route:ActivatedRoute, private movieService:MovieService, private router:Router, private toastr:ToastrService){
     
   }
@@ -28,6 +23,7 @@ export class DetailsComponent {
       }
       
     });
+    
      this.movieService.getMovie(this.movieTitle).subscribe({
       next: (movie) => {
         if(movie) this.movie = movie

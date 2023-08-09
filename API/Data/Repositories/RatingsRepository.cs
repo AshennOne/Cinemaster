@@ -28,7 +28,7 @@ namespace API.Data.Repositories
 
         public async Task<Rating> EditRatingAsync(int id, int value)
         {
-            var rating = await  _dbContext.Ratings.FindAsync(id);
+            var rating = await  _dbContext.Ratings.FirstOrDefaultAsync(r => r.Id == id);
             rating.Grade = value;
             
             return rating;

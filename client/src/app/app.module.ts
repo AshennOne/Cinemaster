@@ -41,6 +41,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     FormComponent,
     CommentComponent,
     AllCommentsComponent,
+    RatingComponent,
+    AddToListComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,4 +80,6 @@ import { TokenInterceptor } from './_interceptors/token.interceptor';
 import { environment } from 'src/environments/environment.prod';
 import { CommentComponent } from './components/comment/comment.component';
 import { AllCommentsComponent } from './components/all-comments/all-comments.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { AddToListComponent } from './components/add-to-list/add-to-list.component';
 

@@ -19,9 +19,10 @@
       class="col-lg-4 col-md-12 d-grid justify-content-center my-md-4 my-lg-0"
     >
       <img class="border" src="{{ movie.imgUrl }}" />
-      <button class="btn btn-outline-info mt-3">
-        <i class="fa-sharp fa-solid fa-plus fa-lg pe-1"></i> Add to your list
-      </button>
+      <div class="d-flex justify-content-center align-items-center">
+        <app-add-to-list [movie]="movie" ></app-add-to-list>
+      </div>
+      
     </div>
     <div class="col-lg-6 offset-lg-1 col-md-11 justify-content-center">
       <div><hr /></div>
@@ -29,58 +30,7 @@
       <div class="mt-lg-1 mt-4 text-center text-lg-start">
         {{ movie.description }}
       </div>
-      <div class="row mt-5 d-flex justify-content-center align-items-center">
-        <div class="col-4 mt-3">
-          <div
-            class="row pb-0 d-flex justify-content-center align-items-center"
-          >
-            <span class="fs-1 d-flex justify-content-center">4.7</span>
-          </div>
-          <div class="row d-flex justify-content-center">
-            <rating
-              class="fs-3 d-flex justify-content-center"
-              [(ngModel)]="rate"
-              [max]="5"
-              [readonly]="false"
-            ></rating>
-          </div>
-          <div class="row d-flex justify-content-center">
-            <span class="d-flex justify-content-center">(23)</span>
-          </div>
-        </div>
-        <div class="col-8">
-          <span class="d-flex">
-            <span class="me-3">5</span>
-            <progressbar class="my-2" [max]="100" [value]="dynamic">
-              <span class="text-light">{{ dynamic }} %</span>
-            </progressbar>
-          </span>
-          <span class="d-flex">
-            <span class="me-3">4</span>
-            <progressbar class="my-2" [max]="100" [value]="dynamic">
-              <span class="text-light">{{ dynamic }} %</span>
-            </progressbar>
-          </span>
-          <span class="d-flex">
-            <span class="me-3">3</span>
-            <progressbar class="my-2" [max]="100" [value]="dynamic">
-              <span class="text-light">{{ dynamic }} %</span>
-            </progressbar>
-          </span>
-          <span class="d-flex">
-            <span class="me-3">2</span>
-            <progressbar class="my-2" [max]="100" [value]="dynamic">
-              <span class="text-light">{{ dynamic }} %</span>
-            </progressbar>
-          </span>
-          <span class="d-flex">
-            <span class="me-3">1</span>
-            <progressbar class="my-2" [max]="100" [value]="dynamic">
-              <span class="text-light">{{ dynamic }} %</span>
-            </progressbar>
-          </span>
-        </div>
-      </div>
+      <app-rating [movie]="movie"></app-rating>
     </div>
   </div>
   <app-all-comments [movie]="movie" ></app-all-comments>

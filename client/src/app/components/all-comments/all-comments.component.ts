@@ -32,7 +32,7 @@ export class AllCommentsComponent implements OnChanges, OnInit {
     }
   }
   getComments() {
-    if (!this.movie) return;
+    if (!this.movie?.title) return;
       this.commentService.getMovieComments(this.movie.title).subscribe({
         next: (comments) => {
           if (comments) {

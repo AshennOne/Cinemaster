@@ -17,15 +17,17 @@ export class RatingService {
     return this.http.get<Rating[]>(this.baseUrl + 'ratings/user');
   }
   addRating(id: number, grade: number) {
+    var bodyContent = {grade}
     return this.http.post(
-      this.baseUrl + 'ratings/' + id + '?grade=' + grade,
-      {}
+      this.baseUrl + 'ratings/' + id,
+      bodyContent
     );
   }
   editRating(id: number, grade: number) {
+    var bodyContent = {grade}
     return this.http.put(
-      this.baseUrl + 'ratings/' + id + '?grade=' + grade,
-      {}
+      this.baseUrl + 'ratings/' + id,
+      bodyContent
     );
   }
 }

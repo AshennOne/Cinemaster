@@ -1,0 +1,53 @@
+<div class="row mt-5 d-flex justify-content-center align-items-center">
+  <div class="col-4 mt-3">
+    <div
+      class="row pb-0 d-flex justify-content-center align-items-center"
+    >
+      <span class="fs-1 d-flex justify-content-center">{{average.toFixed(1)}}</span>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <rating
+        class="fs-3 d-flex justify-content-center"
+        [(ngModel)]="rate"
+        [max]="5"
+        [readonly]="false"
+        (ngModelChange)="onRatingChange()"
+      ></rating>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <span class="d-flex justify-content-center">({{countRate}})</span>
+    </div>
+  </div>
+  <div class="col-8">
+    <span class="d-flex">
+      <span class="me-3">5</span>
+      <progressbar class="my-2" [max]="100" [value]="rate5">
+        <span class="text-light">{{ rate5.toFixed(0) }} %</span>
+      </progressbar>
+    </span>
+    <span class="d-flex">
+      <span class="me-3">4</span>
+      <progressbar class="my-2" [max]="100" [value]="rate4">
+        <span class="text-light">{{ rate4.toFixed(0) }} %</span>
+      </progressbar>
+    </span>
+    <span class="d-flex">
+      <span class="me-3">3</span>
+      <progressbar class="my-2" [max]="100" [value]="rate3">
+        <span class="text-light">{{ rate3.toFixed(0) }} %</span>
+      </progressbar>
+    </span>
+    <span class="d-flex">
+      <span class="me-3">2</span>
+      <progressbar class="my-2" [max]="100" [value]="rate2">
+        <span class="text-light">{{ rate2.toFixed(0) }} %</span>
+      </progressbar>
+    </span>
+    <span class="d-flex">
+      <span class="me-3">1</span>
+      <progressbar class="my-2" [max]="100" [value]="rate1">
+        <span class="text-light">{{ rate1.toFixed(0) }} %</span>
+      </progressbar>
+    </span>
+  </div>
+</div>

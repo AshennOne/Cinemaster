@@ -31,28 +31,28 @@ namespace API.Controllers
       var ratings = await _unitOfWork.RatingRepository.GetAllRatingsAsync(movie);
       return Ok(ratings);
     }
-    [HttpPost("id")]
-    public async Task<ActionResult> CreateRating(int id, [FromQuery] int grade)
+    [HttpPost("{id}")]
+    public async Task<ActionResult> CreateRating([FromRoute] int id, [FromBody] Rating rating)
     {
       var user = await GetUser();
       var movie = await _unitOfWork.MovieRepository.GetMovieById(id);
-      if(movie == null) return NotFound("movie doesn't exists");
+      if (movie == null) return NotFound("movie doesn't exists");
       await _unitOfWork.RatingRepository.CreateRatingAsync(new Rating
       {
         User = user,
         Movie = movie,
-        Grade = grade
+        Grade = rating.Grade
       });
       if (await _unitOfWork.MovieRepository.SaveAllAsync()) return Ok();
       return BadRequest();
     }
     [HttpPut("{id}")]
-    public async Task<ActionResult<Rating>> EditRating(int id, [FromQuery] int grade)
+    public async Task<ActionResult<Rating>> EditRating(int id, [FromBody] Rating rating)
     {
       var user = await GetUser();
-      var rating = user.Ratings.FirstOrDefault(c => c.Id == id);
-      if (rating == null) return NotFound("rating doesn't exists");
-      await _unitOfWork.RatingRepository.EditRatingAsync(id, grade);
+      var oldRating = user.Ratings.FirstOrDefault(c => c.MovieId == id);
+      if (oldRating == null) {return NotFound("rating doesn't exists");}
+      await _unitOfWork.RatingRepository.EditRatingAsync(oldRating.Id, rating.Grade);
       if (await _unitOfWork.MovieRepository.SaveAllAsync()) return Ok();
       return BadRequest();
     }

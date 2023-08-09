@@ -30,15 +30,9 @@ namespace API.Data.Repositories
         {
             var user = await _dbContext.Users.FindAsync(userId);
             var movie = await _dbContext.Movies.FindAsync(movieId);
-            var likedMovie = new UserMovies
-            {
-                User = user,
-                
-                Movie = movie,
-               
-            };
+            
+           var likedMovie = await  _dbContext.UserMovies.FirstOrDefaultAsync(m => m.UserId == user.Id && m.MovieId == movie.Id);
             _dbContext.UserMovies.Remove(likedMovie);
-
 
         }
 

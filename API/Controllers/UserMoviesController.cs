@@ -21,7 +21,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetLikedMovies()
         {
-            var user =await GetCurrentUser();
+            var user = await GetCurrentUser();
             var list = await _unitOfWork.MovieListRepository.GetMovieListAsync(user.Id);
             return Ok(list);
         }
@@ -30,7 +30,7 @@ namespace API.Controllers
         public async Task<ActionResult> AddLikedMovie(int movieId)
         {
             var user = await GetCurrentUser();
-            if (user.LikedMovies.FirstOrDefault(m => m.MovieId == movieId)!= null) return BadRequest("Movie already added");
+            if (user.LikedMovies.FirstOrDefault(m => m.MovieId == movieId) != null) return BadRequest("Movie already added");
             await _unitOfWork.MovieListRepository.AddMovieToListAsync(user.Id, movieId);
             if (await _unitOfWork.MovieRepository.SaveAllAsync())
             {
@@ -40,11 +40,14 @@ namespace API.Controllers
         }
         [HttpDelete("{movieId}")]
         public async Task<ActionResult> DeleteLikedMovie(int movieId)
-        { 
+        {
             var user = await GetCurrentUser();
             await _unitOfWork.MovieListRepository.DeleteMovieFromListAsync(user.Id, movieId);
-            if(await _unitOfWork.MovieRepository.SaveAllAsync())  return NoContent();
-           return BadRequest("Unable to delete");
+            if (await _unitOfWork.MovieRepository.SaveAllAsync())
+            {
+                return NoContent();
+            }
+            return BadRequest("Unable to delete");
         }
         private async Task<User> GetCurrentUser()
         {

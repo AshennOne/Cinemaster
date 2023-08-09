@@ -12,4 +12,7 @@ export class UserService {
   getUserById(id: number) {
     return this.http.get<User>(this.baseUrl + 'users?id='+ id);
   }
+  getUserByUsername(username: string) {
+    return this.http.get<User>(this.baseUrl + 'users/'+ username);
+  }
 }
