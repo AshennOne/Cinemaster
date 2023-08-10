@@ -1,5 +1,6 @@
 using API.Dtos;
 using API.Entities;
+using API.Extensions;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,10 @@ namespace API.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Movie>>> GetAllMovies()
+    public async Task<ActionResult<MoviePaginationEntity>> GetAllMovies([FromQuery] int currentPage )
     {
-      return Ok(await _unitOfWork.MovieRepository.GetAllMovies());
+      var movies = await _unitOfWork.MovieRepository.GetAllMovies(currentPage);
+      return Ok(movies);
     }
     [HttpGet("{title}")]
     public async Task<ActionResult<Movie>> GetMovie(string title)

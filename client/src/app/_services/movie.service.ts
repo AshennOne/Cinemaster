@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Movie } from '../_models/Movie';
+import { MoviePagination } from '../_models/MoviePagination';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,8 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies() {
-    return this.http.get<Movie[]>(this.baseUrl + 'movies');
+  getMovies(currentPage:number) {
+    return this.http.get<MoviePagination>(this.baseUrl + 'movies?currentPage='+currentPage);
   }
   getMovie(title: string) {
     return this.http.get<Movie>(this.baseUrl + 'movies/' + title);

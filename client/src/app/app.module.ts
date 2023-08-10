@@ -23,6 +23,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RatingModule,RatingConfig } from 'ngx-bootstrap/rating';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,10 +65,18 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     BsDropdownModule.forRoot(),
     FormsModule,
     RatingModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    PaginationModule.forRoot(),
+    NgxLoadingModule.forRoot({animationType: ngxLoadingAnimationTypes.wanderingCubes,
+      backdropBackgroundColour: 'rgba(0,0,0,0.5)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff',
+      fullScreenBackdrop: false,})
    
   ],
-  providers: [{
+  providers: [LoadingService,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptor,
     multi:true
@@ -82,4 +92,5 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AllCommentsComponent } from './components/all-comments/all-comments.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { AddToListComponent } from './components/add-to-list/add-to-list.component';
+import { LoadingService } from './_services/loading.service';
 

@@ -6,23 +6,26 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, delay, finalize, throwError } from 'rxjs';
 import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { LoadingService } from '../_services/loading.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(
     private accountService: AccountService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private loadingService: LoadingService
   ) {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+    this.loadingService.showLoading();
     const myToken = this.accountService.getToken();
     if (myToken) {
       request = request.clone({
@@ -30,15 +33,19 @@ export class TokenInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request).pipe(
+      delay(1000),
       catchError((err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            localStorage.removeItem('token')
+            localStorage.removeItem('token');
             this.toastr.warning('Token has expired, log in again');
             this.router.navigateByUrl('login');
           }
         }
-       throw err
+        throw err;
+      }),
+      finalize(() => {
+        this.loadingService.hideLoading();
       })
     );
   }

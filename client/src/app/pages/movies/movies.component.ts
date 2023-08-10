@@ -10,17 +10,22 @@ import { MovieService } from 'src/app/_services/movie.service';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
-  
-  constructor(private movieService: MovieService, private commentService:CommentService) {}
+  currentPage = 1
+  totalItems = 0
+  constructor(private movieService: MovieService) {}
   ngOnInit(): void {
     this.GetMovies();
   }
   GetMovies() {
-    this.movieService.getMovies().subscribe({
-      next: (movies) => {
-        this.movies = movies;
+    this.movieService.getMovies(this.currentPage).subscribe({
+      next: (pagination) => {
+        this.movies = pagination.movies;
+        this.totalItems = pagination.totalItems
       },
     });
     
+  }
+  onChangePage(){
+    this.GetMovies()
   }
 }

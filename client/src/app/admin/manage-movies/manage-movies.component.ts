@@ -13,6 +13,8 @@ export class ManageMoviesComponent implements OnInit {
   modalRef: BsModalRef = {} as BsModalRef;
   selectedMovie: any;
   movies: Movie[] = [];
+  currentPage = 1;
+  totalItems = 0;
   constructor(
     private movieService: MovieService,
     private router: Router,
@@ -28,14 +30,16 @@ export class ManageMoviesComponent implements OnInit {
   }
   confirmDelete(title: string) {
     this.movieService.deleteMovie(title);
-   
+
     this.modalRef.hide();
-    this.movies = this.movies.filter(m => m.title != title)
-    
+    this.movies = this.movies.filter((m) => m.title != title);
   }
   GetMovies() {
-    this.movieService.getMovies().subscribe({
-      next: (movies) => (this.movies = movies),
+    this.movieService.getMovies(this.currentPage).subscribe({
+      next: (pagination) => {
+        this.movies = pagination.movies,
+        this.totalItems = pagination.totalItems
+      },
     });
   }
   shortenDescription(description: string): string {
@@ -45,5 +49,8 @@ export class ManageMoviesComponent implements OnInit {
   }
   redirect(title: string) {
     this.router.navigateByUrl(title);
+  }
+  onChangePage(){
+    this.GetMovies()
   }
 }

@@ -10,7 +10,7 @@ import { MovieService } from 'src/app/_services/movie.service';
 })
 export class DetailsComponent {
   movieTitle:string = ''
-  movie:Movie = {} as Movie
+  movie?:Movie;
   
   constructor(private route:ActivatedRoute, private movieService:MovieService, private router:Router, private toastr:ToastrService){
     

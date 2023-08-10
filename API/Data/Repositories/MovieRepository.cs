@@ -45,9 +45,16 @@ namespace API.Data.Repositories
 
     }
 
-    public async Task<IEnumerable<Movie>> GetAllMovies()
+    public async Task<MoviePaginationEntity> GetAllMovies(int currentPage)
     {
-      return await _context.Movies.Include(m => m.Ratings).Include(m => m.Comments).ToListAsync();
+      int pageSize = 8;
+      var totalItems = await _context.Movies.CountAsync();
+      var movies = await _context.Movies.Skip((currentPage -1)*pageSize).Take(pageSize).Include(m => m.Ratings).Include(m => m.Comments).ToListAsync();
+      return new MoviePaginationEntity{
+        Movies = movies,
+        TotalItems = totalItems
+      };
+      
     }
 
     public async Task<Movie> GetMovieById(int id)

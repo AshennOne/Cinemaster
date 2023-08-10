@@ -50,3 +50,6 @@
     <button type="button" class="btn btn-danger" (click)="confirmDelete(selectedMovie?.title)">Delete</button>
   </div>
 </ng-template>
+<div class="d-flex justify-content-center mt-4" *ngIf="movies">
+  <pagination [itemsPerPage]="8" [totalItems]="totalItems" [(ngModel)]="currentPage" (ngModelChange)="onChangePage()"  ></pagination>
+</div>
