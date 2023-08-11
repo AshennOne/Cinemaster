@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using API.Dtos;
 using API.Entities;
 using API.Extensions;
@@ -28,10 +30,11 @@ namespace API.Controllers
       return BadRequest("Something went wrong");
     }
 
-    [HttpGet]
-    public async Task<ActionResult<MoviePaginationEntity>> GetAllMovies([FromQuery] int currentPage )
+    [HttpPost("{currentPage}")]
+    public async Task<ActionResult<MoviePaginationEntity>> GetAllMovies([FromRoute] int currentPage, [FromBody] MovieParams movieParams)
     {
-      var movies = await _unitOfWork.MovieRepository.GetAllMovies(currentPage);
+     
+      var movies = await _unitOfWork.MovieRepository.GetAllMovies(currentPage, movieParams);
       return Ok(movies);
     }
     [HttpGet("{title}")]

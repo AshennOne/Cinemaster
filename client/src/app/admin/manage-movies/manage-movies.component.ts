@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/_models/Movie';
+import { MovieParams } from 'src/app/_models/MovieParams';
 import { MovieService } from 'src/app/_services/movie.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
@@ -15,6 +16,13 @@ export class ManageMoviesComponent implements OnInit {
   movies: Movie[] = [];
   currentPage = 1;
   totalItems = 0;
+  movieParams: MovieParams = {
+    SortOrder:"TitleAsc",
+    From: new Date(1900,0,1),
+    To: new Date(),
+    MinDuration:1,
+    MaxDuration:999
+  }
   constructor(
     private movieService: MovieService,
     private router: Router,
@@ -35,7 +43,7 @@ export class ManageMoviesComponent implements OnInit {
     this.movies = this.movies.filter((m) => m.title != title);
   }
   GetMovies() {
-    this.movieService.getMovies(this.currentPage).subscribe({
+    this.movieService.getMovies(this.currentPage, this.movieParams).subscribe({
       next: (pagination) => {
         this.movies = pagination.movies,
         this.totalItems = pagination.totalItems
@@ -51,6 +59,7 @@ export class ManageMoviesComponent implements OnInit {
     this.router.navigateByUrl(title);
   }
   onChangePage(){
+        
     this.GetMovies()
   }
 }

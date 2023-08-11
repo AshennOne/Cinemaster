@@ -25,7 +25,7 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    this.loadingService.showLoading();
+   this.loadingService.showLoading();
     const myToken = this.accountService.getToken();
     if (myToken) {
       request = request.clone({
@@ -45,7 +45,7 @@ export class TokenInterceptor implements HttpInterceptor {
         throw err;
       }),
       finalize(() => {
-        this.loadingService.hideLoading();
+       this.loadingService.hideLoading();
       })
     );
   }

@@ -45,6 +45,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     AllCommentsComponent,
     RatingComponent,
     AddToListComponent,
+    SortFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,4 +94,5 @@ import { AllCommentsComponent } from './components/all-comments/all-comments.com
 import { RatingComponent } from './components/rating/rating.component';
 import { AddToListComponent } from './components/add-to-list/add-to-list.component';
 import { LoadingService } from './_services/loading.service';
+import { SortFilterComponent } from './components/sort-filter/sort-filter.component';
 

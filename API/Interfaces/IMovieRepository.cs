@@ -8,7 +8,7 @@ namespace API.Interfaces
     Task<Movie> GetMovieByTitle(string title);
     Task EditMovie(int Id , MovieDto editedMovie);
     Task DeleteMovie(string title);
-    Task<MoviePaginationEntity> GetAllMovies(int currentPage);
+    Task<MoviePaginationEntity> GetAllMovies(int currentPage, MovieParams movieParams);
     Task<Movie> GetMovieById(int id);
     Task<bool> SaveAllAsync();
   }

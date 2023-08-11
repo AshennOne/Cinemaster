@@ -2,7 +2,7 @@
 <router-outlet></router-outlet>
 <div>
   <ngx-loading
-      [show]="(loadingService.loading$|async)|| false"
+      [show]="isLoading"
       [config]="{
         animationType: ngxLoadingAnimationTypes.circle,
         primaryColour: primaryColour,

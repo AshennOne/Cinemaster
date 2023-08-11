@@ -45,11 +45,30 @@ namespace API.Data.Repositories
 
     }
 
-    public async Task<MoviePaginationEntity> GetAllMovies(int currentPage)
+    public async Task<MoviePaginationEntity> GetAllMovies(int currentPage, MovieParams movieParams)
     {
       int pageSize = 8;
-      var totalItems = await _context.Movies.CountAsync();
-      var movies = await _context.Movies.Skip((currentPage -1)*pageSize).Take(pageSize).Include(m => m.Ratings).Include(m => m.Comments).ToListAsync();
+      
+      var allFilteredMovies = await _context.Movies.Where(m=> m.Premiere >= movieParams.From && m.Premiere <= movieParams.To && m.Duration<= movieParams.MaxDuration && m.Duration>= movieParams.MinDuration ).Include(m => m.Ratings).Include(m => m.Comments).ToListAsync();
+       var totalItems =  allFilteredMovies.Count();
+       switch(movieParams.SortOrder){
+      case SortOrder.PremiereAsc:
+        allFilteredMovies = allFilteredMovies.OrderBy(m => m.Premiere).ToList();
+        break;
+      case SortOrder.PremiereDesc:
+        allFilteredMovies = allFilteredMovies.OrderByDescending(m => m.Premiere).ToList();
+        break;
+      case SortOrder.TitleAsc:
+        allFilteredMovies = allFilteredMovies.OrderBy(m => m.Title).ToList();
+        break;
+       case SortOrder.TitleDesc:
+        allFilteredMovies = allFilteredMovies.OrderByDescending(m => m.Title).ToList();
+        break;
+    }
+     var movies =  allFilteredMovies.Skip((currentPage -1)*pageSize).Take(pageSize);
+      
+    
+
       return new MoviePaginationEntity{
         Movies = movies,
         TotalItems = totalItems
