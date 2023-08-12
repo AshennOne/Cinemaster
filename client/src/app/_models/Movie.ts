@@ -1,3 +1,6 @@
+import { Comment } from "./Comment";
+import { Rating } from "./Rating";
+
 export interface Movie {
   id?: number;
   title: string;
@@ -6,4 +9,6 @@ export interface Movie {
   description: string;
   imgUrl: string;
   duration: number;
+  comments: Comment[];
+  ratings: Rating[];
 }

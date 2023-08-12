@@ -86,7 +86,9 @@ namespace API.Data.Repositories
       return await _context.Movies.Include(m => m.Ratings).Include(m => m.Comments).FirstOrDefaultAsync(m => m.Title == title);
     }
 
-    public async Task<bool> SaveAllAsync()
+      
+
+        public async Task<bool> SaveAllAsync()
     {
       if(await _context.SaveChangesAsync()>0) return true;
       return false;

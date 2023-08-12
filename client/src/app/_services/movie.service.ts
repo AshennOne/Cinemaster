@@ -18,7 +18,7 @@ export class MovieService {
     return this.http.post<MoviePagination>(
       this.baseUrl + 'movies/' + currentPage,
       movieParams
-    );
+    )
   }
   getMovie(title: string) {
     return this.http.get<Movie>(this.baseUrl + 'movies/' + title);

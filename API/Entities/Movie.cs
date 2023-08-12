@@ -12,11 +12,11 @@ namespace API.Entities
     public string Description { get; set; }
     public string ImgUrl { get; set; }
     public int Duration { get; set; }
-    [JsonIgnore]
+   
     public List<Comment> Comments { get; set; } = new List<Comment>();
-    [JsonIgnore]
+   
     public List<Rating> Ratings { get; set; } = new List<Rating>();
-    [JsonIgnore]
+   
     public List<UserMovies> LikedByUsers { get; set; } = new List<UserMovies>();
   }
 }

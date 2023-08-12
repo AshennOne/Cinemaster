@@ -25,6 +25,7 @@ import { RatingModule,RatingConfig } from 'ngx-bootstrap/rating';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,8 +75,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
       primaryColour: '#ffffff',
       secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff',
-      fullScreenBackdrop: false,})
-   
+      fullScreenBackdrop: false,}),
+      TypeaheadModule.forRoot()
   ],
   providers: [LoadingService,{
     provide:HTTP_INTERCEPTORS,

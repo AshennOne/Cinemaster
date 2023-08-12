@@ -1,15 +1,10 @@
-<div *ngIf="movies">
+<div>
   <div class="container mt-5">
     <div class="row mb-5">
-      <div class="col d-flex">
-        <input type="search" class="form-control me-1" />
-        <button class="btn btn-secondary">
-          <i class="fa fa-search"></i>
-        </button>
-        <button (click)="openModal(filterModel)" class="btn btn-warning ms-1">
-          <i class="fa-solid fa-filter"></i>
-        </button>
+      <div class="col">
+        <app-sort-filter [currentPage]="currentPage" (totalItems)="getTotalItems($event)" (movies)="getMovies($event)" ></app-sort-filter>
       </div>
+     
       <div class="col d-flex"></div>
     </div>
     <h1 class="text-light">Results: {{ totalItems }}</h1>
@@ -19,128 +14,20 @@
       </div>
     </div>
   </div>
-  <div class="d-flex justify-content-center" *ngIf="movies.length > 0">
-    <pagination
-      [itemsPerPage]="8"
-      [totalItems]="totalItems"
-      [(ngModel)]="currentPage"
-      (ngModelChange)="onChangePage()"
-    ></pagination>
+  <div *ngIf="movies">
+    <div class="d-flex justify-content-center" *ngIf="movies.length > 0">
+      <pagination
+        [itemsPerPage]="8"
+        [totalItems]="totalItems"
+        [(ngModel)]="currentPage"
+       
+      ></pagination>
+    </div>
+    <div class="d-flex justify-content-center mt-5" *ngIf="movies.length === 0">
+      <h1 class="text-light">No matches found :(</h1>
+    </div>
   </div>
-  <div class="d-flex justify-content-center mt-5" *ngIf="movies.length === 0">
-    <h1 class="text-light">No matches found :(</h1>
-  </div>
+  
 </div>
 
-<ng-template #filterModel>
-  <div class="modal-header">
-    <h4 class="modal-title">Filter results</h4>
-    <button
-      type="button"
-      class="btn-close close pull-right"
-      aria-label="Close"
-      (click)="modalRef.hide()"
-    >
-      <span aria-hidden="true" class="visually-hidden">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <label>Sort By:</label>
-    <div
-      class="btn-group ms-3"
-      role="group"
-      aria-label="Basic radio toggle button group"
-    >
-      <input
-        type="radio"
-        class="btn-check"
-        name="btnradio"
-        value="TitleAsc"
-        id="btnradio1"
-        autocomplete="off"
-        [(ngModel)]="movieParams.SortOrder"
-      />
-      <label class="btn btn-outline-primary" for="btnradio1"
-        ><i class="fa-solid fa-arrow-up-a-z"></i
-      ></label>
 
-      <input
-        type="radio"
-        class="btn-check"
-        name="btnradio"
-        value="TitleDesc"
-        id="btnradio2"
-        autocomplete="off"
-        [(ngModel)]="movieParams.SortOrder"
-      />
-      <label class="btn btn-outline-primary" for="btnradio2"
-        ><i class="fa-solid fa-arrow-down-a-z"></i
-      ></label>
-
-      <input
-        type="radio"
-        class="btn-check"
-        name="btnradio"
-        value="PremiereAsc"
-        id="btnradio3"
-        autocomplete="off"
-        [(ngModel)]="movieParams.SortOrder"
-      />
-      <label class="btn btn-outline-primary" for="btnradio3">
-        <i class="fa-solid fa-calendar-days me-1"></i
-        ><i class="fa-solid fa-arrow-up"></i
-      ></label>
-      <input
-        type="radio"
-        class="btn-check"
-        name="btnradio"
-        value="PremiereDesc"
-        id="btnradio4"
-        autocomplete="off"
-        [(ngModel)]="movieParams.SortOrder"
-      />
-      <label class="btn btn-outline-primary" for="btnradio4">
-        <i class="fa-solid fa-calendar-days me-1"></i
-        ><i class="fa-solid fa-arrow-down"></i
-      ></label>
-    </div>
-    <div>
-    <label  class="mt-2">From:</label>
-    <input
-      type="text"
-      placeholder="Datepicker"
-      class="form-control"
-      bsDatepicker
-      [bsConfig]="bsConfig"
-      [(ngModel)]="movieParams.From"
-    />
-    <label  class="mt-2">To:</label>
-    <input
-      type="text"
-      placeholder="Datepicker"
-      class="form-control"
-      bsDatepicker
-      [bsConfig]="bsConfig"
-      [(ngModel)]="movieParams.To"
-    />
-  </div>
-  <div class="row mt-2">
-    <div class="col">
-      <label>Min duration:</label>
-      <input  class="form-control" type="number" min="1" [max]="movieParams.MaxDuration" [(ngModel)]="movieParams.MinDuration" >
-    </div>
-    <div class="col">
-      <label>Max duration:</label>
-      <input  class="form-control" type="number" [(ngModel)]="movieParams.MaxDuration" [min]="movieParams.MinDuration" max="999">
-    </div>
-  </div>
-</div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">
-      Cancel
-    </button>
-    <button type="button" class="btn btn-success" (click)="filterMovies()">
-      Apply
-    </button>
-  </div>
-</ng-template>

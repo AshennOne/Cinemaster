@@ -96,13 +96,17 @@ export class RatingComponent implements OnInit {
               break;
           }
         });
-        this.average = this.average / movies.length;
-        this.countRate = movies.length;
-        this.rate1 = (this.rate1 * 100) / movies.length;
-        this.rate2 = (this.rate2 * 100) / movies.length;
-        this.rate3 = (this.rate3 * 100) / movies.length;
-        this.rate4 = (this.rate4 * 100) / movies.length;
-        this.rate5 = (this.rate5 * 100) / movies.length;
+          this.countRate = movies.length;
+        if(this.countRate >0){
+          this.average = this.average / movies.length;
+      
+          this.rate1 = (this.rate1 * 100) / movies.length;
+          this.rate2 = (this.rate2 * 100) / movies.length;
+          this.rate3 = (this.rate3 * 100) / movies.length;
+          this.rate4 = (this.rate4 * 100) / movies.length;
+          this.rate5 = (this.rate5 * 100) / movies.length;
+        }
+        
       },
     });
   }
