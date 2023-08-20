@@ -20,10 +20,8 @@ export class MoviesComponent{
 
   getMovies(event:any){
     this.movies = event
-    if(!this.movies)return;
-    this.movies.forEach(element => {
-     
-    });
+   
+    
   }
   getTotalItems(event:any){
     this.totalItems = event

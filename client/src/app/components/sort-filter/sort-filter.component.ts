@@ -14,6 +14,7 @@ import { MovieService } from 'src/app/_services/movie.service';
 export class SortFilterComponent implements OnInit, OnChanges{
   selectedTitle = ''
   @Input() currentPage = 1
+  @Input() url = ""
  @Output() totalItems = new EventEmitter<number>();
   movieParams: MovieParams = {
     SortOrder: 'TitleAsc',
@@ -42,7 +43,7 @@ export class SortFilterComponent implements OnInit, OnChanges{
     this.GetMovies();
   }
   redirect(){
-    this.router.navigateByUrl('/movies/'+this.selectedTitle)
+    this.router.navigateByUrl(this.url+this.selectedTitle)
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-md' });

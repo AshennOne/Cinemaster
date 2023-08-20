@@ -1,7 +1,16 @@
 <div class="space">
 <div class="container">
-  <h1 class="text-center text-light">Movies Management</h1>
-  <button (click)="redirect('admin/add')" class="btn btn-success float-end mb-3"><i class="fa-solid fa-plus"></i> Add new movie</button>
+  <h1 class="text-center text-light mb-4">Movies Management</h1>
+  <div class="row mb-4">
+    <div class="col">
+      <app-sort-filter [url]="'/admin/edit/'" [currentPage]="currentPage" (totalItems)="getTotalItems($event)" (movies)="getMovies($event)" ></app-sort-filter>
+    </div>
+    <div class="col">
+      <button (click)="redirect('admin/add')" class="btn btn-success float-end"><i class="fa-solid fa-plus"></i> Add new movie</button>
+    </div>
+  </div>
+
+  
   <table class="table table-dark table-striped">
     <thead>
       <tr>

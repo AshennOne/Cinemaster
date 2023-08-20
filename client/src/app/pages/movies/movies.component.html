@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <div class="row mb-5">
       <div class="col">
-        <app-sort-filter [currentPage]="currentPage" (totalItems)="getTotalItems($event)" (movies)="getMovies($event)" ></app-sort-filter>
+        <app-sort-filter [url]="'/movies/'" [currentPage]="currentPage" (totalItems)="getTotalItems($event)" (movies)="getMovies($event)" ></app-sort-filter>
       </div>
      
       <div class="col d-flex"></div>

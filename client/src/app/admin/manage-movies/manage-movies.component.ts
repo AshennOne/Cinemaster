@@ -16,6 +16,7 @@ export class ManageMoviesComponent implements OnInit {
   movies: Movie[] = [];
   currentPage = 1;
   totalItems = 0;
+  
   movieParams: MovieParams = {
     SortOrder:"TitleAsc",
     From: new Date(1900,0,1),
@@ -61,5 +62,14 @@ export class ManageMoviesComponent implements OnInit {
   onChangePage(){
         
     this.GetMovies()
+  }
+ 
+
+  getMovies(event:any){
+    this.movies = event
+    
+  }
+  getTotalItems(event:any){
+    this.totalItems = event
   }
 }
