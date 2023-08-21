@@ -15,6 +15,9 @@ export class DetailsComponent {
   constructor(private route:ActivatedRoute, private movieService:MovieService, private router:Router, private toastr:ToastrService){
     
   }
+  redirect(){
+    this.router.navigateByUrl('movies' );
+  }
   onCommentsChange(event:any){
     if(event === true){
       if(!this.movie?.title)return

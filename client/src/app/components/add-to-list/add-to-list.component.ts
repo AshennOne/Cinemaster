@@ -9,6 +9,7 @@ import { MovieListService } from 'src/app/_services/movie-list.service';
 })
 export class AddToListComponent implements OnInit, OnChanges{
   @Input() movie?:Movie
+  @Input() isMainPage = false
   isLiked = false;
   constructor(private movieListService:MovieListService){}
   ngOnChanges(changes: SimpleChanges): void {
@@ -39,6 +40,7 @@ export class AddToListComponent implements OnInit, OnChanges{
       }
     })
   }
+  
   addMovie(){
     if(!this.movie?.id) return;
     this.movieListService.addToList(this.movie.id).subscribe({

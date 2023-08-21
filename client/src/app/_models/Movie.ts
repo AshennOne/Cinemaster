@@ -1,4 +1,5 @@
 import { Comment } from "./Comment";
+import { Like } from "./Like";
 import { Rating } from "./Rating";
 
 export interface Movie {
@@ -11,4 +12,5 @@ export interface Movie {
   duration: number;
   comments: Comment[];
   ratings: Rating[];
+  likedByUsers:Like[]
 }
