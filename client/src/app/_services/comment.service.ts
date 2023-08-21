@@ -16,9 +16,7 @@ baseUrl = environment.apiUrl;
 
   constructor(private http:HttpClient) { }
 
-  getMovieComments(title:string){
-    return this.http.get<Comment[]>(this.baseUrl + 'comments/movie?title=' + title);
-  }
+  
   getUserComments(){
     return this.http.get<Comment[]>(this.baseUrl + 'comments/user');
   }

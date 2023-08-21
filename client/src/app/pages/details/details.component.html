@@ -30,8 +30,8 @@
       <div class="mt-lg-1 mt-4 text-center text-lg-start">
         {{ movie.description }}
       </div>
-      <app-rating [movie]="movie"></app-rating>
+      <app-rating (updateRating)="onCommentsChange($event)" [movie]="movie"></app-rating>
     </div>
   </div>
-  <app-all-comments [movie]="movie" ></app-all-comments>
+  <app-all-comments  (updateComment)="onCommentsChange($event)" [movie]="movie" ></app-all-comments>
 </div>

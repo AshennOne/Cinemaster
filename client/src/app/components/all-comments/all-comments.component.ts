@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Comment } from 'src/app/_models/Comment';
 import { Movie } from 'src/app/_models/Movie';
 import { CommentService } from 'src/app/_services/comment.service';
+import { MovieService } from 'src/app/_services/movie.service';
 
 @Component({
   selector: 'app-all-comments',
@@ -19,11 +20,13 @@ import { CommentService } from 'src/app/_services/comment.service';
 })
 export class AllCommentsComponent implements OnChanges, OnInit {
   @Input() movie?: Movie;
+  @Output() updateComment = new EventEmitter<boolean>();
   content = '';
   comments: Comment[] = [];
   constructor(
     private commentService: CommentService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    
   ) {}
   ngOnInit(): void {
     this.getComments();
@@ -35,14 +38,11 @@ export class AllCommentsComponent implements OnChanges, OnInit {
     }
   }
   getComments() {
-    if (!this.movie?.title) return;
-    this.commentService.getMovieComments(this.movie.title).subscribe({
-      next: (comments) => {
-        if (comments) {
-          this.comments = comments;
-        }
-      },
-    });
+    if (!this.movie) return;
+    this.comments = this.movie.comments
+  }
+  updateLocalStorage(){
+    this.updateComment.emit(true);
   }
   addComment() {
     if (this.content == '' || !this.movie?.id) {
@@ -50,9 +50,11 @@ export class AllCommentsComponent implements OnChanges, OnInit {
     } else {
       this.commentService.addComment(this.movie.id, this.content).subscribe({
         next: () => {
-          this.toastr.success('successfully added new comment!');
+          this.updateLocalStorage();
+         
           this.getComments();
           this.content = '';
+          this.toastr.success('successfully added new comment!');
         },
         error: (err) => {
           console.log(err);
@@ -63,8 +65,10 @@ export class AllCommentsComponent implements OnChanges, OnInit {
   deleteComment(event: any) {
     this.commentService.deleteComment(event).subscribe({
       next: () => {
-        this.toastr.success('Comment has been deleted successfuly');
+          this.updateLocalStorage();
+      
         this.getComments();
+        this.toastr.success('Comment has been deleted successfuly');
       },
       error: (err) => {
         this.toastr.error('error occured while deleting, try again later');

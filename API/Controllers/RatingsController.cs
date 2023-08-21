@@ -60,7 +60,7 @@ namespace API.Controllers
     public async Task<ActionResult> DeleteRating(int id)
     {
       var user = await GetUser();
-      var rating = user.Comments.FirstOrDefault(c => c.Id == id);
+      var rating = user.Ratings.FirstOrDefault(c => c.Id == id);
       if (rating == null) return NotFound("rating doesn't exists");
       await _unitOfWork.RatingRepository.DeleteRatingAsync(id);
       if (await _unitOfWork.MovieRepository.SaveAllAsync()) return NoContent();

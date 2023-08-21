@@ -10,9 +10,7 @@ export class RatingService {
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  getAllMovieRatings(title: string) {
-    return this.http.get<Rating[]>(this.baseUrl + 'ratings/movie?title=' + title);
-  }
+ 
   getAllUserRatings() {
     return this.http.get<Rating[]>(this.baseUrl + 'ratings/user');
   }

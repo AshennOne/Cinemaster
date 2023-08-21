@@ -15,6 +15,19 @@ export class DetailsComponent {
   constructor(private route:ActivatedRoute, private movieService:MovieService, private router:Router, private toastr:ToastrService){
     
   }
+  onCommentsChange(event:any){
+    if(event === true){
+      if(!this.movie?.title)return
+      this.movieService.updateMovie(this.movie?.title).subscribe({
+        next:(movie) => {
+          this.movie = movie;
+          
+          this.movieService.setMovieToCache(this.movie)
+        }
+      })
+    }
+    
+  }
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       if(params.get('title')!=null){

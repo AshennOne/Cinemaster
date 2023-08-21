@@ -26,4 +26,6 @@ export class MoviesComponent{
   getTotalItems(event:any){
     this.totalItems = event
   }
+
+  
 }

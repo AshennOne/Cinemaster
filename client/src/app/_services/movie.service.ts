@@ -31,6 +31,9 @@ export class MovieService {
       })
     )
   }
+  updateMovie(title:string){
+    return this.http.get<Movie>(this.baseUrl + 'movies/' + title)
+  }
   getMovie(title: string) {
   var cachedMovie = this.getMovieFromCache(title)
   if(cachedMovie === "null" ||cachedMovie === null){
