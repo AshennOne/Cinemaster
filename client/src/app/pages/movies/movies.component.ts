@@ -18,13 +18,19 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class MoviesComponent{
   movies?: Movie[];
-  currentPage = 1;
+  currentPage = this.getCurrentPage()
   totalItems = this.movies?.length || 0;
 user?:User;
 constructor(private accountService:AccountService, private userService:UserService){
   this.getUser()
 }
-  
+  getCurrentPage(){
+    if(localStorage.getItem('pageNumber')==null){
+      return 1
+    }else{
+      return Number(localStorage.getItem('pageNumber'))
+    }
+  }
 getUser() {
   if (this.user) return;
   var token = this.accountService.getToken();

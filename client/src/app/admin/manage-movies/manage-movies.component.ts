@@ -44,7 +44,8 @@ export class ManageMoviesComponent implements OnInit {
     this.movies = this.movies.filter((m) => m.title != title);
   }
   GetMovies() {
-    this.movieService.getMovies(this.currentPage, this.movieParams).subscribe({
+    if(this.movieService.getParamsFromCache() ==null) return;
+    this.movieService.getMovies(this.currentPage).subscribe({
       next: (pagination) => {
         this.movies = pagination.movies,
         this.totalItems = pagination.totalItems

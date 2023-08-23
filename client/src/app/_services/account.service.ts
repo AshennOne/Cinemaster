@@ -52,6 +52,8 @@ export class AccountService {
   }
   removeToken() {
     localStorage.removeItem('token');
+    localStorage.removeItem('pageNumber')
+    localStorage.removeItem('movieParams')
   }
   getTokenClaims(token: string) {
     

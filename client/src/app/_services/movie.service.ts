@@ -15,11 +15,12 @@ export class MovieService {
 
   constructor(private http: HttpClient,private router:Router) {}
 
-  getMovies(currentPage: number, movieParams: MovieParams) {
-    
+  getMovies(currentPage: number) {
+   var params = this.getParamsFromCache()
+ 
     return this.http.post<MoviePagination>(
       this.baseUrl + 'movies/' + currentPage,
-      movieParams
+      JSON.parse(params!)
     ).pipe(
       map((movies)=>{
         movies.movies.forEach(element => {
@@ -67,5 +68,17 @@ export class MovieService {
    
       localStorage.setItem(movie.title, JSON.stringify(movie))
    
+  }
+  getParamsFromCache(){
+   return localStorage.getItem('movieParams')
+  }
+  setParamsToCache(movieParams:MovieParams){
+    localStorage.setItem('movieParams',JSON.stringify(movieParams))
+  }
+  getPageNumber(){
+   return localStorage.getItem('pageNumber')
+  }
+  setPageNumber(number:number){
+    localStorage.setItem('pageNumber',number.toString())
   }
 }

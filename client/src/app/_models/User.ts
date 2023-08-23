@@ -1,3 +1,4 @@
+import { Like } from "./Like";
 
 export interface User {
   id?: number;
@@ -6,5 +7,5 @@ export interface User {
   password?: string;
   email?: string;
   token?: string;
-  
+  likedMovies?: Like[]
 }
