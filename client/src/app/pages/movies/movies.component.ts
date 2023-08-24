@@ -33,19 +33,9 @@ constructor(private accountService:AccountService, private userService:UserServi
   }
 getUser() {
   if (this.user) return;
-  var token = this.accountService.getToken();
-  if (token) {
-    var currentUserUsername =
-      this.accountService.getTokenClaims(token).unique_name;
-    if (currentUserUsername) {
-      this.userService.getUserByUsername(currentUserUsername).subscribe({
-        next: (user) => {
-          this.user = user;
-          
-        },
-      });
-    }
-  }
+  this.accountService.getCurrentUser().subscribe({
+    next:(user) => this.user = user
+  })
 }
 
   getMovies(event:any){

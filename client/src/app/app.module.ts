@@ -26,6 +26,23 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { FormComponent } from './components/form/form.component';
+import { TokenInterceptor } from './_interceptors/token.interceptor';
+import { environment } from 'src/environments/environment.prod';
+import { CommentComponent } from './components/comment/comment.component';
+import { AllCommentsComponent } from './components/all-comments/all-comments.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { AddToListComponent } from './components/add-to-list/add-to-list.component';
+import { LoadingService } from './_services/loading.service';
+import { SortFilterComponent } from './components/sort-filter/sort-filter.component';
+import { MyInteractionsComponent } from './pages/my-interactions/my-interactions.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
+import { UserCommentComponent } from './components/user-interactions/user-comment/user-comment.component';
+import { UserRatingComponent } from './components/user-interactions/user-rating/user-rating.component';
+import { UserListElementComponent } from './components/user-interactions/user-list-element/user-list-element.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +64,12 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     RatingComponent,
     AddToListComponent,
     SortFilterComponent,
+    MyInteractionsComponent,
+    RankingComponent,
+    UserCommentComponent,
+    UserRatingComponent,
+    UserListElementComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -85,15 +108,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
   },RatingConfig],
   bootstrap: [AppComponent],
 })
-export class AppModule {}import { NgxDropzoneModule } from 'ngx-dropzone';
-import { UploadImageComponent } from './components/upload-image/upload-image.component';
-import { FormComponent } from './components/form/form.component';
-import { TokenInterceptor } from './_interceptors/token.interceptor';
-import { environment } from 'src/environments/environment.prod';
-import { CommentComponent } from './components/comment/comment.component';
-import { AllCommentsComponent } from './components/all-comments/all-comments.component';
-import { RatingComponent } from './components/rating/rating.component';
-import { AddToListComponent } from './components/add-to-list/add-to-list.component';
-import { LoadingService } from './_services/loading.service';
-import { SortFilterComponent } from './components/sort-filter/sort-filter.component';
+export class AppModule {}
+
+
 

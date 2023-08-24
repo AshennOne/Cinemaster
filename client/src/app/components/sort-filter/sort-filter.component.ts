@@ -1,3 +1,4 @@
+import { getCurrencySymbol } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -22,7 +23,7 @@ import { MovieService } from 'src/app/_services/movie.service';
 })
 export class SortFilterComponent implements OnInit, OnChanges {
   selectedTitle = '';
-  @Input() currentPage = 1;
+  @Input() currentPage? :number
   @Input() url = '';
   @Output() totalItems = new EventEmitter<number>();
   movieParams: MovieParams = this.DefaultParams();
@@ -59,19 +60,15 @@ export class SortFilterComponent implements OnInit, OnChanges {
     } as MovieParams;
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['currentPage']) {
+    if (changes['currentPage'] && this.currentPage) {
       this.movieService.setPageNumber(this.currentPage)
+   
       this.GetMovies();
     }
   }
+  
   ngOnInit(): void {
-    var page = this.movieService.getPageNumber()
-    if(page ==null){
-      this.movieService.setPageNumber(this.currentPage)
-    }
-    else{
-      this.currentPage = Number(page)
-    }
+  
     var params = this.movieService.getParamsFromCache();
     if (params == null) {
       this.movieService.setParamsToCache(this.movieParams);
@@ -79,6 +76,7 @@ export class SortFilterComponent implements OnInit, OnChanges {
       this.setMovieParams(params);
     }
     this.GetMovies();
+   
   }
 
   setMovieParams(params: string) {
@@ -98,11 +96,14 @@ export class SortFilterComponent implements OnInit, OnChanges {
   }
 
   filterMovies() {
+   
     this.movieService.setParamsToCache(this.movieParams);
     this.GetMovies();
     this.modalRef.hide();
   }
   GetMovies() {
+    if(!this.currentPage) return
+  
     if (this.movieService.getParamsFromCache() == null) return;
     this.movieService.getMovies(this.currentPage).subscribe({
       next: (pagination) => {

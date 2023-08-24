@@ -20,13 +20,15 @@
           routerLinkActive="active"
           ariaCurrentWhenActive="page" class="nav-link ms-2 px-2 text-white">Movies</a></li>
         <li>
-          <a routerLink="/"
+          <a routerLink="/interactions"
           routerLinkActive="active"
-          ariaCurrentWhenActive="page" class="nav-link px-2 ms-2 text-white">Your ratings</a>
+          ariaCurrentWhenActive="page" class="nav-link px-2 ms-2 text-white">Your interactions</a>
         </li>
-        <li><a routerLink="/"
+        <li>
+          <a routerLink="/ranking"
           routerLinkActive="active"
-          ariaCurrentWhenActive="page"class="nav-link ms-2 px-2 text-white">Your comments</a></li>
+          ariaCurrentWhenActive="page" class="nav-link px-2 ms-2 text-white">Ranking</a>
+        </li>
           <li *ngIf="role==='Admin'" ><a routerLink="/admin/dashboard"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"class="nav-link ms-2 px-2 text-white">Admin</a></li>
