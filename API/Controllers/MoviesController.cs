@@ -44,6 +44,13 @@ namespace API.Controllers
       if (movie == null) return NotFound("Title does not exists");
       return Ok(movie);
     }
+    [HttpGet("id/{id}")]
+    public async Task<ActionResult<Movie>> GetMovie(int id)
+    {
+      var movie = await _unitOfWork.MovieRepository.GetMovieById(id);
+      if (movie == null) return NotFound("Title does not exists");
+      return Ok(movie);
+    }
     [HttpDelete("{title}")]
     public async Task<ActionResult> DeleteMovie(string title)
     {

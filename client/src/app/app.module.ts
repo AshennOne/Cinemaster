@@ -42,6 +42,8 @@ import { RankingComponent } from './pages/ranking/ranking.component';
 import { UserCommentComponent } from './components/user-interactions/user-comment/user-comment.component';
 import { UserRatingComponent } from './components/user-interactions/user-rating/user-rating.component';
 import { UserListElementComponent } from './components/user-interactions/user-list-element/user-list-element.component';
+import { SharedModule } from './_modules/shared.module';
+import { UserCommentsTabComponent } from './components/user-comments-tab/user-comments-tab.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,7 @@ import { UserListElementComponent } from './components/user-interactions/user-li
     UserCommentComponent,
     UserRatingComponent,
     UserListElementComponent,
+    UserCommentsTabComponent,
  
   ],
   imports: [
@@ -76,30 +79,14 @@ import { UserListElementComponent } from './components/user-interactions/user-li
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxDropzoneModule,
-    ModalModule.forRoot(),
+    
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 4000,
-    positionClass: 'toast-bottom-right',
-    preventDuplicates: true,
-
-    }),
-    BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot(),
+    SharedModule,
+   
     FormsModule,
-    RatingModule.forRoot(),
-    ProgressbarModule.forRoot(),
-    PaginationModule.forRoot(),
-    NgxLoadingModule.forRoot({animationType: ngxLoadingAnimationTypes.wanderingCubes,
-      backdropBackgroundColour: 'rgba(0,0,0,0.5)',
-      backdropBorderRadius: '4px',
-      primaryColour: '#ffffff',
-      secondaryColour: '#ffffff',
-      tertiaryColour: '#ffffff',
-      fullScreenBackdrop: false,}),
-      TypeaheadModule.forRoot()
+    
+    
   ],
   providers: [LoadingService,{
     provide:HTTP_INTERCEPTORS,

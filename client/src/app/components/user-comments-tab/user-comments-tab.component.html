@@ -1,0 +1,13 @@
+<div class="row">
+  <span class="col-1 d-flex"><strong>Image</strong></span>
+  <span class="col-2 d-flex"><strong>Title</strong></span>
+  <span class="col-1 d-flex"><strong>Genre</strong></span>
+  <span class="col-1 d-flex"><strong>Year</strong></span>
+  <span class="col-6 d-flex" ><strong>Comment content</strong></span>
+  <span class="col-1 d-flex">Actions</span>
+</div>
+
+
+<div class="my-2" *ngFor="let comment of comments">
+  <app-user-comment *ngIf="comment" [comment]="comment" ></app-user-comment>
+</div>

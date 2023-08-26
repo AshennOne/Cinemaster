@@ -51,6 +51,11 @@ export class MovieService {
     return of(movie);
    }
   }
+  getMovieById(id: number) {
+    
+      return this.http.get<Movie>(this.baseUrl + 'movies/id/' + id)
+   
+    }
   addMovie(movie: Movie) {
     return this.http.post(this.baseUrl + 'movies', movie).subscribe({});
   }
