@@ -1,1 +1,13 @@
-<p>user-rating works!</p>
+<div *ngIf="movie &&rating" class="row border border-secondary border-start-0 rounded-end ">
+  <span class=" col-1"><img class="photo" src="{{movie.imgUrl}}"></span>
+  <span class=" d-flex align-items-center  col-2">{{movie.title}}</span>
+  <span class=" d-flex align-items-center col-2"></span>
+  <span class=" d-flex align-items-center col-6"><rating
+    class="fs-3 d-flex justify-content-center"
+    [(ngModel)]="rating.grade"
+    [max]="5"
+    [readonly]="false"
+    (ngModelChange)="onRatingChange()"
+  ></rating></span>
+  <span class=" d-flex align-items-center col-1"></span>
+</div>

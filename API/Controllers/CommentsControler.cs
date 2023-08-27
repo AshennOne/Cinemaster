@@ -17,11 +17,11 @@ namespace API.Controllers
             _unitOfWork = unitOfWork;
 
         }
-        [HttpGet("user")]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsForUser()
+        [HttpGet("user/{page}")]
+        public async Task<ActionResult<UserCommentsEntity>> GetCommentsForUser([FromRoute]int page)
         {
             var user = await GetUser();
-            IEnumerable<Comment> comments = await _unitOfWork.CommentRepository.GetAllCommentsAsync(user);
+            UserCommentsEntity comments = await _unitOfWork.CommentRepository.GetAllCommentsAsync(user,page);
             return Ok(comments);
         }
         [HttpGet("movie")]

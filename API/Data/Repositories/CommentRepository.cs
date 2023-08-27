@@ -30,9 +30,14 @@ namespace API.Data.Repositories
 
         }
 
-        public async Task<IEnumerable<Comment>> GetAllCommentsAsync(User user)
+        public async Task<UserCommentsEntity> GetAllCommentsAsync(User user, int page)
         {
-            return await _dbContext.Comments.Where(c => c.UserId == user.Id).ToListAsync();
+            var comments =  _dbContext.Comments.Where(c => c.UserId == user.Id).OrderByDescending(c => c.CreateTime);
+           var count = comments.Count();
+            return new UserCommentsEntity{
+                Comments = await comments.Skip(8*(page-1)).Take(8).ToListAsync(),
+                TotalItems = count
+            };
             //return user.Comments;
         }
 

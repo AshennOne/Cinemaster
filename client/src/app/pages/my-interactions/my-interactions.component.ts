@@ -14,9 +14,8 @@ import { RatingService } from 'src/app/_services/rating.service';
   styleUrls: ['./my-interactions.component.css'],
 })
 export class MyInteractionsComponent {
-  
-  comments: Comment[] = []
-  constructor( private movieService:MovieService, private movieListService:MovieListService, private ratingService:RatingService) {
+  tab = "ratings"
+  constructor( private movieService:MovieService, private movieListService:MovieListService) {
     
   
   }

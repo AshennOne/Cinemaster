@@ -1,7 +1,12 @@
 <div class="container text-light">
   
-  
-  <app-user-comments-tab></app-user-comments-tab>
+  <div *ngIf="tab === 'comments'">
+    <app-user-comments-tab></app-user-comments-tab>
+  </div>
+  <div *ngIf="tab === 'ratings'">
+    <app-user-ratings-tab></app-user-ratings-tab>
+  </div>
+ 
   
   
 

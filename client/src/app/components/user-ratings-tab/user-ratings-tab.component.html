@@ -1,0 +1,30 @@
+<div class="container mt-4" *ngIf="ratings.length > 0 ">
+  <h1 class="d-flex justify-content-center">Ratings</h1>
+  <div class="row">
+    <span class="col-1 d-flex"><strong>Image</strong></span>
+    <span class="col-2 d-flex"><strong>Title</strong></span>
+    <span class="col-2 d-flex"><strong>Created</strong></span>
+
+    <span class="col-6 d-flex"><strong>Rating</strong></span>
+    <span class="col-1 d-flex">Actions</span>
+  </div>
+
+  <div class="my-2" *ngFor="let rating of ratings">
+    <app-user-rating
+      (ratingToUpdate)="updateRating($event)"
+      *ngIf="rating"
+      [rating]="rating"
+    ></app-user-rating>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="ratings.length > 0">
+    <pagination
+      [itemsPerPage]="8"
+      [totalItems]="totalItems"
+      [(ngModel)]="currentPage"
+      (ngModelChange)="getRatings()"
+    ></pagination>
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-5" *ngIf="ratings.length < 1 &&loaded">
+  <h1>No ratings found :(</h1>
+</div>

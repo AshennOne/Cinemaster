@@ -6,4 +6,5 @@ export interface Comment {
   content: string;
   movieId: number;
   userId:number;
+  createTime:Date;
 }

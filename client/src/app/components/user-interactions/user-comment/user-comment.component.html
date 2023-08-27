@@ -2,10 +2,9 @@
 <div *ngIf="movie &&comment" class="row border border-secondary border-start-0 rounded-end ">
   <span class=" col-1"><img class="photo" src="{{movie.imgUrl}}"></span>
   <span class=" d-flex align-items-center  col-2">{{movie.title}}</span>
-  <span class=" d-flex align-items-center col-1">{{movie.genre}}</span>
-  <span class=" d-flex align-items-center col-1">{{movie.premiere|date:"yyyy"}}</span>
-  <span class=" d-flex align-items-center col-6">"{{comment.content}}"</span>
-  <span class=" d-flex align-items-center col-1"><button class="btn btn-danger ms-auto" (click)="openModal(confirmDeleteModal)"><i class="fa fa-trash"></i></button></span>
+  <span class=" d-flex align-items-center col-2">{{comment.createTime |timeago}}</span>
+  <span class=" d-flex align-items-center col-6">"{{shortenContent()}}"</span>
+  <span class=" d-flex align-items-center col-1"><button class="btn btn-danger" (click)="openModal(confirmDeleteModal)"><i class="fa fa-trash"></i></button></span>
 </div>
 
 <ng-template #confirmDeleteModal>

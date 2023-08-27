@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Comment } from '../_models/Comment';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UserComments } from '../_models/UserComments';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ baseUrl = environment.apiUrl;
   constructor(private http:HttpClient) { }
 
   
-  getUserComments(){
-    return this.http.get<Comment[]>(this.baseUrl + 'comments/user');
+  getUserComments(currentPage:number){
+    return this.http.get<UserComments>(this.baseUrl + 'comments/user/'+currentPage);
   }
   addComment(id: number, content:string){
    var bodyContent = {content}

@@ -29,6 +29,12 @@ export class UserCommentComponent implements OnChanges {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
+  shortenContent(): string {
+    if(!this.comment) return""
+    return this.comment.content.length > 50
+      ? this.comment.content.slice(0, 50) + '...'
+      : this.comment.content;
+  }
   confirmDelete() {
     if(!this.comment?.id)return;
    

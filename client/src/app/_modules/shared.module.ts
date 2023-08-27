@@ -10,7 +10,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-
+import { TimeagoModule } from "ngx-timeago";
 @NgModule({
   declarations: [],
   imports: [
@@ -37,6 +37,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
       fullScreenBackdrop: false,
     }),
     TypeaheadModule.forRoot(),
+    TimeagoModule.forRoot()
   ],
   exports: [
     NgxDropzoneModule,
@@ -49,6 +50,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     PaginationModule,
     NgxLoadingModule,
     TypeaheadModule,
+    TimeagoModule
   ],
 })
 export class SharedModule {}

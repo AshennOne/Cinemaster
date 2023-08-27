@@ -1,13 +1,30 @@
-<div class="row">
-  <span class="col-1 d-flex"><strong>Image</strong></span>
-  <span class="col-2 d-flex"><strong>Title</strong></span>
-  <span class="col-1 d-flex"><strong>Genre</strong></span>
-  <span class="col-1 d-flex"><strong>Year</strong></span>
-  <span class="col-6 d-flex" ><strong>Comment content</strong></span>
-  <span class="col-1 d-flex">Actions</span>
+<div class="container mt-4" *ngIf="comments.length > 0 ">
+  <h1 class="d-flex justify-content-center">Comments</h1>
+  <div class="row">
+    <span class="col-1 d-flex"><strong>Image</strong></span>
+    <span class="col-2 d-flex"><strong>Title</strong></span>
+    <span class="col-2 d-flex"><strong>Created</strong></span>
+
+    <span class="col-6 d-flex"><strong>Comment content</strong></span>
+    <span class="col-1 d-flex">Actions</span>
+  </div>
+
+  <div class="my-2" *ngFor="let comment of comments">
+    <app-user-comment
+      (commentToDelete)="deleteComment($event)"
+      *ngIf="comment"
+      [comment]="comment"
+    ></app-user-comment>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="comments.length > 0">
+    <pagination
+      [itemsPerPage]="8"
+      [totalItems]="totalItems"
+      [(ngModel)]="currentPage"
+      (ngModelChange)="getComments()"
+    ></pagination>
+  </div>
 </div>
-
-
-<div class="my-2" *ngFor="let comment of comments">
-  <app-user-comment *ngIf="comment" [comment]="comment" ></app-user-comment>
+<div class="d-flex justify-content-center mt-5" *ngIf="comments.length < 1 &&!loaded">
+  <h1>No comments found :(</h1>
 </div>

@@ -8,7 +8,7 @@ namespace API.Entities
   {
     public int Id { get; set; }
     public int UserId { get; set; }
-
+    public DateTime CreateTime {get;set;} =  DateTime.Now;
     [JsonIgnore]
     public User User { get; set; }
     [JsonIgnore]

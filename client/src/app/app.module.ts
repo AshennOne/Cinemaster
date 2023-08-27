@@ -44,6 +44,8 @@ import { UserRatingComponent } from './components/user-interactions/user-rating/
 import { UserListElementComponent } from './components/user-interactions/user-list-element/user-list-element.component';
 import { SharedModule } from './_modules/shared.module';
 import { UserCommentsTabComponent } from './components/user-comments-tab/user-comments-tab.component';
+import { UserRatingsTabComponent } from './components/user-ratings-tab/user-ratings-tab.component';
+import { UserListTabComponent } from './components/user-list-tab/user-list-tab.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { UserCommentsTabComponent } from './components/user-comments-tab/user-co
     UserRatingComponent,
     UserListElementComponent,
     UserCommentsTabComponent,
+    UserRatingsTabComponent,
+    UserListTabComponent,
  
   ],
   imports: [
