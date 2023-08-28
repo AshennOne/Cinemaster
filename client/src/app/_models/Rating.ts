@@ -3,4 +3,5 @@ export interface Rating {
   grade: number;
   movieId: number;
   userId:number;
+  created:Date;
 }

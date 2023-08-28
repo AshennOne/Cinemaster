@@ -1,0 +1,14 @@
+.customClass>a{
+  background-color: #3e3f3a  !important;
+  color: white!important;
+}
+.active > a {
+  background-color: gray!important;
+  color: white!important;
+}
+
+/* Apply hover styles to all tabs */
+.customClass > a:hover {
+  background-color: gray!important;
+  color: white!important;
+}

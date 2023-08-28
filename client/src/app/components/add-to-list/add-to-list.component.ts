@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Movie } from 'src/app/_models/Movie';
 import { MovieListService } from 'src/app/_services/movie-list.service';
 
@@ -10,6 +10,8 @@ import { MovieListService } from 'src/app/_services/movie-list.service';
 export class AddToListComponent implements OnInit, OnChanges{
   @Input() movie?:Movie
   @Input() isMainPage = false
+  @Input() isMyList = false;
+  @Output() statusChange = new EventEmitter<boolean>()
   isLiked = false;
   constructor(private movieListService:MovieListService){}
   ngOnChanges(changes: SimpleChanges): void {
@@ -37,6 +39,9 @@ export class AddToListComponent implements OnInit, OnChanges{
     this.movieListService.deleteFromList(this.movie.id).subscribe({
       next: () => {
         this.isLiked = false;
+        if(this.isMyList){
+          this.statusChange.emit(true);
+        }
       }
     })
   }

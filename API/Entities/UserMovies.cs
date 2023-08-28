@@ -11,8 +11,10 @@ namespace API.Entities
         public User User { get; set; }
 
         public int MovieId { get; set; }
+    
         [JsonIgnore]
         public Movie Movie { get; set; }
+        public DateTime Added { get; set; } = DateTime.Now;
     }
 
 }

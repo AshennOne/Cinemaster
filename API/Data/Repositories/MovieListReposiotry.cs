@@ -1,6 +1,7 @@
 using API.Dtos;
 using API.Entities;
 using API.Interfaces;
+using Azure;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data.Repositories
@@ -36,10 +37,18 @@ namespace API.Data.Repositories
 
         }
 
-        public async Task<IEnumerable<Movie>> GetMovieListAsync(int userId)
+        public async Task<UserListEntity> GetMoviePaginatedListAsync(int userId,int currentPage)
         {
-            return await _dbContext.UserMovies.Where(m => m.UserId == userId).Select(um => um.Movie).ToListAsync();
+            var liked = _dbContext.UserMovies.Where(m => m.UserId == userId).OrderByDescending(m => m.Added);
+            var total = liked.Count();
+            return new UserListEntity{
+                UserList =await liked.Skip(8*(currentPage-1)).Take(8).ToListAsync(),
+                TotalItems = total
+            };
 
+        }
+        public async Task<IEnumerable<Movie>> GetMovieListAsync(int userId){
+            return await _dbContext.UserMovies.Where(m => m.UserId == userId).Select(m => m.Movie).ToListAsync();
         }
         public async Task<bool> SaveAllAsync()
         {

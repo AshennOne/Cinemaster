@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { TimeagoPipe } from 'ngx-timeago';
 import { Movie } from 'src/app/_models/Movie';
 import { Rating } from 'src/app/_models/Rating';
 import { MovieService } from 'src/app/_services/movie.service';
@@ -12,7 +13,7 @@ export class UserRatingComponent implements OnChanges{
  @Input() rating?:Rating
  @Output() ratingToUpdate = new EventEmitter<Rating>();
  movie?:Movie
-
+unlocked = false;
 constructor(private movieService:MovieService){}  
 
  ngOnChanges(changes: SimpleChanges): void {
@@ -21,9 +22,13 @@ constructor(private movieService:MovieService){}
       this.movieService.getMovieById(this.rating.movieId).subscribe({
         next: (movie) => {
           this.movie = movie;
+          
         },
       });
   }
+}
+unlockButton(){
+this.unlocked = true;
 }
 onRatingChange(){
   this.ratingToUpdate.emit(this.rating)

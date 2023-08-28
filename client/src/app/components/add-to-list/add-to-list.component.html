@@ -1,13 +1,13 @@
-<div *ngIf="!isMainPage" ><button class="btn btn-outline-info mt-3 " (click)="addMovie()" *ngIf="!isLiked" >
-  <i class="fa-sharp fa-solid fa-plus fa-lg pe-1"></i> Add to your list
+<div *ngIf="!isMainPage " ><button [class.mt-3]="!isMyList"  class="btn btn-outline-info  " (click)="addMovie()" *ngIf="!isLiked && !isMyList" >
+  <i class="fa-sharp fa-solid fa-plus fa-lg pe-1" ></i> Add to your list
 </button>
-<button class="btn btn-outline-danger mt-3 " (click)="removeMovie()" *ngIf="isLiked">
+<button class="btn btn-outline-danger " [class.mt-3]="!isMyList" (click)="removeMovie()" *ngIf="isLiked">
   <i class="fa-sharp fa-solid fa-minus fa-lg pe-1"></i> Remove from your list
 </button></div>
 
   <div *ngIf="isMainPage">
-    <i (click)="addMovie()" *ngIf="!isLiked" class="fa-sharp fa-solid fa-plus fa-lg"></i>
-    <i (click)="removeMovie()" *ngIf="isLiked" class="fa-sharp fa-solid fa-minus fa-lg"></i>
+    <i (click)="addMovie()" *ngIf="!isLiked" class="lg-100 py-2 fa-sharp fa-solid fa-plus fa-lg"></i>
+    <i (click)="removeMovie()" *ngIf="isLiked" class="lg-100 py-2 fa-sharp fa-solid fa-minus fa-lg"></i>
   </div>
     
   

@@ -9,23 +9,27 @@ import { RatingService } from 'src/app/_services/rating.service';
 })
 export class UserRatingsTabComponent {
   ratings: Rating[] = []
-  totalItems = 10
+  totalItems = 0
   loaded = false
   currentPage = 1
   constructor( private ratingService:RatingService){
     this.getRatings();
    
   }
+  onChangePage(){
+this.getRatings()
+  }
   getRatings(){
-    this.ratingService.getAllUserRatings().subscribe({
+    this.ratingService.getAllUserRatings(this.currentPage).subscribe({
       next:(ratings) =>{
-        this.ratings = ratings
+        this.ratings = ratings.ratings
+        this.totalItems = ratings.totalItems
         this.loaded = true
       }
     })
   }
   updateRating(event:any){
-    this.ratingService.editRating(event.id, event.grade).subscribe({
+    this.ratingService.editRating(event.movieId, event.grade).subscribe({
       next:()=>{
         this.getRatings()
       }

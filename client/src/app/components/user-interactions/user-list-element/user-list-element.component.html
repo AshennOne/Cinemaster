@@ -1,1 +1,7 @@
-<p>user-list-element works!</p>
+<div *ngIf="movie &&element" class="row border border-secondary border-start-0 rounded-end">
+  <span class=" col-1"><img class="photo" src="{{movie.imgUrl}}"></span>
+  <span class=" d-flex align-items-center  col-2">{{movie.title}}</span>
+  <span class=" d-flex align-items-center col-3">{{element.added |timeago}}</span>
+  <span class=" d-flex align-items-center col-3"></span>
+  <span class=" d-flex align-items-center col-3"><app-add-to-list (statusChange)="updateList()" [isMyList]="true" [movie]="movie"></app-add-to-list></span>
+</div>

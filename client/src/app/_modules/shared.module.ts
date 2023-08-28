@@ -11,6 +11,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { TimeagoModule } from "ngx-timeago";
+import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [],
   imports: [
@@ -37,6 +38,7 @@ import { TimeagoModule } from "ngx-timeago";
       fullScreenBackdrop: false,
     }),
     TypeaheadModule.forRoot(),
+    TabsModule.forRoot(),
     TimeagoModule.forRoot()
   ],
   exports: [
@@ -50,6 +52,7 @@ import { TimeagoModule } from "ngx-timeago";
     PaginationModule,
     NgxLoadingModule,
     TypeaheadModule,
+    TabsModule,
     TimeagoModule
   ],
 })

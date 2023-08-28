@@ -17,12 +17,18 @@ namespace API.Controllers
 
 
         }
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetLikedMovies()
         {
             var user = await GetCurrentUser();
             var list = await _unitOfWork.MovieListRepository.GetMovieListAsync(user.Id);
+            return Ok(list);
+        }
+        [HttpGet("{page}")]
+        public async Task<ActionResult<UserListEntity>> GetLikedMovies(int page)
+        {
+            var user = await GetCurrentUser();
+            var list = await _unitOfWork.MovieListRepository.GetMoviePaginatedListAsync(user.Id,page);
             return Ok(list);
         }
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Rating } from '../_models/Rating';
+import { UserRatings } from '../_models/UserRatings';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,8 @@ export class RatingService {
   constructor(private http: HttpClient) {}
 
  
-  getAllUserRatings() {
-    return this.http.get<Rating[]>(this.baseUrl + 'ratings/user');
+  getAllUserRatings(page:number) {
+    return this.http.get<UserRatings>(this.baseUrl + 'ratings/user/'+page);
   }
   addRating(id: number, grade: number) {
     var bodyContent = {grade}

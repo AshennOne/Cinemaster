@@ -16,11 +16,11 @@ namespace API.Controllers
       _unitOfWork = unitOfWork;
 
     }
-    [HttpGet("user")]
-    public async Task<ActionResult<IEnumerable<Rating>>> GetRatingsForUser()
+    [HttpGet("user/{page}")]
+    public async Task<ActionResult<UserRatingsEntity>> GetRatingsForUser(int page)
     {
       var user = await GetUser();
-      IEnumerable<Rating> ratings = await _unitOfWork.RatingRepository.GetAllRatingsAsync(user);
+      UserRatingsEntity ratings = await _unitOfWork.RatingRepository.GetAllRatingsAsync(user,page);
       return Ok(ratings);
     }
     [HttpGet("movie")]

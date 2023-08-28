@@ -30,13 +30,18 @@ namespace API.Data.Repositories
         {
             var rating = await  _dbContext.Ratings.FirstOrDefaultAsync(r => r.Id == id);
             rating.Grade = value;
-            
+            rating.Created =  DateTime.Now;
             return rating;
         }
 
-        public async Task<IEnumerable<Rating>> GetAllRatingsAsync(User user)
+        public async Task<UserRatingsEntity> GetAllRatingsAsync(User user, int currentPage)
         {
-             return await _dbContext.Ratings.Where(c => c.UserId == user.Id).ToListAsync();
+             var ratings =  _dbContext.Ratings.Where(c => c.UserId == user.Id).OrderByDescending(d => d.Created);
+             var totalitems = ratings.Count();
+             return new UserRatingsEntity{
+                Ratings = await ratings.Skip((currentPage-1)*8).Take(8).ToListAsync(),
+                TotalItems = totalitems
+             };
         }
 
         public async Task<IEnumerable<Rating>> GetAllRatingsAsync(Movie movie)

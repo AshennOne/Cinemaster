@@ -1,22 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Comment } from 'src/app/_models/Comment';
-import { Movie } from 'src/app/_models/Movie';
-import { User } from 'src/app/_models/User';
-import { AccountService } from 'src/app/_services/account.service';
-import { CommentService } from 'src/app/_services/comment.service';
-import { MovieListService } from 'src/app/_services/movie-list.service';
-import { MovieService } from 'src/app/_services/movie.service';
-import { RatingService } from 'src/app/_services/rating.service';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { TabDirective } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-my-interactions',
   templateUrl: './my-interactions.component.html',
   styleUrls: ['./my-interactions.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class MyInteractionsComponent {
-  tab = "ratings"
-  constructor( private movieService:MovieService, private movieListService:MovieListService) {
-    
+export class MyInteractionsComponent{
+
+  public activeTab?: string = "My liked movies"; 
+
+changeTab(event:TabDirective) {
+   this.activeTab = event.heading;
+}
+ 
   
-  }
 }

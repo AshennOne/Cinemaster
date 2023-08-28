@@ -1,13 +1,16 @@
 <div class="container text-light">
-  
-  <div *ngIf="tab === 'comments'">
-    <app-user-comments-tab></app-user-comments-tab>
-  </div>
-  <div *ngIf="tab === 'ratings'">
-    <app-user-ratings-tab></app-user-ratings-tab>
-  </div>
- 
-  
-  
-
+  <tabset >
+    <tab [class.active]="activeTab === 'My liked movies'" heading="My liked movies"(selectTab)="changeTab($event)" #tab1 customClass="customClass"
+      >
+      <app-user-list-tab></app-user-list-tab>
+    </tab>
+    <tab [class.active]="activeTab === 'My Comments'" heading="My Comments" (selectTab)="changeTab($event)" #tab2 customClass="customClass">
+     
+      <app-user-comments-tab></app-user-comments-tab
+    ></tab>
+    <tab [class.active]="activeTab === 'My Ratings'" heading="My Ratings" (selectTab)="changeTab($event)" #tab3 customClass="customClass"
+      >
+      <app-user-ratings-tab></app-user-ratings-tab
+    ></tab>
+  </tabset>
 </div>
