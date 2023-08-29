@@ -1,0 +1,10 @@
+.photo {
+  width: auto;
+  height: 5rem !important;
+}
+.bg-bronze{
+  background-color:sienna;
+}
+.bg-gold{
+  background-color: rgb(255, 170, 0);
+}

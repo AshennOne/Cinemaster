@@ -35,6 +35,17 @@ export class MovieService {
   updateMovie(title:string){
     return this.http.get<Movie>(this.baseUrl + 'movies/' + title)
   }
+  getMoviesRanking(currentPage:number){
+   var params = {
+      SortOrder: 'RatingDesc',
+      From: (new Date(1900, 0, 1)),
+      To: new Date(),
+      MinDuration: 1,
+      MaxDuration: 999,
+    } as MovieParams;
+    return this.http.post<MoviePagination>(this.baseUrl + 'movies/' + currentPage,
+    params)
+  }
   getMovie(title: string) {
   var cachedMovie = this.getMovieFromCache(title)
   if(cachedMovie === "null" ||cachedMovie === null){

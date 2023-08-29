@@ -46,6 +46,7 @@ import { SharedModule } from './_modules/shared.module';
 import { UserCommentsTabComponent } from './components/user-comments-tab/user-comments-tab.component';
 import { UserRatingsTabComponent } from './components/user-ratings-tab/user-ratings-tab.component';
 import { UserListTabComponent } from './components/user-list-tab/user-list-tab.component';
+import { RakingElementComponent } from './components/raking-element/raking-element.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { UserListTabComponent } from './components/user-list-tab/user-list-tab.c
     UserCommentsTabComponent,
     UserRatingsTabComponent,
     UserListTabComponent,
+    RakingElementComponent,
  
   ],
   imports: [

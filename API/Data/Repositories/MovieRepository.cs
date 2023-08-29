@@ -64,6 +64,23 @@ namespace API.Data.Repositories
        case SortOrder.TitleDesc:
         allFilteredMovies = allFilteredMovies.OrderByDescending(m => m.Title).ToList();
         break;
+        case SortOrder.RatingDesc:
+        foreach(var movie in allFilteredMovies){
+          double sum = 0.0;
+          double count = 0.0;
+          foreach(var rate in movie.Ratings){
+            sum += rate.Grade;
+            count++;
+          }
+          if(movie.Ratings.Count()>0){
+            movie.AvgRating = Convert.ToDouble(sum/count);
+          }else{
+            movie.AvgRating = 0;
+          }
+          
+        }
+        allFilteredMovies = allFilteredMovies.OrderByDescending(m => m.AvgRating).ToList();
+        break;
     }
      var movies =  allFilteredMovies.Skip((currentPage -1)*pageSize).Take(pageSize);
       

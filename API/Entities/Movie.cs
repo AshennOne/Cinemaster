@@ -12,7 +12,7 @@ namespace API.Entities
     public string Description { get; set; }
     public string ImgUrl { get; set; }
     public int Duration { get; set; }
-   
+   public double AvgRating {get;set;}
     public List<Comment> Comments { get; set; } = new List<Comment>();
    
     public List<Rating> Ratings { get; set; } = new List<Rating>();

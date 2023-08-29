@@ -8,6 +8,7 @@ namespace API.Entities
         TitleAsc,
         TitleDesc,
         PremiereAsc,
-        PremiereDesc
+        PremiereDesc,
+        RatingDesc
     }
 }
