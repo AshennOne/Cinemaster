@@ -19,6 +19,7 @@ import { CommentService } from 'src/app/_services/comment.service';
 export class MovieCardComponent implements  OnChanges {
   @Input() movie?: Movie;
   @Input() user?:User
+  isHovering = false
   isLiked = false;
   constructor(private router: Router) {}
   ngOnChanges(changes: SimpleChanges): void {

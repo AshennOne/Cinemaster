@@ -33,7 +33,6 @@ export class TokenInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request).pipe(
-      delay(1000),
       catchError((err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {

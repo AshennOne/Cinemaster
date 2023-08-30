@@ -5,9 +5,9 @@
   <i class="fa-sharp fa-solid fa-minus fa-lg pe-1"></i> Remove from your list
 </button></div>
 
-  <div *ngIf="isMainPage">
-    <i (click)="addMovie()" *ngIf="!isLiked" class="lg-100 py-2 fa-sharp fa-solid fa-plus fa-lg"></i>
-    <i (click)="removeMovie()" *ngIf="isLiked" class="lg-100 py-2 fa-sharp fa-solid fa-minus fa-lg"></i>
+  <div (click)="toggleMovie()" class="lg-100" *ngIf="isMainPage">
+    <i  *ngIf="!isLiked" class="   fa-sharp fa-solid fa-plus fa-lg"></i>
+    <i *ngIf="isLiked" class="    fa-sharp fa-solid fa-minus fa-lg"></i>
   </div>
     
   

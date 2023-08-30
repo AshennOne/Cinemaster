@@ -33,7 +33,14 @@ export class AddToListComponent implements OnInit, OnChanges{
       }
     });
   }
-
+toggleMovie(){
+  if(this.isLiked){
+    this.removeMovie()
+  }
+  else{
+    this.addMovie()
+  }
+}
   removeMovie(){
     if(!this.movie?.id) return;
     this.movieListService.deleteFromList(this.movie.id).subscribe({
