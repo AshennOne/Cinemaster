@@ -15,6 +15,7 @@ export class UserCommentComponent implements OnChanges {
   @Input() comment?: Comment;
   @Output() commentToDelete = new EventEmitter<number>();
   movie?: Movie;
+  content:string = this.shortenContent()
   isHovering: boolean = false;
   modalRef: BsModalRef = {} as BsModalRef;
   constructor(private movieService: MovieService,private modalService:BsModalService, private router:Router) {}
@@ -26,6 +27,7 @@ export class UserCommentComponent implements OnChanges {
             this.movie = movie;
           },
         });
+        this.content= this.shortenContent()
     }
   }
   openModal(template: TemplateRef<any>) {
@@ -33,7 +35,7 @@ export class UserCommentComponent implements OnChanges {
   }
   shortenContent(): string {
     if(!this.comment) return""
-    return this.comment.content.length > 50
+    return this.comment.content.length > 20
       ? this.comment.content.slice(0, 50) + '...'
       : this.comment.content;
   }

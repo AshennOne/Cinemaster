@@ -8,3 +8,9 @@
   .box{
     cursor: pointer;
   }
+  .shorten-content {
+    white-space: normal!important; 
+    word-wrap: break-word!important; 
+    overflow-wrap: break-word !important; /* Alternative for better browser compatibility */
+  }
+  
