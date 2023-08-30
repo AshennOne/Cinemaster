@@ -2,7 +2,6 @@ using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http.HttpResults;
 using API.Extensions;
 
 namespace API.Controllers
@@ -46,7 +45,7 @@ namespace API.Controllers
                 Movie = movie,
                 Content = content
             });
-            if (await _unitOfWork.MovieRepository.SaveAllAsync()) return Ok();
+            if (await _unitOfWork.SaveAllAsync()) return Ok();
             return BadRequest();
         }
         [HttpPut("{id}")]
@@ -56,7 +55,7 @@ namespace API.Controllers
             var comment = user.Comments.FirstOrDefault(c => c.Id == id);
             if (comment == null) return NotFound();
             await _unitOfWork.CommentRepository.EditCommentAsync(id, Newcomment.Content);
-            if (await _unitOfWork.MovieRepository.SaveAllAsync()) return Ok();
+            if (await _unitOfWork.SaveAllAsync()) return Ok();
             return BadRequest();
         }
         [HttpDelete("{id}")]
@@ -66,7 +65,7 @@ namespace API.Controllers
             var comment = user.Comments.FirstOrDefault(c => c.Id == id);
             if (comment == null) return NotFound();
             await _unitOfWork.CommentRepository.DeleteCommentAsync(id);
-            if (await _unitOfWork.MovieRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.SaveAllAsync()) return NoContent();
             return NoContent();
         }
         private async Task<User> GetUser()

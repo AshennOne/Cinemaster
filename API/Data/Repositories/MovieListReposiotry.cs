@@ -50,10 +50,7 @@ namespace API.Data.Repositories
         public async Task<IEnumerable<Movie>> GetMovieListAsync(int userId){
             return await _dbContext.UserMovies.Where(m => m.UserId == userId).Select(m => m.Movie).ToListAsync();
         }
-        public async Task<bool> SaveAllAsync()
-        {
-            return (await _dbContext.SaveChangesAsync()) > 0;
-        }
+        
     }
 
 

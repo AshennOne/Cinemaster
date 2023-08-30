@@ -26,7 +26,7 @@ namespace API.Controllers
             var uploadParams = new ImageUploadParams()
             {
                 File = new FileDescription(file.Name, stream),
-                Folder = "cinemaster", // Replace with the desired folder name
+                Folder = "cinemaster",
                 UploadPreset = "vkecuura",
             };
             uploadResult = _cloudinary.Upload(uploadParams);

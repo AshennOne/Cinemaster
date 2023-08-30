@@ -16,3 +16,12 @@
 .dropdownList {
   transform: translateX(-20px)!important; 
 }
+li .active{
+   color: rgb(189, 189, 189)!important;
+  }
+
+  
+  .nav-link:hover {
+   
+    color: rgb(189, 189, 189)!important;
+  }

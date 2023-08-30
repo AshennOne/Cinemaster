@@ -76,7 +76,7 @@ export class SortFilterComponent implements OnInit, OnChanges {
       this.setMovieParams(params);
     }
     this.GetMovies();
-   
+   this.getTitles();
   }
 
   setMovieParams(params: string) {
@@ -107,16 +107,18 @@ export class SortFilterComponent implements OnInit, OnChanges {
     if (this.movieService.getParamsFromCache() == null) return;
     this.movieService.getMovies(this.currentPage).subscribe({
       next: (pagination) => {
-        if (this.titles.length < 1) {
-          pagination.movies.forEach((element) => {
-            this.titles.push(element.title);
-          });
-        }
+        
 
         this.movies.emit(pagination.movies);
         this.totalItems.emit(pagination.totalItems);
       },
     });
   }
- 
+ getTitles(){
+  this.movieService.getTitles().subscribe({
+    next:(titles) => {
+      this.titles = titles
+    }
+  })
+ }
 }

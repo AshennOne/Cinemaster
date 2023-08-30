@@ -23,7 +23,7 @@ export class RankingComponent {
         this.loaded = true;
        var num = 1 + 8*(this.currentPage-1)
         this.movies.forEach(element =>{
-          console.log(element)
+         
           element.rank = num;
           num++;
         })

@@ -27,7 +27,7 @@ namespace API.Helpers
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Role,role)
             }),
-        Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpiresInMinutes"])),
+        Expires = DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpiresInMinutes"])),
         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
       };
       var token = tokenHandler.CreateToken(tokenDescriptor);

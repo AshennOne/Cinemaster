@@ -16,7 +16,7 @@ namespace API.Data.Repositories
 
     public async Task<User> FindUserByUsernameAsync(string username)
     {
-      var user = await _context.Users.Include(u => u.Comments).Include(u => u.LikedMovies).Include(u => u.Ratings).FirstOrDefaultAsync(u => u.UserName == username);
+      User user = await _context.Users.Include(u => u.Comments).Include(u => u.LikedMovies).Include(u => u.Ratings).FirstOrDefaultAsync(u => u.UserName == username);
       return user;
     }
 
@@ -25,9 +25,17 @@ namespace API.Data.Repositories
       return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
-        public async Task<User> FindUserByIdAsync(int id)
-        {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-        }
+    public async Task<User> FindUserByIdAsync(int id)
+    {
+      return await _context.Users.Select(u => new User
+      {
+        Id = u.Id,
+        UserName = u.UserName,
+        ImgUrl = u.ImgUrl,
+        LikedMovies = u.LikedMovies,
+        Comments = u.Comments,
+        Ratings = u.Ratings
+      }).FirstOrDefaultAsync(u => u.Id == id);
     }
+  }
 }

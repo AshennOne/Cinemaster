@@ -5,7 +5,6 @@ export interface User {
   userName: string;
   imgUrl?: string;
   password?: string;
-  email?: string;
   token?: string;
   likedMovies?: Like[]
 }

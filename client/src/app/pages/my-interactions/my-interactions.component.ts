@@ -9,11 +9,25 @@ import { TabDirective } from 'ngx-bootstrap/tabs';
 })
 export class MyInteractionsComponent{
 
-  public activeTab?: string = "My liked movies"; 
+  public activeTab: string = this.getTab()
 
 changeTab(event:TabDirective) {
-   this.activeTab = event.heading;
+  if(event.heading){
+    localStorage.setItem('tab',event.heading)
+    this.activeTab = event.heading;
+  }
+ 
 }
+ getTab():string{
+  var tab = localStorage.getItem('tab')
+  if(!tab){
+    tab = "My liked movies"
+    localStorage.setItem('tab',tab)
+    
+  }
+  console.log(tab)
+  return tab;
+ }
  
   
 }

@@ -48,7 +48,8 @@ export class RatingComponent implements OnInit, OnChanges {
     this.getUser();
   }
 
-  onRatingChange() {
+  onRatingChange(event:any) {
+    this.rate = event
     if (!this.movie?.id) return;
     if (!this.isRated) {
       this.ratingService.addRating(this.movie.id, this.rate).subscribe({

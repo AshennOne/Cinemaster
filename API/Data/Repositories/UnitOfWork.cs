@@ -10,6 +10,10 @@ namespace API.Data.Repositories
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
+        public async Task<bool> SaveAllAsync()
+        {
+            return (await _context.SaveChangesAsync()) > 0;
+        }
         public UnitOfWork(ApplicationDbContext context, IMapper mapper)
         {
             _mapper = mapper;

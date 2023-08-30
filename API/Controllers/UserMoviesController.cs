@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -38,7 +37,7 @@ namespace API.Controllers
             var user = await GetCurrentUser();
             if (user.LikedMovies.FirstOrDefault(m => m.MovieId == movieId) != null) return BadRequest("Movie already added");
             await _unitOfWork.MovieListRepository.AddMovieToListAsync(user.Id, movieId);
-            if (await _unitOfWork.MovieRepository.SaveAllAsync())
+            if (await _unitOfWork.SaveAllAsync())
             {
                 return Ok();
             };
@@ -49,7 +48,7 @@ namespace API.Controllers
         {
             var user = await GetCurrentUser();
             await _unitOfWork.MovieListRepository.DeleteMovieFromListAsync(user.Id, movieId);
-            if (await _unitOfWork.MovieRepository.SaveAllAsync())
+            if (await _unitOfWork.SaveAllAsync())
             {
                 return NoContent();
             }

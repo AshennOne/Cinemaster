@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Comment } from 'src/app/_models/Comment';
 import { Movie } from 'src/app/_models/Movie';
@@ -14,8 +15,9 @@ export class UserCommentComponent implements OnChanges {
   @Input() comment?: Comment;
   @Output() commentToDelete = new EventEmitter<number>();
   movie?: Movie;
+  isHovering: boolean = false;
   modalRef: BsModalRef = {} as BsModalRef;
-  constructor(private movieService: MovieService,private modalService:BsModalService, private commentService:CommentService) {}
+  constructor(private movieService: MovieService,private modalService:BsModalService, private router:Router) {}
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['comment'] && this.comment?.id && !this.movie) {
     
@@ -34,6 +36,9 @@ export class UserCommentComponent implements OnChanges {
     return this.comment.content.length > 50
       ? this.comment.content.slice(0, 50) + '...'
       : this.comment.content;
+  }
+  redirect(){
+    this.router.navigateByUrl('movies/' + this.movie?.title);
   }
   confirmDelete() {
     if(!this.comment?.id)return;

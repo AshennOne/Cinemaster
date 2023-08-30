@@ -6,13 +6,8 @@
       <span class="fs-1 d-flex justify-content-center">{{average.toFixed(1)}}</span>
     </div>
     <div class="row d-flex justify-content-center">
-      <rating
-        class="fs-3 d-flex justify-content-center"
-        [(ngModel)]="rate"
-        [max]="5"
-        [readonly]="false"
-        (ngModelChange)="onRatingChange()"
-      ></rating>
+      
+      <ngx-stars class="d-flex justify-content-center" [readonly]="false" [size]="1" [color]="'#FFFFFF'" [maxStars]="5" [initialStars]="rate" [wholeStars]="true" (ratingOutput)="onRatingChange($event)"></ngx-stars>
     </div>
     <div class="row d-flex justify-content-center">
       <span class="d-flex justify-content-center">({{countRate}})</span>

@@ -1,19 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
-  
-  
-  constructor(private router:Router){}
-  ngOnInit(): void {
-    if(localStorage.getItem('username')!= null) this.router.navigateByUrl('/movies')
+export class HomeComponent{
+  constructor(
+    public accountService: AccountService,
+    
+  ){}
+  get isLoggedIn(): boolean {
+    var token = localStorage.getItem('token')
+   
+    if(token != null){
+
+      return true
+    }
+    else{
+      return false;
+    }
+    
     
   }
+ 
  
   }
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/_models/Movie';
 import { MovieList } from 'src/app/_models/MovieList';
 import { MovieService } from 'src/app/_services/movie.service';
@@ -11,8 +12,8 @@ import { MovieService } from 'src/app/_services/movie.service';
 export class UserListElementComponent implements OnChanges{
 movie?:Movie
 @Input() element? :MovieList
-
-constructor(private movieService:MovieService){
+isHovering: boolean = false;
+constructor(private movieService:MovieService,private router:Router){
 
 }
 
@@ -30,5 +31,8 @@ ngOnChanges(changes: SimpleChanges): void {
     }
   })
  }
+}
+redirect(){
+  this.router.navigateByUrl('movies/' + this.movie?.title);
 }
 }

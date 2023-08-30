@@ -1,13 +1,26 @@
-<div *ngIf="movie &&rating" class="row border border-secondary border-start-0 rounded-end ">
-  <span class=" col-1"><img class="photo" src="{{movie.imgUrl}}"></span>
-  <span class=" d-flex align-items-center  col-3">{{movie.title}}</span>
-  <span class=" d-flex align-items-center col-3">{{rating.created |timeago }}</span>
-  <span class=" d-flex align-items-center col-4"><rating
-    class="fs-3 d-flex justify-content-center"
-    [(ngModel)]="rating.grade"
-    [max]="5"
-    [readonly]="false"
-    (ngModelChange)="unlockButton()"
-  ></rating></span>
-  <span class=" d-flex align-items-center col-1"><button [disabled]="!unlocked" class="btn btn-warning ms-2" (click)="onRatingChange()"><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-star"></i></button></span>
+<div (click)="isHovering ? null : redirect()"
+  *ngIf="movie && rating"
+  class="box row border border-secondary border-start-0 rounded-end"
+>
+  <span class="col-1"><img class="photo" src="{{ movie.imgUrl }}" /></span>
+  <span class="title d-flex align-items-center col-3">{{ movie.title }}</span>
+  <span class="d-flex align-items-center col-3">{{
+    rating.created | timeago
+  }}</span>
+  <span class="d-flex align-items-center col-4" (mouseenter)="isHovering = true"
+    (mouseleave)="isHovering = false"
+    >
+    
+    <ngx-stars
+      class="fs-3 d-flex justify-content-center"
+      [readonly]="false"
+      [size]="1"
+      [color]="'#FFFFFF'"
+      [maxStars]="5"
+      [initialStars]="rating.grade"
+      [wholeStars]="true"
+      (ratingOutput)="unlockButton($event)"
+    ></ngx-stars
+  ></span>
+  
 </div>

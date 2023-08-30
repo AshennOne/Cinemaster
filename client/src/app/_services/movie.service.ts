@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Movie } from '../_models/Movie';
 import { MoviePagination } from '../_models/MoviePagination';
 import { MovieParams } from '../_models/MovieParams';
-import { map, of, tap } from 'rxjs';
+import { map, of } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -34,6 +34,9 @@ export class MovieService {
   }
   updateMovie(title:string){
     return this.http.get<Movie>(this.baseUrl + 'movies/' + title)
+  }
+  getTitles(){
+    return this.http.get<string[]>(this.baseUrl + 'movies/titles')
   }
   getMoviesRanking(currentPage:number){
    var params = {

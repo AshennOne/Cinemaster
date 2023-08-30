@@ -4,7 +4,6 @@ import {
   Router,
 } from '@angular/router';
 import { AccountService } from '../_services/account.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,6 @@ import { ToastrService } from 'ngx-toastr';
 export class AntiAuthGuard implements CanActivate {
   constructor(
     private accountService: AccountService,
-    private toastr: ToastrService,
     private router: Router
   ) {}
   canActivate(): boolean {

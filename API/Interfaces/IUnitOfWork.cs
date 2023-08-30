@@ -7,7 +7,7 @@ namespace API.Interfaces
         IMovieListRepository MovieListRepository {get;}
         IMovieRepository MovieRepository{get;}
         IRatingRepository RatingRepository{get;}
-        
+        Task<bool> SaveAllAsync();
 
     }
 }

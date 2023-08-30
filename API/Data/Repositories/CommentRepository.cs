@@ -38,7 +38,6 @@ namespace API.Data.Repositories
                 Comments = await comments.Skip(8*(page-1)).Take(8).ToListAsync(),
                 TotalItems = count
             };
-            //return user.Comments;
         }
 
         public async Task<IEnumerable<Comment>> GetAllCommentsAsync(Movie movie)
@@ -50,9 +49,6 @@ namespace API.Data.Repositories
         {
             return await _dbContext.Comments.FindAsync(id);
         }
-        public async Task<bool> SaveAllAsync()
-        {
-            return (await _dbContext.SaveChangesAsync()) > 0;
-        }
+        
     }
 }

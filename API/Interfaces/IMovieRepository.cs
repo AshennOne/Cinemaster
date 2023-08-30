@@ -10,6 +10,6 @@ namespace API.Interfaces
     Task DeleteMovie(string title);
     Task<MoviePaginationEntity> GetAllMovies(int currentPage, MovieParams movieParams);
     Task<Movie> GetMovieById(int id);
-    Task<bool> SaveAllAsync();
+     Task<IEnumerable<string>> getTitles();
   }
 }

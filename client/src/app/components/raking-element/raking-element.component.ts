@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/_models/Movie';
 
 @Component({
@@ -8,4 +9,8 @@ import { Movie } from 'src/app/_models/Movie';
 })
 export class RakingElementComponent {
 @Input() movie?:Movie
+constructor(private router :Router){}
+redirect(){
+  this.router.navigateByUrl('movies/' + this.movie?.title);
+}
 }

@@ -44,7 +44,10 @@ namespace API.Data.Repositories
       oldMovie.Duration = editedMovieDto.Duration;
 
     }
-
+ public async Task<IEnumerable<string>> getTitles()
+ {
+  return await _context.Movies.Select(m => m.Title).ToListAsync();
+ }
     public async Task<MoviePaginationEntity> GetAllMovies(int currentPage, MovieParams movieParams)
     {
       int pageSize = 8;
@@ -79,7 +82,7 @@ namespace API.Data.Repositories
           }
           
         }
-        allFilteredMovies = allFilteredMovies.OrderByDescending(m => m.AvgRating).ToList();
+        allFilteredMovies = allFilteredMovies.OrderByDescending(m => m.AvgRating).ThenByDescending(m=> m.Ratings.Count()).ToList();
         break;
     }
      var movies =  allFilteredMovies.Skip((currentPage -1)*pageSize).Take(pageSize);
@@ -103,12 +106,5 @@ namespace API.Data.Repositories
       return await _context.Movies.Include(m => m.Ratings).Include(m => m.Comments).FirstOrDefaultAsync(m => m.Title == title);
     }
 
-      
-
-        public async Task<bool> SaveAllAsync()
-    {
-      if(await _context.SaveChangesAsync()>0) return true;
-      return false;
-    }
   }
 }

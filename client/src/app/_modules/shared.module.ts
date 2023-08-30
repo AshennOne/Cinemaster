@@ -5,12 +5,12 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastrModule } from 'ngx-toastr';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { RatingModule } from 'ngx-bootstrap/rating';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { TimeagoModule } from "ngx-timeago";
+import { NgxStarsModule } from 'ngx-stars';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
   declarations: [],
@@ -25,7 +25,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     }),
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
-    RatingModule.forRoot(),
     ProgressbarModule.forRoot(),
     PaginationModule.forRoot(),
     NgxLoadingModule.forRoot({
@@ -39,7 +38,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     }),
     TypeaheadModule.forRoot(),
     TabsModule.forRoot(),
-    TimeagoModule.forRoot()
+    TimeagoModule.forRoot(),
+    NgxStarsModule
   ],
   exports: [
     NgxDropzoneModule,
@@ -47,13 +47,13 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     ToastrModule,
     BsDatepickerModule,
     BsDropdownModule,
-    RatingModule,
     ProgressbarModule,
     PaginationModule,
     NgxLoadingModule,
     TypeaheadModule,
     TabsModule,
-    TimeagoModule
+    TimeagoModule,
+    NgxStarsModule
   ],
 })
 export class SharedModule {}
