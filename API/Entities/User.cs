@@ -5,7 +5,6 @@ namespace API.Entities
   public class User : IdentityUser<int>
   {
 
-    public string ImgUrl { get; set; } = null;
     [JsonIgnore]
     public List<Comment> Comments { get; set; } = new List<Comment>();
     [JsonIgnore]

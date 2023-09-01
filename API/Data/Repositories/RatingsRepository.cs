@@ -30,7 +30,8 @@ namespace API.Data.Repositories
         {
             var rating = await  _dbContext.Ratings.FirstOrDefaultAsync(r => r.Id == id);
             rating.Grade = value;
-            rating.Created =  DateTime.Now;
+            rating.Created =  DateTime.SpecifyKind(DateTime.Now,DateTimeKind.Utc);
+           
             return rating;
         }
 

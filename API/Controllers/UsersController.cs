@@ -14,6 +14,11 @@ namespace API.Controllers
       _unitOfWork = unitOfWork;
 
     }
+    [HttpGet("all")]
+    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+    {
+      return Ok(await _unitOfWork.UserRepository.GetAll());
+    }
 
     [HttpGet("{username}")]
     public async Task<ActionResult<User>> GetUserByUsername(string username)

@@ -13,7 +13,7 @@ namespace API.Data
       if (!userManager.Users.Any())
       {
         // Seed your user data here
-        var usersToSeed = JsonSerializer.Deserialize<List<User>>(File.ReadAllText("data/users.json"));
+        var usersToSeed = JsonSerializer.Deserialize<List<User>>(File.ReadAllText("Data/users.json"));
 
         foreach (var user in usersToSeed)
         {

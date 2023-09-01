@@ -6,8 +6,8 @@ namespace API.Entities
     {
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public SortOrder SortOrder{get;set;} = SortOrder.TitleAsc ;
-        public DateTime From {get;set;} = DateTime.MinValue;
-        public DateTime To {get;set;} = DateTime.MaxValue;
+        public DateTime From {get;set;} = DateTime.SpecifyKind(DateTime.MinValue,DateTimeKind.Utc) ;
+        public DateTime To {get;set;} =  DateTime.SpecifyKind(DateTime.MaxValue,DateTimeKind.Utc) ;
         public int MinDuration {get;set;} = 1;
         public int MaxDuration {get;set;} = 999;
     }

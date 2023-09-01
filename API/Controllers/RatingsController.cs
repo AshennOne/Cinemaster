@@ -33,7 +33,7 @@ namespace API.Controllers
     [HttpPost("{id}")]
     public async Task<ActionResult> CreateRating([FromRoute] int id, [FromBody] Rating rating)
     {
-      var user = await GetUser() as User;
+      var user = await GetUser();
 
       var movie = await _unitOfWork.MovieRepository.GetMovieById(id);
       if (movie == null) return NotFound("movie doesn't exists");

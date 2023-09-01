@@ -43,7 +43,6 @@ public class AuthController : BaseApiController
         var UserToReturn = new AuthorizedUserDto
         {
           UserName = newUser.UserName,
-          ImgUrl = "",
           Comments = new List<Comment>(),
           Ratings = new List<Rating>(),
           Movies = new List<UserMovies>(),
@@ -69,7 +68,6 @@ public class AuthController : BaseApiController
       return Ok(new AuthorizedUserDto
       {
         UserName = ExistingUser.UserName,
-        ImgUrl = ExistingUser.ImgUrl,
         Comments = ExistingUser.Comments,
         Ratings = ExistingUser.Ratings,
         Movies = ExistingUser.LikedMovies,

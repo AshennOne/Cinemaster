@@ -2,54 +2,44 @@
    {
       "UserName": "David",
 
-      "Email": "David@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/men/46.jpg"
+      "Email": "David@gmail.com"
    },
    {
       "UserName": "Adam",
 
-      "Email": "Adam@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/men/86.jpg"
+      "Email": "Adam@gmail.com"
    },
    {
       "UserName": "Michael",
 
-      "Email": "Michael@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/men/62.jpg"
+      "Email": "Michael@gmail.com"
    },
    {
       "UserName": "Simon",
-      "Email": "Simon@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/men/52.jpg"
+      "Email": "Simon@gmail.com"
    },
    {
       "UserName": "Andrew",
-      "Email": "Andrew@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/men/94.jpg"
+      "Email": "Andrew@gmail.com"
    },
    {
       "UserName": "Lisa",
-      "Email": "Lisa@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/women/82.jpg"
+      "Email": "Lisa@gmail.com"
    },
    {
       "UserName": "Laura",
-      "Email": "Laura@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/women/64.jpg"
+      "Email": "Laura@gmail.com"
    },
    {
       "UserName": "Megan",
-      "Email": "Megan@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/women/2.jpg"
+      "Email": "Megan@gmail.com"
    },
    {
       "UserName": "Julie",
-      "Email": "Julie@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/women/17.jpg"
+      "Email": "Julie@gmail.com"
    },
    {
       "UserName": "Rebecca",
-      "Email": "Rebecca@gmail.com",
-      "ImgUrl": "https://randomuser.me/api/portraits/women/12.jpg"
+      "Email": "Rebecca@gmail.com"
    }
 ]

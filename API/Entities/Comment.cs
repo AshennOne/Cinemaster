@@ -8,7 +8,7 @@ namespace API.Entities
   {
     public int Id { get; set; }
     public int UserId { get; set; }
-    public DateTime CreateTime {get;set;} =  DateTime.Now;
+    public DateTime CreateTime {get;set;} =  DateTime.SpecifyKind(DateTime.Now,DateTimeKind.Utc);
     [JsonIgnore]
     public User User { get; set; }
     [JsonIgnore]

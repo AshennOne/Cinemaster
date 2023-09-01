@@ -27,7 +27,7 @@ namespace API.Data.Repositories
 
     public async Task DeleteMovie(string title)
     {
-      var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Title == title);
+      var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Title.ToLower() == title.ToLower());
       _context.Movies.Remove(movie);
     }
 
@@ -38,7 +38,7 @@ namespace API.Data.Repositories
       var oldMovie = await _context.Movies.Include(m => m.Ratings).Include(m => m.Comments).FirstOrDefaultAsync(m => m.Id == Id);
       oldMovie.Title = editedMovieDto.Title;
       oldMovie.Genre = editedMovieDto.Genre;
-      oldMovie.Premiere = editedMovieDto.Premiere;
+      oldMovie.Premiere = DateTime.SpecifyKind( editedMovieDto.Premiere, DateTimeKind.Utc);
       oldMovie.Description = editedMovieDto.Description;
       oldMovie.ImgUrl = editedMovieDto.ImgUrl;
       oldMovie.Duration = editedMovieDto.Duration;
@@ -103,7 +103,8 @@ namespace API.Data.Repositories
 
     public async Task<Movie> GetMovieByTitle(string title)
     {
-      return await _context.Movies.Include(m => m.Ratings).Include(m => m.Comments).FirstOrDefaultAsync(m => m.Title == title);
+      var movie= await _context.Movies.Include(m => m.Ratings).Include(m => m.Comments).FirstOrDefaultAsync(m => m.Title.ToLower() == title.ToLower());
+      return movie;
     }
 
   }

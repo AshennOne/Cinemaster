@@ -24,7 +24,7 @@ namespace API.Data
       modelBuilder.Entity<User>()
               .Property(u => u.Id)
               .ValueGeneratedOnAdd();
-      var moviesJson = File.ReadAllText("data/movies.json");
+      var moviesJson = File.ReadAllText("Data/movies.json");
       var movies = JsonSerializer.Deserialize<List<Movie>>(moviesJson);
       modelBuilder.Entity<UserMovies>()
                .HasKey(um => new { um.UserId, um.MovieId });
@@ -40,6 +40,7 @@ namespace API.Data
       int seedId = 1;
       foreach (var movie in movies)
       {
+        movie.Premiere = DateTime.SpecifyKind(movie.Premiere, DateTimeKind.Utc);
         movie.Id = seedId;
         seedId++;
       }

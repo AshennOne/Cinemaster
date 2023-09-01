@@ -7,5 +7,6 @@ namespace API.Interfaces
     Task<User> FindUserByUsernameAsync(string username);
     Task<User> FindUserByEmailAsync(string email);
     Task<User> FindUserByIdAsync(int id);
+    Task<IEnumerable<User>> GetAll();
   }
 }

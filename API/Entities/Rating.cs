@@ -9,7 +9,7 @@ namespace API.Entities
     public int Id { get; set; }
     [JsonIgnore]
     public User User { get; set; }
-    public DateTime Created{get;set;} =  DateTime.Now;
+    public DateTime Created{get;set;} =  DateTime.SpecifyKind(DateTime.Now,DateTimeKind.Utc);
     public int UserId { get; set; }
     [JsonIgnore]
     public Movie Movie { get; set; }

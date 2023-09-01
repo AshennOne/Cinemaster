@@ -16,14 +16,19 @@ namespace API.Data.Repositories
 
     public async Task<User> FindUserByUsernameAsync(string username)
     {
-      User user = await _context.Users.Include(u => u.Comments).Include(u => u.LikedMovies).Include(u => u.Ratings).FirstOrDefaultAsync(u => u.UserName == username);
+      User user = await _context.Users.Include(u => u.Comments).Include(u => u.LikedMovies).Include(u => u.Ratings).FirstOrDefaultAsync(u => u.UserName.ToLower() == username.ToLower());
       return user;
     }
 
     public async Task<User> FindUserByEmailAsync(string email)
     {
-      return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+      return await _context.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower());
     }
+
+  public async Task<IEnumerable<User>> GetAll()
+  {
+    return await _context.Users.ToListAsync();
+  }
 
     public async Task<User> FindUserByIdAsync(int id)
     {
@@ -31,7 +36,6 @@ namespace API.Data.Repositories
       {
         Id = u.Id,
         UserName = u.UserName,
-        ImgUrl = u.ImgUrl,
         LikedMovies = u.LikedMovies,
         Comments = u.Comments,
         Ratings = u.Ratings

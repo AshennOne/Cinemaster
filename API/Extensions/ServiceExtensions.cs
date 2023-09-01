@@ -11,7 +11,8 @@ public static class ServiceExtensions
   {
     services.AddDbContext<ApplicationDbContext>(o =>
     {
-      o.UseSqlServer(configuration.GetConnectionString("Default"));
+      
+      o.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
     });
     services.AddCors(options =>
     {
@@ -32,7 +33,7 @@ public static class ServiceExtensions
     services.AddScoped<ICommentRepository, CommentRepository>();
     services.AddScoped<IMovieListRepository, MovieListRepository>();
     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-    services.AddScoped<IUnitOfWork,UnitOfWork>();
+    services.AddScoped<IUnitOfWork, UnitOfWork>();
 
     return services;
   }
