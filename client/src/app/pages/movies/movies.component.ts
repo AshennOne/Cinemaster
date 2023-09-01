@@ -21,7 +21,7 @@ export class MoviesComponent{
   currentPage = this.getCurrentPage()
   totalItems = this.movies?.length || 0;
 user?:User;
-constructor(private accountService:AccountService, private userService:UserService){
+constructor(private accountService:AccountService){
   this.getUser()
 }
   getCurrentPage(){
