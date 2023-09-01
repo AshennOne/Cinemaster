@@ -16,7 +16,7 @@ namespace API.Controllers
     [HttpPost]
     public  ActionResult<string> Post()
     {
-        Account account = new Account(_configuration["CloudinarySettings:CloudName"],_configuration["CloudinarySettings:ApiKey"],_configuration["CloudinarySettings:ApiSecret"]);
+        Account account = new Account(_configuration["CloudName"],_configuration["ApiKey"],_configuration["ApiSecret"]);
         Cloudinary _cloudinary = new Cloudinary(account);
         var file = Request.Form.Files[0];
         var uploadResult = new ImageUploadResult(); 

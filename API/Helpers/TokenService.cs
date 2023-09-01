@@ -19,7 +19,7 @@ namespace API.Helpers
     public string GenerateToken(User user, string role)
     {
       var tokenHandler = new JwtSecurityTokenHandler();
-      var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+      var key = Encoding.UTF8.GetBytes(_configuration["Key"]);
       var tokenDescriptor = new SecurityTokenDescriptor
       {
         Subject = new ClaimsIdentity(new Claim[]
@@ -27,7 +27,7 @@ namespace API.Helpers
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Role,role)
             }),
-        Expires = DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpiresInMinutes"])),
+        Expires = DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["ExpiresInMinutes"])),
         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
       };
       var token = tokenHandler.CreateToken(tokenDescriptor);

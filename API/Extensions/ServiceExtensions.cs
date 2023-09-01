@@ -9,10 +9,16 @@ public static class ServiceExtensions
 {
   public static IServiceCollection LoadServices(this IServiceCollection services, ConfigurationManager configuration)
   {
+    var server = configuration["POSTGRESQL_ADDON_HOST"];
+    var port =configuration["POSTGRESQL_ADDON_PORT"];
+    var userId = configuration["POSTGRESQL_ADDON_USER"];
+    var password = configuration["POSTGRESQL_ADDON_PASSWORD"];
+    var database = configuration["POSTGRESQL_ADDON_DB"];
+    var DefaultConnection= $"Server={server}; Port={port}; User Id={userId};Password={password}; Database={database}";
     services.AddDbContext<ApplicationDbContext>(o =>
     {
       
-      o.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+      o.UseNpgsql(configuration.GetConnectionString(DefaultConnection));
     });
     services.AddCors(options =>
     {
