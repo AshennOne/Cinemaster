@@ -16,9 +16,11 @@ namespace API.Data.Repositories
 
     public async Task<User> FindUserByUsernameAsync(string username)
     {
+      
       User user = await _context.Users.Include(u => u.Comments).Include(u => u.LikedMovies).Include(u => u.Ratings).Select(u => new User
       {
         Id = u.Id,
+        
         UserName = u.UserName,
         LikedMovies = u.LikedMovies,
         Comments = u.Comments,

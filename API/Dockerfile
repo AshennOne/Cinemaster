@@ -1,7 +1,7 @@
 # Use the .NET SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
-
+EXPOSE 8080
 # Copy the .csproj and restore dependencies
 COPY *.csproj ./
 RUN dotnet restore

@@ -39,8 +39,8 @@ namespace API.Controllers
       if (movie == null) return NotFound("movie doesn't exists");
       await _unitOfWork.RatingRepository.CreateRatingAsync(new Rating
       {
-        User = user,
-        Movie = movie,
+        UserId = user.Id,
+        MovieId = movie.Id,
         Grade = rating.Grade
       });
       if (await _unitOfWork.SaveAllAsync()) return Ok();

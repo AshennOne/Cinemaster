@@ -24,6 +24,7 @@ app.MapFallbackToController("Index","Fallback");
 
 
 
+
 await app.UpdateDb();
 await app.UseSeedingRoles();
 await app.UseSeedingUsers();

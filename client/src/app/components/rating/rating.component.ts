@@ -82,6 +82,7 @@ export class RatingComponent implements OnInit, OnChanges {
       this.average += element.grade;
       if (element.userId == this.user?.id) {
         this.isRated = true;
+        
         this.rate = element.grade;
       }
       switch (element.grade) {

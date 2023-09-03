@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "app_id": "app_e4684d27-23fd-4608-9551-51b404b91c0d",
+      "org_id": "user_978cac2d-c31e-40c7-96db-73189678987c",
+      "deploy_url": "https://push-n2-par-clevercloud-customers.services.clever-cloud.com/app_e4684d27-23fd-4608-9551-51b404b91c0d.git",
+      "name": "cinemaster",
+      "alias": "cinemaster"
+    }
+  ]
+}
