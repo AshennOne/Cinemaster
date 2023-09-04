@@ -76,3 +76,41 @@ The project is finished, but there is a possibility that it will be improved in 
 ## Setup and install
 
 Soon
+**Docker desktop instalation**
+1. Make sure you have docker dektop installed
+2. Pull the Docker postgreSQL image
+  ```
+  docker pull postgres
+  ```
+3. Run the docker container
+```
+docker run --name postgres -e POSTGRES_PASSWORD=postgrespw -d -p 5432:5432 postgres
+```
+4. Pull Docker image project
+```
+docker pull ashennone/cinemaster:latest
+```
+5. Run docker image
+```
+docker run --rm -it -p 8080:80 ashennone/cinemaster
+
+when it ends enter in your browser:
+http://localhost:8080/
+```
+6. Admin account login and password (only works for development version)
+```
+login: rebecca
+password: Passw0rd!
+```
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+>Note: If you don't have docker desktop and you want to test it, you can clone my repo, but you need to have own postgres local server, update env variables in appsettings.developement.json, make cloudinary account and update cloudinary variables, so I don't recommend it but if you did it, next you can type in project directory:
+
+```
+dotnet run
+```
+and open in your browser
+```
+https://localhost:5001/
+```
+Password there is the same like docker image
