@@ -2,7 +2,7 @@
 <div (click)="isHovering ? null : redirect()" *ngIf="movie &&comment" class="box row border border-secondary border-start-0 rounded-end ">
   <span class=" col-2 col-lg-1"><img class="photo" src="{{movie.imgUrl}}"></span>
   <span class=" d-flex title align-items-center  col-2">{{movie.title}}</span>
-  <span class=" d-flex align-items-center col-2">{{comment.createTime |timeago}}</span>
+  <span class=" d-flex align-items-center col-2">{{comment.createTime|timeago}}</span>
   <span class=" d-flex align-items-center shortenContent col-4 col-lg-6">"{{content}}"</span>
   <span (mouseenter)="isHovering = true"
   (mouseleave)="isHovering = false" class=" d-flex align-items-center col-1"><button class="btn btn-danger" (click)="openModal(confirmDeleteModal)"><i class="fa fa-trash"></i></button></span>

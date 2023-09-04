@@ -14,7 +14,7 @@ namespace API.Entities
     
         [JsonIgnore]
         public Movie Movie { get; set; }
-        public DateTime Added { get; set; } =  DateTime.SpecifyKind(DateTime.Now,DateTimeKind.Utc);
+        public DateTime Added { get; set; } =  DateTime.UtcNow;
     }
 
 }

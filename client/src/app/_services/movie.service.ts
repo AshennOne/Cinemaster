@@ -71,7 +71,13 @@ export class MovieService {
    
     }
   addMovie(movie: Movie) {
-    return this.http.post(this.baseUrl + 'movies', movie).subscribe({});
+    return this.http.post<Movie>(this.baseUrl + 'movies', movie).subscribe({
+      next:(movie) => {
+        
+        this.setMovieToCache(movie)
+        
+      }
+    });
   }
   editMovie(id: number, movie: Movie) {
     return this.http.put(this.baseUrl + 'movies/' + id, movie).subscribe({});

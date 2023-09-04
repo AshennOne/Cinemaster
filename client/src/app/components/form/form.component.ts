@@ -24,6 +24,7 @@ export class FormComponent implements OnChanges {
 
   movieForm = this.createForm();
   imageUrl?: string;
+  
   file?: File;
   @Input() isAddForm = false;
   constructor(private cloudinaryService: CloudinaryService) {}
@@ -43,7 +44,12 @@ export class FormComponent implements OnChanges {
       description: movie.description,
       duration: movie.duration,
     });
-    this.imageUrl = movie.imgUrl;
+    this.imageUrl = this.replace( movie.imgUrl);
+    
+  }
+
+  replace(url:string){
+   return url.replace('w_960,h_1400','w_240,h_350')
   }
 
   onSubmit() {
@@ -55,6 +61,7 @@ export class FormComponent implements OnChanges {
               'upload',
               'upload/w_240,h_350'
             );
+            
             if (!this.imageUrl) return;
             this.passMovieToParent();
           },
@@ -84,7 +91,7 @@ export class FormComponent implements OnChanges {
       genre: this.movieForm.get('genre')?.value,
       premiere: this.movieForm.get('premiere')?.value,
       description: this.movieForm.get('description')?.value,
-      imgUrl: this.imageUrl,
+      imgUrl: this.imageUrl?.replace('w_240,h_350','w_960,h_1400'),
       duration: this.movieForm.get('duration')?.value,
     } as Movie;
   }
@@ -98,12 +105,12 @@ export class FormComponent implements OnChanges {
     return new FormGroup({
       title: new FormControl('', [
         Validators.required,
-        Validators.maxLength(20),
+        Validators.maxLength(50),
         Validators.minLength(2),
       ]),
       genre: new FormControl('', [
         Validators.required,
-        Validators.maxLength(12),
+        Validators.maxLength(18),
         Validators.minLength(3),
       ]),
       premiere: new FormControl(new Date(), [Validators.required]),

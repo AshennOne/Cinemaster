@@ -1,7 +1,11 @@
 <nav class="navbar navbar-expand-lg bg-dark text-light mb-3">
   <div class="container-fluid mx-5">
-    <a class="navbar-brand text-light" routerLink="/"
-    ariaCurrentWhenActive="page">Cinemaster</a>
+    <a
+      class="navbar-brand text-light"
+      routerLink="/"
+      ariaCurrentWhenActive="page"
+      >Cinemaster</a
+    >
     <button
       class="navbar-toggler"
       type="button"
@@ -15,28 +19,46 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul *ngIf="isLoggedIn" class="navbar-nav ms-3 me-auto mb-2 mb-lg-0">
-        <li><a routerLink="/movies"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }" 
-          ariaCurrentWhenActive="page" class="nav-link ms-2 px-2 text-white">Movies</a></li>
         <li>
-          <a routerLink="/interactions"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page" class="nav-link px-2 ms-2 text-white">Your interactions</a>
-        </li>
-        <li>
-          <a routerLink="/ranking"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page" class="nav-link px-2 ms-2 text-white">Ranking</a>
-        </li>
-          <li *ngIf="role==='Admin'" ><a routerLink="/admin/dashboard"
+          <a
+            routerLink="/movies"
             routerLinkActive="active"
-            ariaCurrentWhenActive="page"class="nav-link ms-2 px-2 text-white">Admin</a></li>
+            [routerLinkActiveOptions]="{ exact: true }"
+            ariaCurrentWhenActive="page"
+            class="nav-link ms-2 px-2 text-white"
+            >Movies</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/interactions"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="nav-link px-2 ms-2 text-white"
+            >My interactions</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/ranking"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="nav-link px-2 ms-2 text-white"
+            >Ranking</a
+          >
+        </li>
+        <li *ngIf="role === 'Admin'">
+          <a
+            routerLink="/admin/dashboard"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="nav-link ms-2 px-2 text-white"
+            >Admin</a
+          >
+        </li>
       </ul>
-   
-   
-        <button
-        
+
+      <button
         type="button"
         routerLink="/login"
         routerLinkActive="active"
@@ -46,26 +68,31 @@
       >
         Login
       </button>
-     
-      <button
-      type="button"
-      routerLink="/register"
-      routerLinkActive="active"
-      ariaCurrentWhenActive="page"
-      class="btn btn-outline-warning me-2 px-4"
-      *ngIf="!isLoggedIn"
-    >
-      Sign-up
-    </button>
-     
-      
-    
 
-      <span *ngIf="isLoggedIn" class=" dropdown" dropdown>
-        <a class="nav-link drop dropdown-toggle" id="navbardrop" data-toggle="dropdown" dropdownToggle>
-          Hello, {{username}}
+      <button
+        type="button"
+        routerLink="/register"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="btn btn-outline-warning me-2 px-4"
+        *ngIf="!isLoggedIn"
+      >
+        Sign-up
+      </button>
+
+      <span *ngIf="isLoggedIn" class="dropdown" dropdown>
+        <a
+          class="nav-link drop dropdown-toggle"
+          id="navbardrop"
+          data-toggle="dropdown"
+          dropdownToggle
+        >
+          Hello, {{ username }}
         </a>
-        <div class="dropdown-menu  dropdown-menu-left dropdownList" *dropdownMenu>
+        <div
+          class="dropdown-menu dropdown-menu-left dropdownList"
+          *dropdownMenu
+        >
           <a (click)="logout()" class="dropdown-item">Logout</a>
         </div>
       </span>

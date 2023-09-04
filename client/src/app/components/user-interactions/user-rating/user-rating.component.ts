@@ -24,10 +24,16 @@ constructor(private movieService:MovieService, private router:Router){}
         next: (movie) => {
           this.movie = movie;
           
+          
+          
         },
       });
+     
   }
+ 
+ 
 }
+
 unlockButton(event:number){
   if(!this.rating?.grade) return;
   this.rating.grade = event

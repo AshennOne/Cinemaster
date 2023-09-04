@@ -25,7 +25,7 @@ changeTab(event:TabDirective) {
     localStorage.setItem('tab',tab)
     
   }
-  console.log(tab)
+  
   return tab;
  }
  

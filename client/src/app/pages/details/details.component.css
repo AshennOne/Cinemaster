@@ -1,3 +1,7 @@
-.bg-background{
-  background-color: transparent
+.bg-background {
+  background-color: transparent;
+}
+.photo {
+  width: 240px;
+  height: 350px;
 }

@@ -52,7 +52,7 @@ namespace API.Data.Repositories
     {
       int pageSize = 8;
       
-      var allFilteredMovies = await _context.Movies.Where(m=> m.Premiere >= movieParams.From && m.Premiere <= movieParams.To && m.Duration<= movieParams.MaxDuration && m.Duration>= movieParams.MinDuration ).Include(m => m.Ratings).Include(m => m.Comments).Include(m => m.LikedByUsers).ToListAsync();
+      var allFilteredMovies = await _context.Movies.Where(m=> m.Premiere >= movieParams.From.AddDays(-1) && m.Premiere <= movieParams.To.AddDays(1) && m.Duration<= movieParams.MaxDuration && m.Duration>= movieParams.MinDuration ).Include(m => m.Ratings).Include(m => m.Comments).Include(m => m.LikedByUsers).ToListAsync();
        var totalItems =  allFilteredMovies.Count();
        switch(movieParams.SortOrder){
       case SortOrder.PremiereAsc:

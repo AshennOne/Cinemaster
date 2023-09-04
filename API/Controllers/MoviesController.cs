@@ -18,12 +18,15 @@ namespace API.Controllers
 
     }
     [HttpPost]
-    public async Task<ActionResult> CreateMovie(MovieDto movieDto)
+    public async Task<ActionResult<Movie>> CreateMovie(MovieDto movieDto)
     {
       var ExistingMovie = await _unitOfWork.MovieRepository.GetMovieByTitle(movieDto.Title);
       if (ExistingMovie != null) return BadRequest("Movie with specified title already exists");
-      await _unitOfWork.MovieRepository.AddMovie(movieDto);
-      if (await _unitOfWork.SaveAllAsync()) return Ok();
+     await _unitOfWork.MovieRepository.AddMovie(movieDto);
+      if (await _unitOfWork.SaveAllAsync()){ 
+        var movie = await _unitOfWork.MovieRepository.GetMovieByTitle(movieDto.Title);
+        return Ok(movie);
+        }
       return BadRequest("Something went wrong");
     }
     [HttpGet("titles")]

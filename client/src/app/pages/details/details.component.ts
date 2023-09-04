@@ -42,7 +42,10 @@ export class DetailsComponent {
     
      this.movieService.getMovie(this.movieTitle).subscribe({
       next: (movie) => {
-        if(movie) this.movie = movie
+        if(movie) {
+          this.movie = movie
+          
+        }
         else{
           this.router.navigateByUrl('movies')
         }

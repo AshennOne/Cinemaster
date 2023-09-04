@@ -14,3 +14,9 @@
   .box{
     cursor: pointer;
   }
+  @media(max-width:768px){
+    .details{
+      opacity: 0;
+      margin-left: -100px;
+    }
+  }

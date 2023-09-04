@@ -1,10 +1,10 @@
 <div (click)="redirect()" *ngIf="movie" [class.bg-gold]="movie.rank==1" [class.bg-secondary]="movie.rank==2" [class.bg-bronze]="movie.rank==3" class="box row border border-secondary border-start-0 rounded-end ">
   <span class="d-flex align-items-center  col-1">{{movie.rank}}</span>
-  <span class=" col-1"><img class="photo" src="{{movie.imgUrl}}"></span>
-  <span class="title d-flex align-items-center  col-3">{{movie.title}}</span>
+  <span class=" col-2"><img class="photo" src="{{movie.imgUrl}}"></span>
+  <span class="title d-flex align-items-center  col-3 col-md-2">{{movie.title}}</span>
   <span class=" d-flex align-items-center col-2">{{movie.premiere| date:('yyyy') }}</span>
   <span class=" d-flex align-items-center  col-2">{{movie.genre}}</span>
-  <span class=" d-flex align-items-center col-3">
-  <ngx-stars [readonly]="true" [size]="1" [color]="'#FFFFFF'" [maxStars]="5" [initialStars]="movie.avgRating" ></ngx-stars><span class="ms-3"><strong>{{movie.avgRating.toFixed(1)}} ({{movie.ratings.length}})</strong> </span></span>
+  <span class=" d-flex align-items-center col-2 col-md-3">
+  <ngx-stars class="details" [readonly]="true" [size]="1" [color]="'#FFFFFF'" [maxStars]="5" [initialStars]="movie.avgRating" ></ngx-stars><span class="ms-3"><strong>{{movie.avgRating.toFixed(1)}} ({{movie.ratings.length}})</strong> </span></span>
   
 </div>
