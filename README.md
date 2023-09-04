@@ -75,7 +75,6 @@ The project is finished, but there is a possibility that it will be improved in 
 
 ## Setup and install
 
-Soon
 **Docker desktop instalation**
 1. Make sure you have docker dektop installed
 2. Pull the Docker postgreSQL image
