@@ -10,7 +10,7 @@
 -  [Features](#features)
 -  [Screenshots](#screenshots)
 -  [Project Status](#project-status)
--  [To do/ Improvement Ideas](#to-do/-improvement-ideas)
+-  [To do/ Improvement Ideas](#to-do--improvement-ideas)
 -  [Acknowledgements](#acknowledgements)
 -  [Setup and install](#setup-and-install)
 
