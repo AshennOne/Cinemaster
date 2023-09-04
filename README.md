@@ -103,8 +103,7 @@ login: rebecca
 password: Passw0rd!
 ```
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
->Note: If you don't have docker desktop and you want to test it, you can clone my repo, but you need to have own postgres local server, update env variables in appsettings.developement.json, make cloudinary account and update cloudinary variables, so I don't recommend it but if you did it, next you can type in project directory:
+>If you don't have docker desktop and you want to test it, you can clone my repo, but you need to have own postgres local server, update env variables in appsettings.developement.json, make cloudinary account and update cloudinary variables, so I don't recommend it but if you did it, next you can type in project directory:
 
 ```
 dotnet run
