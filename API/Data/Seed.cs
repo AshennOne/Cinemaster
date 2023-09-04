@@ -17,8 +17,8 @@ namespace API.Data
 
         foreach (var user in usersToSeed)
         {
-          await userManager.CreateAsync(user, "Pa$$w0rd");
-          if(user.UserName.ToLower()=="david")
+          await userManager.CreateAsync(user, "Passw0rd!");
+          if(user.UserName.ToLower()=="rebecca")
           await userManager.AddToRoleAsync(user,"Admin"); 
           else {await userManager.AddToRoleAsync(user,"User"); }
           
