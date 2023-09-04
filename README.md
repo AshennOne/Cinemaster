@@ -52,10 +52,10 @@ It was my first serious project made by me, without any tutorials and guides. In
 
 ## Screenshots
 
-![MainPage](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_600,h_330/v1693847512/ss_mgmbce.png)
-![Details page](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_600,h_330/v1693847504/ss4_rxdb3j.png)
-![Admin Dashboard](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_600,h_330/v1693847488/ss6_cih81x.png)
-![User interactions panel](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_600,h_330/v1693847498/ss5_f0s3wt.png)
+![MainPage](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_900,h_495/v1693847512/ss_mgmbce.png)
+![Details page](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_900,h_495/v1693847504/ss4_rxdb3j.png)
+![Admin Dashboard](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_900,h_495/v1693847488/ss6_cih81x.png)
+![User interactions panel](https://res.cloudinary.com/dwy4hhhjr/image/upload/w_900,h_495/v1693847498/ss5_f0s3wt.png)
 
 ## Project Status
 
