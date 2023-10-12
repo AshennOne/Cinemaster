@@ -1,7 +1,7 @@
 # Cinemaster
 
 > Simple movie review app for real movie fans
-> Live demo -> [_here_](https://cinemaster.cleverapps.io/). <-
+> Live demo -> [_currently not available_](). <-
 
 ## Table of Contents
 
