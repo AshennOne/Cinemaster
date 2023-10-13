@@ -1,6 +1,6 @@
 # Cinemaster
 > Simple movie review app for real movie fans\
-> Live demo [_Currently not available_]()
+> Live demo [_here_](https://cinemaster.onrender.com/)
 ## Table of Contents
 -  [General Info](#general-information)
 -  [Technologies and Tools Used](#technologies-and-tools-used)
