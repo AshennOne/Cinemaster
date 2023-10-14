@@ -25,7 +25,7 @@ export class RatingComponent implements OnInit, OnChanges {
   rate3 = 0;
   rate4 = 0;
   rate5 = 0;
-  rate = 0;
+  rate?: number;
   isRated = false;
   average = 0;
   countRate = 0;
@@ -51,7 +51,7 @@ export class RatingComponent implements OnInit, OnChanges {
   onRatingChange(event:any) {
     this.rate = event
     if (!this.movie?.id) return;
-    if (!this.isRated) {
+    if (!this.isRated && this.rate) {
       this.ratingService.addRating(this.movie.id, this.rate).subscribe({
         next: () => {
           this.updateRating.emit(true);
@@ -60,6 +60,7 @@ export class RatingComponent implements OnInit, OnChanges {
         },
       });
     } else {
+      if(! this.rate) return;
       this.ratingService.editRating(this.movie.id, this.rate).subscribe({
         next: () => {
           this.updateRating.emit(true);
@@ -101,6 +102,9 @@ export class RatingComponent implements OnInit, OnChanges {
         case 5:
           this.rate5 += 1;
           break;
+      }
+      if(!this.rate){
+        this.rate= 0
       }
     });
     this.countRate = this.movie.ratings.length;
