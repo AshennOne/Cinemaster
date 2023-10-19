@@ -23,7 +23,7 @@ It was my first serious project made by me, without any tutorials and guides. In
 -  API Testing: Postman
 -  Version Control - Git
 -  Package manager - NuGet and npm
--  Host: CleverCLoud
+-  Host: Render.com
 ## Features
 -  Login and register form with validation (API and client side)
 -  Jwt Token with claims
